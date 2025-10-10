@@ -1,0 +1,199 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'></head><body><p>Лабораторная работа №3
+Викторов Егор Игоревич
+10.10.2025
+Отчет:</p>
+<ol>
+<li>Выравнивание формул с aligned</li>
+</ol>
+<p>Первый пример показывает разницу между aligned[t] и обычным aligned:</p>
+<p>@&quot;
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\begin{document}
+\begin{itemize}
+\item
+$\begin{aligned}[t]
+a&amp;=b\
+c&amp;=d
+\end{aligned}$
+\item
+$\begin{aligned}
+a&amp;=b\
+c&amp;=d
+\end{aligned}$
+\end{itemize}
+\end{document}
+&quot;@ | Out-File -Encoding UTF8 document.tex</p>
+<p>pdflatex document.tex
+Invoke-Item document.pdf</p>
+<p>Результат: [t] выравнивает первую строку по базовой линии текста.</p>
+<hr>
+<ol start="2">
+<li>Жирные символы: \mathbf vs \bm</li>
+</ol>
+<p>@&quot;
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{bm}
+\begin{document}
+$(x+\mathbf{y})(x-\mathbf{y})=x^{2}-{\mathbf{y}}^{2}$</p>
+<p>$(x+\bm{y})(x-\bm{y}) \bm{=} x^{2}-{\bm{y}}^{2}$</p>
+<p>$\alpha + \bm{\alpha} &lt; \beta + \bm{\beta}$
+\end{document}
+&quot;@ | Out-File -Encoding UTF8 document.tex</p>
+<p>pdflatex document.tex
+Start-Process document.pdf</p>
+<p>Ключевые различия:</p>
+<ul>
+<li>\mathbf{y} — жирный прямой шрифт (не работает с греческими буквами)</li>
+<li>\bm{y} — жирный курсив (работает с греческими и символами)</li>
+</ul>
+<hr>
+<p> Расширенные эксперименты</p>
+<p>Эксперимент 1: Все математические шрифты</p>
+<p>cd ~\Documents</p>
+<p>@&quot;
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{bm}
+\usepackage{amsmath,amssymb}
+\begin{document}</p>
+<p>\section*{Математические шрифты}</p>
+<p>\textbf{Базовые команды:}
+\begin{itemize}
+\item Обычный: $x + y = z$
+\item \verb|\mathrm|: $\mathrm{x + y = z}$ (прямой)
+\item \verb|\mathit|: $\mathit{x + y = z}$ (курсив)
+\item \verb|\mathbf|: $\mathbf{x + y = z}$ (жирный прямой)
+\item \verb|\mathsf|: $\mathsf{x + y = z}$ (sans-serif)
+\item \verb|\mathtt|: $\mathtt{x + y = z}$ (моноширинный)
+\item \verb|\mathcal|: $\mathcal{ABCXYZ}$ (каллиграфический)
+\item \verb|\mathbb|: $\mathbb{NZQRC}$ (доска)
+\item \verb|\mathfrak|: $\mathfrak{ABCxyz}$ (готический)
+\item \verb|\bm|: $\bm{x + y = z}$ (жирный курсив)
+\end{itemize}</p>
+<p>\textbf{Греческие буквы:}
+\begin{itemize}
+\item Обычные: $\alpha, \beta, \gamma, \Delta, \Omega$
+\item \verb|\mathbf|: $\mathbf{\alpha, \beta, \Gamma}$ (не работает!)
+\item \verb|\bm|: $\bm{\alpha, \beta, \gamma, \Delta, \Omega}$ (работает!)
+\end{itemize}</p>
+<p>\end{document}
+&quot;@ | Out-File -FilePath fonts_test.tex -Encoding UTF8</p>
+<p>pdflatex fonts_test.tex
+Start-Process fonts_test.pdf</p>
+<hr>
+<p>Эксперимент 2: Опции класса документа</p>
+<h1>Тест 1: fleqn (формулы слева)</h1>
+<p>@&quot;
+\documentclass[a4paper,fleqn]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\setlength{\mathindent}{0pt} % Убрать отступ
+\begin{document}</p>
+<p>\section*{fleqn: Формулы выровнены слева}</p>
+<p>Обычный текст с формулой:
+[
+E = mc^2
+]</p>
+<p>Нумерованная формула:
+\begin{equation}
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\end{equation}</p>
+<p>\end{document}
+&quot;@ | Out-File -FilePath fleqn_test.tex -Encoding UTF8</p>
+<p>pdflatex fleqn_test.tex
+Start-Process fleqn_test.pdf</p>
+<h1>Тест 2: leqno (номера слева)</h1>
+<p>@&quot;
+\documentclass[a4paper,leqno]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\begin{document}</p>
+<p>\section*{leqno: Номера формул слева}</p>
+<p>\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}</p>
+<p>\begin{equation}
+\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+\end{equation}</p>
+<p>\end{document}
+&quot;@ | Out-File -FilePath leqno_test.tex -Encoding UTF8</p>
+<p>pdflatex leqno_test.tex
+Start-Process leqno_test.pdf</p>
+<h1>Тест 3: Обе опции</h1>
+<p>@&quot;
+\documentclass[a4paper,fleqn,leqno]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\setlength{\mathindent}{20pt}
+\begin{document}</p>
+<p>\section*{fleqn + leqno: Формулы и номера слева}</p>
+<p>\begin{equation}
+F = ma
+\end{equation}</p>
+<p>\begin{align}
+x &amp;= r\cos\theta \
+y &amp;= r\sin\theta
+\end{align}</p>
+<p>\end{document}
+&quot;@ | Out-File -FilePath both_test.tex -Encoding UTF8</p>
+<p>pdflatex both_test.tex
+Start-Process both_test.pdf</p>
+<hr>
+<p>Эксперимент 3: Вложенные команды шрифтов</p>
+<p>@&quot;
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{bm}
+\begin{document}</p>
+<p>\section*{Вложенные команды шрифтов}</p>
+<p>\textbf{Что побеждает?}
+\begin{itemize}
+\item $\mathbf{A \mathit{B} C}$ — mathbf + mathit внутри
+\item $\mathit{A \mathbf{B} C}$ — mathit + mathbf внутри
+\item $\bm{A \mathit{B} C}$ — bm + mathit внутри
+\item $\mathbf{\bm{A} B}$ — mathbf + bm внутри
+\end{itemize}</p>
+<p>\textbf{Правило:} Последняя команда побеждает!</p>
+<p>\textbf{Греческие буквы:}
+\begin{itemize}
+\item $\mathbf{\alpha}$ — не работает
+\item $\bm{\alpha}$ — работает
+\item $\mathbf{\bm{\alpha}}$ — работает (bm внутри)
+\end{itemize}</p>
+<p>\end{document}
+&quot;@ | Out-File -FilePath nested_test.tex -Encoding UTF8</p>
+<p>pdflatex nested_test.tex
+Start-Process nested_test.pdf
+&quot;@ | Out-File -FilePath both_test.tex -Encoding UTF8</p>
+<p>pdflatex both_test.tex
+Start-Process both_test.pdf</p>
+<hr>
+<p>Эксперимент 3: Вложенные команды шрифтов</p>
+<p>@&quot;
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{bm}
+\begin{document}</p>
+<p>\section*{Вложенные команды шрифтов}</p>
+<p>\textbf{Что побеждает?}
+\begin{itemize}
+\item $\mathbf{A \mathit{B} C}$ — mathbf + mathit внутри
+\item $\mathit{A \mathbf{B} C}$ — mathit + mathbf внутри
+\item $\bm{A \mathit{B} C}$ — bm + mathit внутри
+\item $\mathbf{\bm{A} B}$ — mathbf + bm внутри
+\end{itemize}</p>
+<p>\textbf{Правило:} Последняя команда побеждает!</p>
+<p>\textbf{Греческие буквы:}
+\begin{itemize}
+\item $\mathbf{\alpha}$ — не работает
+\item $\bm{\alpha}$ — работает
+\item $\mathbf{\bm{\alpha}}$ — работает (bm внутри)
+\end{itemize}</p>
+<p>\end{document}
+&quot;@ | Out-File -FilePath nested_test.tex -Encoding UTF8</p>
+<p>pdflatex nested_test.tex
+Start-Process nested_test.pdf</p>
+</body></html>
