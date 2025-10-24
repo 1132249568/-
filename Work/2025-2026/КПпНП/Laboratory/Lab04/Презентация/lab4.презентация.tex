@@ -1,0 +1,868 @@
+\documentclass[utf8, 12pt]{beamer}
+
+% === КОДИРОВКИ И ЯЗЫК ===
+\usepackage[utf8]{inputenc}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{lmodern}
+
+% === ГРАФИКА ===
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+
+% === ТАБЛИЦЫ ===
+\usepackage{booktabs}
+\usepackage{array}
+
+% === МАТЕМАТИКА ===
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% === ЦВЕТА ===
+\usepackage{xcolor}
+
+% === ТЕКСТ ===
+\usepackage{lipsum}
+
+
+% === ЛИСТИНГИ КОДА ===
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    language=[LaTeX]TeX,
+    showstringspaces=false,
+    commentstyle=\color{green!50!black},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    extendedchars=true,
+    inputencoding=utf8,
+    literate={а}{{\selectfont\char224}}1
+             {б}{{\selectfont\char225}}1
+             {в}{{\selectfont\char226}}1
+             {г}{{\selectfont\char227}}1
+             {д}{{\selectfont\char228}}1
+             {е}{{\selectfont\char229}}1
+             {ё}{{\"e}}1
+             {ж}{{\selectfont\char230}}1
+             {з}{{\selectfont\char231}}1
+             {и}{{\selectfont\char232}}1
+             {й}{{\selectfont\char233}}1
+             {к}{{\selectfont\char234}}1
+             {л}{{\selectfont\char235}}1
+             {м}{{\selectfont\char236}}1
+             {н}{{\selectfont\char237}}1
+             {о}{{\selectfont\char238}}1
+             {п}{{\selectfont\char239}}1
+             {р}{{\selectfont\char240}}1
+             {с}{{\selectfont\char241}}1
+             {т}{{\selectfont\char242}}1
+             {у}{{\selectfont\char243}}1
+             {ф}{{\selectfont\char244}}1
+             {х}{{\selectfont\char245}}1
+             {ц}{{\selectfont\char246}}1
+             {ч}{{\selectfont\char247}}1
+             {ш}{{\selectfont\char248}}1
+             {щ}{{\selectfont\char249}}1
+             {ъ}{{\selectfont\char250}}1
+             {ы}{{\selectfont\char251}}1
+             {ь}{{\selectfont\char252}}1
+             {э}{{\selectfont\char253}}1
+             {ю}{{\selectfont\char254}}1
+             {я}{{\selectfont\char255}}1
+             {А}{{\selectfont\char192}}1
+             {Б}{{\selectfont\char193}}1
+             {В}{{\selectfont\char194}}1
+             {Г}{{\selectfont\char195}}1
+             {Д}{{\selectfont\char196}}1
+             {Е}{{\selectfont\char197}}1
+             {Ё}{{\"E}}1
+             {Ж}{{\selectfont\char198}}1
+             {З}{{\selectfont\char199}}1
+             {И}{{\selectfont\char200}}1
+             {Й}{{\selectfont\char201}}1
+             {К}{{\selectfont\char202}}1
+             {Л}{{\selectfont\char203}}1
+             {М}{{\selectfont\char204}}1
+             {Н}{{\selectfont\char205}}1
+             {О}{{\selectfont\char206}}1
+             {П}{{\selectfont\char207}}1
+             {Р}{{\selectfont\char208}}1
+             {С}{{\selectfont\char209}}1
+             {Т}{{\selectfont\char210}}1
+             {У}{{\selectfont\char211}}1
+             {Ф}{{\selectfont\char212}}1
+             {Х}{{\selectfont\char213}}1
+             {Ц}{{\selectfont\char214}}1
+             {Ч}{{\selectfont\char215}}1
+             {Ш}{{\selectfont\char216}}1
+             {Щ}{{\selectfont\char217}}1
+             {Ъ}{{\selectfont\char218}}1
+             {Ы}{{\selectfont\char219}}1
+             {Ь}{{\selectfont\char220}}1
+             {Э}{{\selectfont\char221}}1
+             {Ю}{{\selectfont\char222}}1
+             {Я}{{\selectfont\char223}}1
+}
+
+% === ТЕМА BEAMER ===
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% === НАСТРОЙКИ ===
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% === ИНФОРМАЦИЯ О ПРЕЗЕНТАЦИИ ===
+\title{Работа с изображениями и ссылками в \LaTeX}
+\subtitle{Лабораторная работа №4}
+\author{Викторов Егор}
+\institute{Российский Университет Дружбы Народов имени Патриса Лумумбы}
+\date{\today}
+
+\begin{document}
+
+% ==================== ТИТУЛЬНЫЙ СЛАЙД ====================
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% ==================== СОДЕРЖАНИЕ ====================
+\begin{frame}{Содержание}
+    \tableofcontents
+\end{frame}
+
+% ==================== РАЗДЕЛ 1: ВВЕДЕНИЕ ====================
+\section{Введение}
+
+\begin{frame}{Цели работы}
+    \begin{block}{Основные задачи}
+        \begin{itemize}
+            \item Изучить параметры команды \texttt{\textbackslash includegraphics}
+            \item Исследовать поведение изображений с \texttt{textwidth} и \texttt{linewidth}
+            \item Изучить работу плавающих объектов (floats)
+            \item Понять механизм работы меток и ссылок (\texttt{label/ref})
+            \item Экспериментировать с нумерацией разделов
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+% ==================== РАЗДЕЛ 2: ПАРАМЕТРЫ ИЗОБРАЖЕНИЙ ====================
+\section{Параметры изображений}
+
+\begin{frame}{Основные параметры includegraphics}
+    \begin{table}
+        \centering
+        \begin{tabular}{@{}lp{6cm}@{}}
+            \toprule
+            \textbf{Параметр} & \textbf{Описание} \\
+            \midrule
+            \texttt{width} & Ширина изображения \\
+            \texttt{height} & Высота изображения \\
+            \texttt{scale} & Масштаб (множитель) \\
+            \texttt{angle} & Угол поворота (градусы) \\
+            \texttt{keepaspectratio} & Сохранение пропорций \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.5cm}
+    
+    \begin{exampleblock}{Синтаксис}
+        \texttt{\textbackslash includegraphics[параметры]\{файл\}}
+    \end{exampleblock}
+\end{frame}
+
+% ==================== ДЕМОНСТРАЦИЯ WIDTH ====================
+\begin{frame}{Параметр width: визуализация}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            % 30% ширины
+            \draw[fill=blue!20, draw=black, thick] (0,0) rectangle (3,2);
+            \node at (1.5,1) {\textbf{30\%}};
+            \node[below] at (1.5,-0.3) {\scriptsize\texttt{width=0.3\textbackslash textwidth}};
+            
+            % 50% ширины
+            \draw[fill=green!20, draw=black, thick] (4,0) rectangle (9,2);
+            \node at (6.5,1) {\textbf{50\%}};
+            \node[below] at (6.5,-0.3) {\scriptsize\texttt{width=0.5\textbackslash textwidth}};
+            
+            % 80% ширины
+            \draw[fill=orange!20, draw=black, thick] (0,-3) rectangle (8,-1);
+            \node at (4,-2) {\textbf{80\%}};
+            \node[below] at (4,-3.3) {\scriptsize\texttt{width=0.8\textbackslash textwidth}};
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{alertblock}{Рекомендация}
+        Используйте относительные размеры для адаптивности!
+    \end{alertblock}
+\end{frame}
+
+% ==================== ДЕМОНСТРАЦИЯ HEIGHT ====================
+\begin{frame}{Параметр height: визуализация}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.7]
+            % Разные высоты
+            \draw[fill=red!20, draw=black, thick] (0,0) rectangle (2,1);
+            \node at (1,0.5) {\small 3cm};
+            \node[below] at (1,-0.3) {\tiny\texttt{height=3cm}};
+            
+            \draw[fill=yellow!40, draw=black, thick] (3,0) rectangle (5,2);
+            \node at (4,1) {\small 5cm};
+            \node[below] at (4,-0.3) {\tiny\texttt{height=5cm}};
+            
+            \draw[fill=cyan!30, draw=black, thick] (6,0) rectangle (8,3);
+            \node at (7,1.5) {\small 8cm};
+            \node[below] at (7,-0.3) {\tiny\texttt{height=8cm}};
+            
+            \draw[fill=purple!20, draw=black, thick] (9,0) rectangle (11,4);
+            \node at (10,2) {\small 10cm};
+            \node[below] at (10,-0.3) {\tiny\texttt{height=10cm}};
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+% ==================== ДЕМОНСТРАЦИЯ SCALE ====================
+\begin{frame}{Параметр scale: визуализация}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.6]
+            % Базовый размер
+            \draw[fill=gray!30, draw=black, thick] (0,0) rectangle (2,1.5);
+            \node at (1,0.75) {1.0};
+            \node[below] at (1,-0.5) {\scriptsize\texttt{scale=1.0}};
+            
+            % Увеличенный
+            \draw[fill=gray!30, draw=black, thick] (3.5,0) rectangle (6.5,2.25);
+            \node at (5,1.125) {1.5};
+            \node[below] at (5,-0.5) {\scriptsize\texttt{scale=1.5}};
+            
+            % Ещё больше
+            \draw[fill=gray!30, draw=black, thick] (8,0) rectangle (12,3);
+            \node at (10,1.5) {2.0};
+            \node[below] at (10,-0.5) {\scriptsize\texttt{scale=2.0}};
+            
+            % Уменьшенный
+            \draw[fill=gray!30, draw=black, thick] (0,-3) rectangle (1,-2.25);
+            \node at (0.5,-2.625) {\tiny 0.5};
+            \node[below] at (0.5,-3.3) {\scriptsize\texttt{scale=0.5}};
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{block}{Примечание}
+        \texttt{scale} умножает оригинальный размер изображения
+    \end{block}
+\end{frame}
+
+% ==================== ДЕМОНСТРАЦИЯ ANGLE ====================
+\begin{frame}{Параметр angle: визуализация}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.7]
+            % 0 градусов
+            \begin{scope}
+                \draw[fill=teal!30, draw=black, thick] (0,0) rectangle (2,1.5);
+                \node at (1,0.75) {$0°$};
+                \node[below] at (1,-0.5) {\scriptsize\texttt{angle=0}};
+            \end{scope}
+            
+            % 45 градусов
+            \begin{scope}[xshift=4cm]
+                \begin{scope}[rotate around={45:(1,0.75)}]
+                    \draw[fill=teal!30, draw=black, thick] (0,0) rectangle (2,1.5);
+                    \node at (1,0.75) {$45°$};
+                \end{scope}
+                \node[below] at (1,-1) {\scriptsize\texttt{angle=45}};
+            \end{scope}
+            
+            % 90 градусов
+            \begin{scope}[xshift=8cm]
+                \begin{scope}[rotate around={90:(1,0.75)}]
+                    \draw[fill=teal!30, draw=black, thick] (0,0) rectangle (2,1.5);
+                    \node at (1,0.75) {$90°$};
+                \end{scope}
+                \node[below] at (1,-0.5) {\scriptsize\texttt{angle=90}};
+            \end{scope}
+            
+            % 180 градусов
+            \begin{scope}[xshift=12cm]
+                \begin{scope}[rotate around={180:(1,0.75)}]
+                    \draw[fill=teal!30, draw=black, thick] (0,0) rectangle (2,1.5);
+                    \node at (1,0.75) {$180°$};
+                \end{scope}
+                \node[below] at (1,-0.5) {\scriptsize\texttt{angle=180}};
+            \end{scope}
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{alertblock}{Важно!}
+        Поворот происходит \textbf{против часовой стрелки}
+    \end{alertblock}
+\end{frame}
+
+% ==================== КОМБИНАЦИЯ ПАРАМЕТРОВ ====================
+\begin{frame}{Комбинирование параметров}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            % Оригинал
+            \draw[fill=lime!30, draw=black, thick] (0,0) rectangle (2,1.5);
+            \node at (1,0.75) {\small Оригинал};
+            \node[below] at (1,-0.5) {\tiny без параметров};
+            
+            % Width + angle
+            \begin{scope}[xshift=4cm]
+                \begin{scope}[rotate around={30:(1.5,1.125)}]
+                    \draw[fill=lime!30, draw=black, thick] (0,0) rectangle (3,2.25);
+                    \node at (1.5,1.125) {\small Width+Angle};
+                \end{scope}
+                \node[below] at (1.5,-1) {\tiny\texttt{width=..., angle=30}};
+            \end{scope}
+            
+            % Scale + angle
+            \begin{scope}[xshift=9cm]
+                \begin{scope}[rotate around={-20:(1,0.75)}, scale=1.5]
+                    \draw[fill=lime!30, draw=black, thick] (0,0) rectangle (2,1.5);
+                    \node at (1,0.75) {\tiny Scale+Angle};
+                \end{scope}
+                \node[below] at (1.5,-1) {\tiny\texttt{scale=1.5, angle=-20}};
+            \end{scope}
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{exampleblock}{Пример кода}
+        \texttt{\textbackslash includegraphics[width=0.5\textbackslash textwidth, angle=30]\{image.png\}}
+    \end{exampleblock}
+\end{frame}
+
+% ==================== РАЗДЕЛ 3: TEXTWIDTH VS LINEWIDTH ====================
+\section{textwidth vs linewidth}
+
+\begin{frame}{Разница между textwidth и linewidth}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\texttt{\textbackslash textwidth}}
+                \begin{itemize}
+                    \item Полная ширина текстовой области
+                    \item Не меняется внутри окружений
+                    \item Постоянная величина
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{block}{\texttt{\textbackslash linewidth}}
+                \begin{itemize}
+                    \item Текущая ширина строки
+                    \item Меняется в колонках, списках
+                    \item Адаптивная величина
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Важно!}
+        В режиме \texttt{twocolumn} значения различаются!
+    \end{alertblock}
+\end{frame}
+
+% ==================== ВИЗУАЛИЗАЦИЯ TEXTWIDTH VS LINEWIDTH ====================
+\begin{frame}{Визуализация: textwidth vs linewidth}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.9]
+            % Одна колонка
+            \draw[thick] (0,0) rectangle (10,1.5);
+            \node at (5,1.8) {\textbf{Одна колонка}};
+            \draw[<->, red, thick] (0,-0.3) -- (10,-0.3);
+            \node[red] at (5,-0.6) {\texttt{\textbackslash textwidth = \textbackslash linewidth}};
+            
+            % Две колонки
+            \begin{scope}[yshift=-3cm]
+                \draw[thick] (0,0) rectangle (4.5,1.5);
+                \draw[thick] (5.5,0) rectangle (10,1.5);
+                \node at (5,1.8) {\textbf{Две колонки (twocolumn)}};
+                
+                \draw[<->, red, thick] (0,-0.3) -- (10,-0.3);
+                \node[red] at (5,-0.6) {\texttt{\textbackslash textwidth}};
+                
+                \draw[<->, blue, thick] (0,-0.9) -- (4.5,-0.9);
+                \node[blue] at (2.25,-1.2) {\texttt{\textbackslash linewidth}};
+                
+                \draw[<->, blue, thick] (5.5,-0.9) -- (10,-0.9);
+                \node[blue] at (7.75,-1.2) {\texttt{\textbackslash linewidth}};
+            \end{scope}
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+% ==================== ПРИМЕР КОДА БЕЗ РУССКИХ КОММЕНТАРИЕВ ====================
+\begin{frame}[fragile]{Пример использования}
+    \begin{exampleblock}{Одна колонка}
+\begin{lstlisting}
+\documentclass{article}
+\begin{document}
+\includegraphics[width=0.8\textwidth]{image.png}
+\includegraphics[width=0.8\linewidth]{image.png}
+\end{document}
+\end{lstlisting}
+    \end{exampleblock}
+    
+    \vspace{0.3cm}
+    \textbf{Примечание:} В одноколоночном режиме \texttt{textwidth} и \texttt{linewidth} дают одинаковый результат!
+\end{frame}
+
+\begin{frame}[fragile]{Пример с twocolumn}
+    \begin{exampleblock}{Две колонки}
+\begin{lstlisting}
+\documentclass[twocolumn]{article}
+\begin{document}
+\includegraphics[width=0.8\textwidth]{img.png}
+
+\includegraphics[width=0.8\linewidth]{img.png}
+\end{document}
+\end{lstlisting}
+    \end{exampleblock}
+    
+    \vspace{0.3cm}
+    \begin{alertblock}{Важно!}
+        С \texttt{textwidth} изображение выйдет за пределы колонки! \\
+        С \texttt{linewidth} --- правильно впишется в колонку.
+    \end{alertblock}
+\end{frame}
+
+% ==================== РАЗДЕЛ 4: ПЛАВАЮЩИЕ ОБЪЕКТЫ ====================
+\section{Плавающие объекты (floats)}
+
+\begin{frame}{Что такое плавающие объекты?}
+    \begin{block}{Определение}
+        Плавающие объекты (floats) --- это элементы, которые \LaTeX\ может перемещать для оптимального размещения на странице.
+    \end{block}
+    
+    \vspace{0.5cm}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Типы floats:}
+            \begin{itemize}
+                \item \texttt{figure} --- рисунки
+                \item \texttt{table} --- таблицы
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \textbf{Преимущества:}
+            \begin{itemize}
+                \item Автоматическая нумерация
+                \item Список рисунков/таблиц
+                \item Оптимальное размещение
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ==================== СПЕЦИФИКАТОРЫ ПОЗИЦИИ ====================
+\begin{frame}{Спецификаторы позиции}
+    \begin{table}
+        \centering
+        \begin{tabular}{@{}clp{5cm}@{}}
+            \toprule
+            \textbf{Спец.} & \textbf{Название} & \textbf{Описание} \\
+            \midrule
+            \texttt{h} & here & Примерно здесь \\
+            \texttt{t} & top & Вверху страницы \\
+            \texttt{b} & bottom & Внизу страницы \\
+            \texttt{p} & page & На отдельной странице \\
+            \texttt{!} & override & Игнорировать ограничения \\
+            \texttt{H} & HERE & Строго здесь (пакет \texttt{float}) \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.3cm}
+    
+    \begin{exampleblock}{Примеры}
+        \texttt{[htbp]} --- попробовать h, затем t, затем b, затем p \\
+        \texttt{[!h]} --- здесь, игнорируя ограничения \\
+        \texttt{[H]} --- строго здесь (требует \texttt{\textbackslash usepackage\{float\}})
+    \end{exampleblock}
+\end{frame}
+
+% ==================== ВЗАИМОДЕЙСТВИЕ СПЕЦИФИКАТОРОВ ====================
+\begin{frame}{Взаимодействие спецификаторов}
+    \begin{center}
+        \begin{tikzpicture}[
+            node distance=1.5cm,
+            box/.style={rectangle, draw, fill=blue!20, text width=2.5cm, align=center, minimum height=1cm}
+        ]
+            \node[box] (h) {\texttt{[h]}};
+            \node[box, right=of h] (t) {\texttt{[t]}};
+            \node[box, right=of t] (b) {\texttt{[b]}};
+            \node[box, right=of b] (p) {\texttt{[p]}};
+            
+            \draw[->, thick] (h) -- (t) node[midway, above] {если не подходит};
+            \draw[->, thick] (t) -- (b) node[midway, above] {если не подходит};
+            \draw[->, thick] (b) -- (p) node[midway, above] {если не подходит};
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Важно!}
+        \LaTeX\ пробует варианты \textbf{слева направо} в порядке указания
+    \end{alertblock}
+    
+    \begin{block}{Рекомендация}
+        Используйте \texttt{[htbp]} для максимальной гибкости
+    \end{block}
+\end{frame}
+
+% ==================== ПРИМЕР FLOAT ====================
+\begin{frame}[fragile]{Пример плавающего объекта}
+    \begin{exampleblock}{Код}
+\begin{lstlisting}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{image.png}
+    \caption{Podpis k risunku}
+    \label{fig:example}
+\end{figure}
+
+Ssylka na risunok: sm. ris.~\ref{fig:example}.
+\end{lstlisting}
+    \end{exampleblock}
+    
+    \begin{alertblock}{Порядок важен!}
+        \texttt{\textbackslash label} должна идти \textbf{после} \texttt{\textbackslash caption}!
+    \end{alertblock}
+\end{frame}
+
+% ==================== РАЗДЕЛ 5: МЕТКИ И ССЫЛКИ ====================
+\section{Метки и ссылки}
+
+\begin{frame}{Система меток и ссылок}
+    \begin{block}{Основные команды}
+        \begin{itemize}
+            \item \texttt{\textbackslash label\{метка\}} --- создать метку
+            \item \texttt{\textbackslash ref\{метка\}} --- ссылка на номер
+            \item \texttt{\textbackslash pageref\{метка\}} --- ссылка на страницу
+        \end{itemize}
+    \end{block}
+    \vspace{0.5cm}
+    
+    \begin{exampleblock}{Соглашения об именовании}
+        \begin{itemize}
+            \item \texttt{fig:} --- для рисунков
+            \item \texttt{tab:} --- для таблиц
+            \item \texttt{eq:} --- для уравнений
+            \item \texttt{sec:} --- для разделов
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+% ==================== КОЛИЧЕСТВО ПРОГОНОВ ====================
+\begin{frame}{Сколько прогонов нужно?}
+    \begin{center}
+        \begin{tikzpicture}[
+            node distance=2cm,
+            mystep/.style={rectangle, draw, fill=green!20, text width=3cm, align=center, minimum height=1.2cm}
+        ]
+            \node[mystep] (first) {\textbf{1-й прогон} \\ Создание меток \\ в .aux файле};
+            \node[mystep, below=of first] (second) {\textbf{2-й прогон} \\ Чтение меток \\ и вставка ссылок};
+            \node[mystep, below=of second] (third) {\textbf{3-й прогон} \\ (если изменилась \\ нумерация)};
+            
+            \draw[->, thick] (first) -- (second);
+            \draw[->, thick] (second) -- (third);
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{alertblock}{Правило}
+        Минимум \textbf{2 прогона} для корректных ссылок!
+    \end{alertblock}
+\end{frame}
+
+
+% ==================== ЭКСПЕРИМЕНТ С LABEL ====================
+\begin{frame}[fragile]{Эксперимент: label до caption}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Неправильно}
+\begin{lstlisting}
+\begin{figure}[h]
+    \centering
+    \label{fig:wrong}
+    \caption{Risunok}
+\end{figure}
+\end{lstlisting}
+                \vspace{0.2cm}
+                {\color{red}\textbf{Результат:}} ссылка на номер \textbf{раздела}, а не рисунка!
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Правильно}
+\begin{lstlisting}
+\begin{figure}[h]
+    \centering
+    \caption{Risunok}
+    \label{fig:correct}
+\end{figure}
+\end{lstlisting}
+                \vspace{0.2cm}
+                {\color{green!50!black}\textbf{Результат:}} правильная ссылка на рисунок!
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Запомните!}
+        \texttt{\textbackslash label} всегда \textbf{после} \texttt{\textbackslash caption}!
+    \end{alertblock}
+\end{frame}
+
+% ==================== ЭКСПЕРИМЕНТ С УРАВНЕНИЯМИ ====================
+\begin{frame}[fragile]{Эксперимент: label для уравнений}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Правильно}
+\begin{lstlisting}
+\begin{equation}
+    E = mc^2
+    \label{eq:einstein}
+\end{equation}
+\end{lstlisting}
+                {\color{green!50!black}\textbf{Работает!}}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Неправильно}
+\begin{lstlisting}
+\begin{equation}
+    E = mc^2
+\end{equation}
+\label{eq:wrong}
+\end{lstlisting}
+                {\color{red}\textbf{Не работает!}}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Важно!}
+        Для уравнений \texttt{\textbackslash label} должна быть \textbf{внутри} окружения \texttt{equation}!
+    \end{alertblock}
+    
+    \begin{exampleblock}{Почему?}
+        После \texttt{\textbackslash end\{equation\}} счётчик уже не активен
+    \end{exampleblock}
+\end{frame}
+
+% ==================== РАЗДЕЛ 6: ПРАКТИЧЕСКИЕ ПРИМЕРЫ ====================
+\section{Практические примеры}
+
+\begin{frame}[fragile]{Полный пример документа}
+    \begin{exampleblock}{Структура документа}
+\begin{lstlisting}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\begin{document}
+\section{Vvedenie}
+\label{sec:intro}
+\lipsum[1]
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img.png}
+    \caption{Primer izobrazheniya}
+    \label{fig:example}
+\end{figure}
+
+Sm. ris.~\ref{fig:example} v razdele~\ref{sec:intro}.
+\end{document}
+\end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+% ==================== СОЗДАНИЕ СОБСТВЕННОГО ИЗОБРАЖЕНИЯ ====================
+\begin{frame}{Создание собственного изображения в TikZ}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            % Координатные оси
+            \draw[->, thick] (-0.5,0) -- (6,0) node[right] {$x$};
+            \draw[->, thick] (0,-0.5) -- (0,5) node[above] {$y$};
+            
+            % Сетка
+            \draw[gray!30, very thin] (0,0) grid (5.5,4.5);
+            
+            % График функции y = x^2 / 4
+            \draw[domain=0:4.2, smooth, variable=\x, blue, line width=2pt] 
+                plot ({\x}, {0.25*\x*\x});
+            
+            % Точки на графике
+            \fill[red] (0,0) circle (3pt) node[below left] {$O$};
+            \fill[red] (2,1) circle (3pt) node[above right] {$A(2,1)$};
+            \fill[red] (4,4) circle (3pt) node[above right] {$B(4,4)$};
+            
+            % Подписи осей
+            \foreach \x in {1,2,3,4,5}
+                \draw (\x,0.1) -- (\x,-0.1) node[below] {\tiny $\x$};
+            \foreach \y in {1,2,3,4}
+                \draw (0.1,\y) -- (-0.1,\y) node[left] {\tiny $\y$};
+            
+            % Формула функции
+            \node[blue, above] at (3,3.5) {$y = \frac{x^2}{4}$};
+        \end{tikzpicture}
+    \end{center}
+    
+    \begin{block}{Описание}
+        График параболы с отмеченными точками и координатной сеткой
+    \end{block}
+\end{frame}
+
+% ==================== ПРИМЕР С TWOCOLUMN ====================
+\begin{frame}[fragile]{Демонстрация twocolumn}
+    \begin{exampleblock}{Код документа}
+\begin{lstlisting}
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\begin{document}
+\section{Pervyj razdel}
+\lipsum[1]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{image.png}
+    \caption{Izobrazhenie v kolonke}
+\end{figure}
+
+\lipsum[2-3]
+\end{document}
+\end{lstlisting}
+    \end{exampleblock}
+\end{frame}
+
+% ==================== ТАБЛИЦА СРАВНЕНИЯ ====================
+\begin{frame}{Сравнительная таблица}
+    \begin{table}
+        \centering
+        \caption{Сравнение параметров изображений}
+        \label{tab:comparison}
+        \small
+        \begin{tabular}{@{}lccc@{}}
+            \toprule
+            \textbf{Параметр} & \textbf{Абсолютный} & \textbf{Относительный} & \textbf{Рекомендация} \\
+            \midrule
+            width & 5cm & 0.5\textbackslash textwidth & Относительный \\
+            height & 3cm & 0.3\textbackslash textheight & Относительный \\
+            scale & --- & 1.5 & Зависит \\
+            angle & 45 & --- & Абсолютный \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Вывод}
+        Предпочитайте относительные размеры для адаптивности!
+    \end{block}
+\end{frame}
+
+% ==================== РАЗДЕЛ 7: ВЫВОДЫ ====================
+\section{Выводы}
+
+\begin{frame}{Основные выводы}
+    \begin{enumerate}
+        \item \textbf{Параметры изображений:}
+        \begin{itemize}
+            \item width, height, scale, angle работают независимо
+            \item Можно комбинировать для нужного эффекта
+        \end{itemize}
+        
+        \item \textbf{textwidth vs linewidth:}
+        \begin{itemize}
+            \item В одной колонке --- одинаковы
+            \item В twocolumn --- linewidth меньше
+        \end{itemize}
+        
+        \item \textbf{Плавающие объекты:}
+        \begin{itemize}
+            \item Спецификаторы [htbp] дают гибкость
+            \item \LaTeX\ выбирает оптимальное размещение
+        \end{itemize}
+        
+        \item \textbf{Метки и ссылки:}
+        \begin{itemize}
+            \item Нужно минимум 2 прогона компиляции
+            \item label после caption для floats
+            \item label внутри equation для уравнений
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+% ==================== РЕКОМЕНДАЦИИ ====================
+\begin{frame}{Практические рекомендации}
+    \begin{block}{Для изображений}
+        \begin{itemize}
+            \item Используйте \texttt{width=0.X\textbackslash linewidth}
+            \item Добавляйте \texttt{keepaspectratio=true}
+            \item Сохраняйте изображения в высоком разрешении
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Для floats}
+        \begin{itemize}
+            \item Всегда используйте \texttt{\textbackslash centering}
+            \item Добавляйте информативные подписи
+            \item Используйте осмысленные метки (fig:name)
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{Для компиляции}
+        \begin{itemize}
+            \item Компилируйте 2-3 раза для ссылок
+            \item Проверяйте предупреждения в логе
+            \item Используйте latexmk для автоматизации
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+% ==================== ЗАКЛЮЧЕНИЕ ====================
+\begin{frame}{Заключение}
+    \begin{block}{Что мы изучили}
+        \begin{itemize}
+            \item Параметры команды \texttt{\textbackslash includegraphics}
+            \item Разницу между \texttt{textwidth} и \texttt{linewidth}
+            \item Работу с плавающими объектами и спецификаторами
+            \item Систему меток и ссылок в \LaTeX
+            \item Важность порядка команд и количества прогонов
+        \end{itemize}
+    \end{block}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Ключевой вывод}
+        \LaTeX\ требует понимания его логики работы, но взамен даёт профессиональное качество документов!
+    \end{alertblock}
+\end{frame}
+
+% ==================== ФИНАЛЬНЫЙ СЛАЙД ====================
+\begin{frame}
+    \begin{center}
+        {\Huge Спасибо за внимание!}
+        
+        \vspace{1.5cm}
+        
+    \end{center}
+\end{frame}
+
+\end{document}

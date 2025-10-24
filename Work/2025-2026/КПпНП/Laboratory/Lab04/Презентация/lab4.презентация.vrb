@@ -1,0 +1,21 @@
+\frametitle{Демонстрация twocolumn}
+\begin{exampleblock}{Код документа}
+\begin{lstlisting}
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\begin{document}
+\section{Pervyj razdel}
+\lipsum[1]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{image.png}
+    \caption{Izobrazhenie v kolonke}
+\end{figure}
+
+\lipsum[2-3]
+\end{document}
+\end{lstlisting}
+    \end{exampleblock}

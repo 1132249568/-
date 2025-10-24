@@ -1,0 +1,8 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Введение}{3}{0}{1}
+\beamer@sectionintoc {2}{Параметры изображений}{4}{0}{2}
+\beamer@sectionintoc {3}{textwidth vs linewidth}{10}{0}{3}
+\beamer@sectionintoc {4}{Плавающие объекты (floats)}{14}{0}{4}
+\beamer@sectionintoc {5}{Метки и ссылки}{18}{0}{5}
+\beamer@sectionintoc {6}{Практические примеры}{22}{0}{6}
+\beamer@sectionintoc {7}{Выводы}{26}{0}{7}
