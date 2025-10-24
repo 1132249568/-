@@ -1,0 +1,172 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  24 OCT 2025 09:24
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./lab4.6.tex
+(lab4.6.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/base
+\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/base
+\size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/base
+\fontenc.sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/grap
+hics\graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/grap
+hics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/grap
+hics\graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/grap
+hics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/grap
+hics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/grap
+hics-def\pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+) (C:\Program Files\MiKTeX\tex/latex/lipsum\lipsum.sty
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/l3pa
+ckages/l3keys2e\l3keys2e.sty
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/l3ke
+rnel\expl3.sty
+Package: expl3 2025-09-02 L3 programming layer (loader) 
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/l3ba
+ckend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count283
+))
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count284
+\l__lipsum_a_int=\count285
+\l__lipsum_b_int=\count286
+
+(C:\Program Files\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex))
+(C:\Program Files\MiKTeX\tex/latex/trivfloat\trivfloat.sty
+Package: trivfloat 2009/04/23 v1.4 Quick floats in LaTeX
+
+(C:\Program Files\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count287
+\float@exts=\toks18
+\float@box=\box53
+\@float@everytoks=\toks19
+\@floatcapt=\box54
+)
+\c@tfl@float@cnt=\count288
+LaTeX Info: Redefining \tfl@uppercase on input line 223.
+)
+No file lab4.6.aux.
+\openout1 = `lab4.6.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/context/ba
+se/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count289
+\scratchdimen=\dimen151
+\scratchbox=\box55
+\nofMPsegments=\count290
+\nofMParguments=\count291
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count292
+\MPscratchDim=\dimen152
+\MPnumerator=\count293
+\makeMPintoPDFobject=\count294
+\everyMPtoPDFconversion=\toks21
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/epst
+opdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/00mi
+ktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+\@float@every@image=\toks22
+\c@image=\count295
+<example-image.pdf, id=1, 321.2pt x 240.9pt>
+File: example-image.pdf Graphic file (type pdf)
+<use example-image.pdf>
+Package pdftex.def Info: example-image.pdf  used on input line 10.
+(pdftex.def)             Requested size: 172.5pt x 129.3783pt.
+
+
+[1{C:/Users/Пользователь/AppData/Local/MiKTeX/fonts/map/pdftex/pdft
+ex.map} <C:/Program Files/MiKTeX/tex/latex/mwe/example-image.pdf>] (lab4.6.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 2083 strings out of 468130
+ 36665 string characters out of 5421436
+ 515921 words of memory out of 5000000
+ 30728 multiletter control sequences out of 15000+600000
+ 627588 words of font info for 41 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 73i,6n,77p,255b,241s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Пользователь\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecrm1000.pk><C:/Users/Пользователь/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmss17.pfb>
+Output written on lab4.6.pdf (1 page, 23268 bytes).
+PDF statistics:
+ 31 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,345 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{tikz}
+
+\begin{document}
+
+\title{Демонстрация работы с изображениями и ссылками в LaTeX}
+\author{Демонстрационный документ}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Введение}
+\label{sec:intro}
+Это демонстрационный документ для изучения различных возможностей LaTeX.
+
+\lipsum[1-2]
+
+\section{Работа с изображениями}
+\label{sec:images}
+
+\subsection{Создание собственного изображения с TikZ}
+\label{subsec:tikz}
+
+Создадим собственное изображение с помощью TikZ:
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        % Рисуем дом
+        \draw[fill=yellow!30] (0,0) rectangle (4,3);
+        \draw[fill=red!50] (0,3) -- (2,5) -- (4,3) -- cycle;
+        \draw[fill=brown!60] (1.5,0) rectangle (2.5,1.5);
+        \draw[fill=cyan!30] (0.5,1.5) rectangle (1.3,2.3);
+        \draw[fill=cyan!30] (2.7,1.5) rectangle (3.5,2.3);
+        % Солнце
+        \draw[fill=yellow] (6,4) circle (0.5);
+        \foreach \angle in {0,45,...,315}
+            \draw[yellow, thick] (6,4) -- +(\angle:0.8);
+    \end{tikzpicture}
+    \caption{Собственное изображение, созданное с помощью TikZ}
+    \label{fig:myhouse}
+\end{figure}
+
+Ссылка на рисунок~\ref{fig:myhouse} на странице~\pageref{fig:myhouse}.
+
+\subsection{Эксперименты с параметрами изображений}
+\label{subsec:params}
+
+\subsubsection{Использование height и width}
+\label{subsubsec:heightwidth}
+
+\lipsum[3]
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=blue!20] (0,0) circle (1);
+        \node at (0,0) {width=5cm};
+    \end{tikzpicture}
+    \caption{Изображение с фиксированной шириной 5cm}
+    \label{fig:width5cm}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        \draw[fill=green!20] (0,0) circle (1);
+        \node at (0,0) {height=3cm};
+    \end{tikzpicture}
+    \caption{Изображение с фиксированной высотой 3cm}
+    \label{fig:height3cm}
+\end{figure}
+
+\subsubsection{Использование angle и scale}
+\label{subsubsec:anglescale}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[rotate=45]
+        \draw[fill=red!20] (0,0) rectangle (2,1);
+        \node at (1,0.5) {angle=45};
+    \end{tikzpicture}
+    \caption{Изображение повёрнуто на 45 градусов}
+    \label{fig:angle45}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=2]
+        \draw[fill=purple!20] (0,0) rectangle (1,1);
+        \node at (0.5,0.5) {scale=2};
+    \end{tikzpicture}
+    \caption{Изображение увеличено в 2 раза}
+    \label{fig:scale2}
+\end{figure}
+
+\lipsum[4]
+
+\section{Работа с textwidth и linewidth}
+\label{sec:widths}
+
+\subsection{Использование textwidth}
+\label{subsec:textwidth}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=orange!30] (0,0) rectangle (0.8\textwidth, 2);
+        \node at (0.4\textwidth, 1) {width=0.8\textbackslash textwidth};
+    \end{tikzpicture}
+    \caption{Изображение шириной 0.8 от textwidth}
+    \label{fig:textwidth}
+\end{figure}
+
+\lipsum[5]
+
+\subsection{Использование linewidth}
+\label{subsec:linewidth}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=teal!30] (0,0) rectangle (0.6\linewidth, 1.5);
+        \node[text width=0.5\linewidth, align=center] at (0.3\linewidth, 0.75) 
+            {width=0.6\textbackslash linewidth};
+    \end{tikzpicture}
+    \caption{Изображение шириной 0.6 от linewidth}
+    \label{fig:linewidth}
+\end{figure}
+
+\lipsum[6]
+
+\section{Эксперименты с плавающими объектами}
+\label{sec:floats}
+
+\lipsum[7]
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=pink!30] (0,0) circle (1);
+        \node at (0,0) {[h]};
+    \end{tikzpicture}
+    \caption{Плавающий объект с спецификатором [h] - здесь}
+    \label{fig:here}
+\end{figure}
+
+\lipsum[8]
+
+\begin{figure}[t]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=lime!30] (0,0) circle (1);
+        \node at (0,0) {[t]};
+    \end{tikzpicture}
+    \caption{Плавающий объект с спецификатором [t] - вверху страницы}
+    \label{fig:top}
+\end{figure}
+
+\lipsum[9]
+
+\begin{figure}[b]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=violet!30] (0,0) circle (1);
+        \node at (0,0) {[b]};
+    \end{tikzpicture}
+    \caption{Плавающий объект с спецификатором [b] - внизу страницы}
+    \label{fig:bottom}
+\end{figure}
+
+\lipsum[10]
+
+\begin{figure}[p]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=cyan!30] (0,0) circle (1);
+        \node at (0,0) {[p]};
+    \end{tikzpicture}
+    \caption{Плавающий объект с спецификатором [p] - на отдельной странице}
+    \label{fig:page}
+\end{figure}
+
+\lipsum[11]
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=magenta!30] (0,0) circle (1);
+        \node at (0,0) {[htbp]};
+    \end{tikzpicture}
+    \caption{Плавающий объект с спецификатором [htbp] - LaTeX выбирает лучшее место}
+    \label{fig:flexible}
+\end{figure}
+
+\lipsum[12]
+
+\section{Тестирование команды label}
+\label{sec:labeltests}
+
+\subsection{Проверка количества прогонов}
+\label{subsec:runs}
+
+Эта секция~\ref{sec:labeltests} содержит подсекцию~\ref{subsec:runs}.
+
+\subsubsection{Первый подподраздел}
+\label{subsubsec:first}
+
+\lipsum[13]
+
+\subsubsection{Второй подподраздел}
+\label{subsubsec:second}
+
+Нумерованный список:
+\begin{enumerate}
+    \item Первый элемент \label{item:first}
+    \item Второй элемент \label{item:second}
+    \item Третий элемент \label{item:third}
+\end{enumerate}
+
+Ссылка на элемент~\ref{item:second} списка.
+
+\lipsum[14]
+
+\subsection{Label перед caption}
+\label{subsec:wronglabel}
+
+\textbf{ЭКСПЕРИМЕНТ: Label перед caption}
+
+\begin{figure}[htbp]
+    \centering
+    \label{fig:wronglabel} % НЕПРАВИЛЬНО: label перед caption
+    \begin{tikzpicture}
+        \draw[fill=red!50] (0,0) rectangle (3,2);
+        \node[text width=2.5cm, align=center] at (1.5,1) {Label ПЕРЕД caption};
+    \end{tikzpicture}
+    \caption{Рисунок с неправильным размещением label}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \draw[fill=green!50] (0,0) rectangle (3,2);
+        \node[text width=2.5cm, align=center] at (1.5,1) {Label ПОСЛЕ caption};
+    \end{tikzpicture}
+    \caption{Рисунок с правильным размещением label}
+    \label{fig:correctlabel} % ПРАВИЛЬНО: label после caption
+\end{figure}
+
+\textbf{Результат:}
+\begin{itemize}
+    \item Ссылка на рисунок с label перед caption: \ref{fig:wronglabel} (может быть неправильной!)
+    \item Ссылка на рисунок с label после caption: \ref{fig:correctlabel} (правильная)
+\end{itemize}
+
+\lipsum[15]
+
+\section{Эксперименты с уравнениями}
+\label{sec:equations}
+
+\subsection{Правильное размещение label}
+\label{subsec:correcteq}
+
+Правильный способ - label внутри окружения equation:
+
+\begin{equation}
+    E = mc^2
+    \label{eq:einstein}
+\end{equation}
+
+Ссылка на уравнение~\ref{eq:einstein} работает правильно.
+
+\subsection{Неправильное размещение label}
+\label{subsec:wrongeq}
+
+\textbf{ЭКСПЕРИМЕНТ: Label после end\{equation\}}
+
+\begin{equation}
+    a^2 + b^2 = c^2
+\end{equation}
+\label{eq:pythagoras} % НЕПРАВИЛЬНО: label после end{equation}
+
+\textbf{Результат:} Ссылка на уравнение~\ref{eq:pythagoras} может указывать на секцию, а не на уравнение!
+
+Правильный вариант:
+
+\begin{equation}
+    \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+    \label{eq:gaussian}
+\end{equation}
+
+Ссылка на уравнение~\ref{eq:gaussian} работает корректно.
+
+\lipsum[16]
+
+\section{Заключение}
+\label{sec:conclusion}
+
+\subsection{Выводы по экспериментам}
+\label{subsec:findings}
+
+\begin{enumerate}
+    \item \textbf{Параметры изображений:}
+    \begin{itemize}
+        \item width и height задают абсолютные размеры
+        \item angle поворачивает изображение
+        \item scale масштабирует изображение
+    \end{itemize}
+    
+    \item \textbf{textwidth vs linewidth:}
+    \begin{itemize}
+        \item textwidth - ширина текстового блока
+        \item linewidth - ширина текущей строки (меняется в многоколоночном режиме)
+    \end{itemize}
+    
+    \item \textbf{Спецификаторы позиции плавающих объектов:}
+    \begin{itemize}
+        \item h - здесь (here)
+        \item t - вверху страницы (top)
+        \item b - внизу страницы (bottom)
+        \item p - на отдельной странице (page)
+        \item ! - игнорировать некоторые ограничения
+    \end{itemize}
+    
+    \item \textbf{Количество прогонов:} Обычно требуется 2-3 прогона для корректной работы всех ссылок
+    
+    \item \textbf{Размещение label:}
+    \begin{itemize}
+        \item Для рисунков и таблиц: label ПОСЛЕ caption
+        \item Для уравнений: label ВНУТРИ окружения equation
+        \item Неправильное размещение приводит к неверным ссылкам
+    \end{itemize}
+\end{enumerate}
+
+\lipsum[17]
+
+\end{document}
+
+
+

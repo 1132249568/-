@@ -1,0 +1,21 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение}{2}{}%
+\contentsline {section}{\numberline {2}Работа с изображениями}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Создание собственного изображения с TikZ}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Эксперименты с параметрами изображений}{3}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Использование height и width}{3}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Использование angle и scale}{3}{}%
+\contentsline {section}{\numberline {3}Работа с textwidth и linewidth}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Использование textwidth}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Использование linewidth}{4}{}%
+\contentsline {section}{\numberline {4}Эксперименты с плавающими объектами}{5}{}%
+\contentsline {section}{\numberline {5}Тестирование команды label}{7}{}%
+\contentsline {subsection}{\numberline {5.1}Проверка количества прогонов}{7}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Первый подподраздел}{8}{}%
+\contentsline {subsubsection}{\numberline {5.1.2}Второй подподраздел}{8}{}%
+\contentsline {subsection}{\numberline {5.2}Label перед caption}{8}{}%
+\contentsline {section}{\numberline {6}Эксперименты с уравнениями}{10}{}%
+\contentsline {subsection}{\numberline {6.1}Правильное размещение label}{10}{}%
+\contentsline {subsection}{\numberline {6.2}Неправильное размещение label}{10}{}%
+\contentsline {section}{\numberline {7}Заключение}{11}{}%
+\contentsline {subsection}{\numberline {7.1}Выводы по экспериментам}{11}{}%
