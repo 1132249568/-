@@ -1,0 +1,50 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Цель работы}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Задачи работы}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Теоретическая часть}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Пакет graphicx}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Параметры изображений}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Плавающие объекты}{3}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Практическая часть}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Создание собственных изображений с TikZ}{3}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Простая геометрическая фигура}{3}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Диаграмма с градиентом}{3}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Исследование параметров width, height, angle и scale}{4}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Параметр width}{4}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Параметр angle}{4}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Параметр scale}{4}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}Разница между textwidth и linewidth}{4}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Демонстрация в обычном режиме}{4}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Демонстрация в minipage}{4}{subsubsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.4}Использование пакета lipsum для длинного текста}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Взаимодействие различных спецификаторов}{7}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Спецификатор [htbp]}{7}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Спецификатор [H] — строгое позиционирование}{7}{subsubsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.6}Работа с командами label и ref}{8}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Количество компиляций}{8}{subsubsection.3.6.1}%
+\contentsline {section}{\numberline {4}Тестовый раздел для ссылок}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Тестовый подраздел}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Еще один подраздел}{9}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Нумерованные списки}{9}{subsubsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.3}Правильное размещение label относительно caption}{9}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Неправильное размещение (label перед caption)}{9}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Правильное размещение (label после caption)}{10}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Label для уравнений}{10}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Правильное размещение label в уравнении}{10}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Неправильное размещение (label после end{equation})}{10}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Правильный пример}{10}{subsubsection.4.4.3}%
+\contentsline {section}{\numberline {5}Эксперименты с двухколоночным режимом}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Поведение textwidth и linewidth в twocolumn}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Изображения на всю ширину страницы}{11}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Дополнительные эксперименты}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Обтекание текстом}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Множественные изображения}{12}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Результаты экспериментов}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Параметры изображений}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Спецификаторы позиционирования}{12}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Система перекрестных ссылок}{13}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Выводы}{13}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Практические рекомендации}{13}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Список использованных источников}{14}{section.9}%
+\contentsline {section}{Приложение А. Пример кода}{15}{section*.22}%

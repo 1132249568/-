@@ -1,0 +1,796 @@
+\documentclass[12pt,a4paper]{article}
+
+% Пакеты для русского языка
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc}
+
+% Пакеты для оформления
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{float}
+
+% Настройка полей страницы
+\geometry{
+    left=30mm,
+    right=15mm,
+    top=20mm,
+    bottom=20mm
+}
+
+% Настройка межстрочного интервала
+\onehalfspacing
+
+% Настройка отступа первой строки
+\setlength{\parindent}{1.25cm}
+
+% Настройка колонтитулов
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\leftmark}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Настройка гиперссылок
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\begin{document}
+
+% Титульная страница
+\begin{titlepage}
+    \centering
+    
+    \vspace*{1cm}
+    
+    {\large МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ\\
+    РОССИЙСКОЙ ФЕДЕРАЦИИ}
+    
+    \vspace{0.5cm}
+    
+    {\large Федеральное государственное автономное образовательное учреждение\\
+    высшего образования}
+    
+    \vspace{0.3cm}
+    
+    {\large\bfseries «Российский Университет Дружбы народов имени Патриса Лумумбы»}
+    
+    \vspace{0.5cm}
+    
+    {\large Факультет физико-математических и естественных наук}
+    
+    {\large Кафедра теории вероятностей и кибербезопасности}
+    
+    \vspace{3cm}
+    
+    {\Large\bfseries ОТЧЕТ}
+    
+    \vspace{0.3cm}
+    
+    {\large по лабораторной работе №4}
+    
+    \vspace{0.5cm}
+    
+    {\large на тему:}
+    
+    \vspace{0.3cm}
+    
+    {\large\bfseries «Работа с изображениями, плавающими объектами\\и перекрестными ссылками в LaTeX»}
+    
+    \vfill
+    
+    \begin{flushright}
+        Выполнил:\\
+        студент группы НПМмд02-24\\
+        Викторов Егор Игоревич\\
+        \vspace{0.5cm}
+    \end{flushright}
+    
+    \vfill
+    
+    {\large Москва, 2025}
+    
+\end{titlepage}
+
+% Содержание
+\tableofcontents
+\newpage
+
+% Основная часть
+\section{Введение}
+
+Данная лабораторная работа посвящена изучению возможностей системы LaTeX по работе с графическими элементами, плавающими объектами и системой перекрестных ссылок. 
+
+\subsection{Цель работы}
+
+Целью данной работы является освоение практических навыков работы с изображениями в LaTeX, изучение параметров позиционирования графики и механизма перекрестных ссылок.
+
+\subsection{Задачи работы}
+
+В рамках лабораторной работы необходимо выполнить следующие задачи:
+
+\begin{enumerate}
+    \item Создать собственные изображения с использованием пакета TikZ
+    \item Исследовать параметры width, height, angle и scale для изображений
+    \item Изучить разницу между textwidth и linewidth
+    \item Протестировать поведение изображений в режиме twocolumn
+    \item Исследовать спецификаторы позиционирования плавающих объектов
+    \item Изучить работу команд label и ref
+    \item Определить количество компиляций для корректной работы ссылок
+    \item Исследовать правильное размещение label относительно caption
+\end{enumerate}
+
+\section{Теоретическая часть}
+
+\subsection{Пакет graphicx}
+
+Пакет \texttt{graphicx} является стандартным инструментом для включения изображений в документы LaTeX. Основная команда для вставки изображений:
+
+\begin{verbatim}
+\includegraphics[параметры]{имя_файла}
+\end{verbatim}
+
+\subsection{Параметры изображений}
+
+Основные параметры команды \texttt{includegraphics}:
+
+\begin{itemize}
+    \item \textbf{width} — ширина изображения
+    \item \textbf{height} — высота изображения
+    \item \textbf{scale} — масштаб изображения
+    \item \textbf{angle} — угол поворота изображения
+    \item \textbf{keepaspectratio} — сохранение пропорций
+\end{itemize}
+
+\subsection{Плавающие объекты}
+Плавающие объекты (floats) в LaTeX позволяют системе автоматически размещать изображения и таблицы в оптимальных местах документа. Спецификаторы позиции:
+
+\begin{table}[h]
+\centering
+\caption{Спецификаторы позиционирования}
+\label{tab:specifiers}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Спецификатор} & \textbf{Описание} \\
+\hline
+h & here — примерно в месте вставки \\
+\hline
+t & top — вверху страницы \\
+\hline
+b & bottom — внизу страницы \\
+\hline
+p & page — на отдельной странице \\
+\hline
+! & игнорировать некоторые ограничения \\
+\hline
+H & строго здесь (требует пакет float) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Практическая часть}
+
+\subsection{Создание собственных изображений с TikZ}
+
+Для демонстрации возможностей LaTeX создадим несколько графических элементов с использованием пакета TikZ.
+
+\subsubsection{Простая геометрическая фигура}
+
+На рисунке \ref{fig:tikz1} представлена простая геометрическая композиция, созданная средствами TikZ.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    % Прямоугольник
+    \draw[fill=blue!30, draw=blue!50!black, line width=2pt] (0,0) rectangle (4,3);
+    % Круг
+    \draw[fill=red!30, draw=red!50!black, line width=2pt] (2,1.5) circle (1cm);
+    % Треугольник
+    \draw[fill=green!30, draw=green!50!black, line width=2pt] 
+        (1,2.5) -- (3,2.5) -- (2,4) -- cycle;
+    % Текст
+    \node at (2,0.5) {\Large\textbf{TikZ}};
+\end{tikzpicture}
+\caption{Геометрическая композиция, созданная в TikZ}
+\label{fig:tikz1}
+\end{figure}
+
+Как видно из рисунка \ref{fig:tikz1}, TikZ позволяет создавать векторную графику непосредственно в коде LaTeX.
+
+\subsubsection{Диаграмма с градиентом}
+
+Рисунок \ref{fig:tikz2} демонстрирует более сложную графику с использованием градиентов и узлов.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.2]
+    % Оси координат
+    \draw[->, thick] (-0.5,0) -- (5,0) node[right] {$x$};
+    \draw[->, thick] (0,-0.5) -- (0,4) node[above] {$y$};
+    
+    % График функции
+    \draw[domain=0:4.5, smooth, variable=\x, blue, line width=1.5pt] 
+        plot ({\x}, {0.5*\x*\x - 0.3*\x + 0.5});
+    
+    % Точки
+    \fill[red] (1,0.7) circle (2pt) node[above right] {$A$};
+    \fill[red] (2,1.9) circle (2pt) node[above right] {$B$};
+    \fill[red] (3,4.1) circle (2pt) node[above right] {$C$};
+    
+    % Сетка
+    \draw[gray!30, very thin] (0,0) grid (4.5,4);
+\end{tikzpicture}
+\caption{График параболической функции}
+\label{fig:tikz2}
+\end{figure}
+
+\subsection{Исследование параметров width, height, angle и scale}
+
+\subsubsection{Параметр width}
+
+Создадим изображение и будем изменять его ширину относительно \texttt{textwidth}.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw[fill=orange!40] (0,0) rectangle (3,2);
+    \node at (1.5,1) {\textbf{Оригинал}};
+\end{tikzpicture}
+\caption{Исходное изображение для экспериментов}
+\label{fig:original}
+\end{figure}
+
+Теперь применим различные значения ширины:
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+        \draw[fill=orange!40] (0,0) rectangle (3,2);
+        \node at (1.5,1) {\tiny\textbf{0.3tw}};
+    \end{tikzpicture}
+    \caption{width=0.3\textbackslash textwidth}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.75]
+        \draw[fill=orange!40] (0,0) rectangle (3,2);
+        \node at (1.5,1) {\small\textbf{0.45tw}};
+    \end{tikzpicture}
+    \caption{width=0.45\textbackslash textwidth}
+\end{subfigure}
+\caption{Сравнение различных значений width}
+\label{fig:width_comparison}
+\end{figure}
+
+\subsubsection{Параметр angle}
+
+Рассмотрим поворот изображения на различные углы (рисунок \ref{fig:angles}).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+    % 0 градусов
+    \begin{scope}[xshift=0cm]
+        \draw[fill=cyan!30] (0,0) rectangle (1.5,1);
+        \node at (0.75,0.5) {$0°$};
+    \end{scope}
+    
+    % 45 градусов
+    \begin{scope}[xshift=3cm, rotate=45]
+        \draw[fill=cyan!30] (0,0) rectangle (1.5,1);
+        \node at (0.75,0.5) {$45°$};
+    \end{scope}
+    
+    % 90 градусов
+    \begin{scope}[xshift=6cm, rotate=90]
+        \draw[fill=cyan!30] (0,0) rectangle (1.5,1);
+        \node at (0.75,0.5) {$90°$};
+    \end{scope}
+\end{tikzpicture}
+\caption{Поворот изображения на разные углы}
+\label{fig:angles}
+\end{figure}
+
+\subsubsection{Параметр scale}
+
+Масштабирование изображения демонстрируется на рисунке \ref{fig:scaling}.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    % scale=0.5
+    \begin{scope}[scale=0.5]
+        \draw[fill=purple!30] (0,0) rectangle (2,2);
+        \node at (1,1) {\tiny scale=0.5};
+    \end{scope}
+    
+    % scale=1.0
+    \begin{scope}[xshift=2cm, scale=1.0]
+        \draw[fill=purple!30] (0,0) rectangle (2,2);
+        \node at (1,1) {\small scale=1.0};
+    \end{scope}
+    
+    % scale=1.5
+    \begin{scope}[xshift=5cm, scale=1.5]
+        \draw[fill=purple!30] (0,0) rectangle (2,2);
+        \node at (1,1) {scale=1.5};
+    \end{scope}
+\end{tikzpicture}
+\caption{Различные значения масштаба}
+\label{fig:scaling}
+\end{figure}
+
+\subsection{Разница между textwidth и linewidth}
+
+\texttt{textwidth} — это полная ширина текстового блока на странице, в то время как \texttt{linewidth} — это текущая ширина строки, которая может изменяться внутри окружений (например, в minipage или в колонках).
+
+\subsubsection{Демонстрация в обычном режиме}
+
+В обычном однострочном режиме \texttt{textwidth} и \texttt{linewidth} имеют одинаковое значение.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw[fill=yellow!30] (0,0) rectangle (0.8\textwidth, 1);
+    \node at (0.4\textwidth, 0.5) {width=0.8\textbackslash textwidth};
+\end{tikzpicture}
+\caption{Изображение с шириной относительно textwidth}
+\label{fig:textwidth_demo}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw[fill=green!30] (0,0) rectangle (0.8\linewidth, 1);
+    \node at (0.4\linewidth, 0.5) {width=0.8\textbackslash linewidth};
+\end{tikzpicture}
+\caption{Изображение с шириной относительно linewidth}
+\label{fig:linewidth_demo}
+\end{figure}
+
+\subsubsection{Демонстрация в minipage}
+
+Внутри minipage \texttt{linewidth} изменяется, а \texttt{textwidth} остается прежним:
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        \draw[fill=pink!40] (0,0) rectangle (4,2);
+        \node at (2,1) {\small 0.8\textbackslash linewidth};
+    \end{tikzpicture}
+    \caption{В minipage linewidth меньше}
+    \label{fig:minipage_line}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \small
+    Здесь \texttt{linewidth} равен ширине minipage (0.45\textbackslash textwidth), в то время как \texttt{textwidth} по-прежнему равен полной ширине страницы.
+\end{minipage}
+\end{figure}
+
+\subsection{Использование пакета lipsum для длинного текста}
+
+Для демонстрации поведения плавающих объектов создадим документ с большим количеством текста.
+
+\lipsum[1]
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw[fill=blue!20] (0,0) rectangle (6,3);
+    \node at (3,1.5) {\Large Спецификатор [h]};
+\end{tikzpicture}
+\caption{Плавающий объект со спецификатором h (here)}
+\label{fig:float_h}
+\end{figure}
+
+\lipsum[2]
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+    \draw[fill=red!20] (0,0) rectangle (6,3);
+    \node at (3,1.5) {\Large Спецификатор [t]};
+\end{tikzpicture}
+\caption{Плавающий объект со спецификатором t (top)}
+\label{fig:float_t}
+\end{figure}
+
+\lipsum[3]
+
+\begin{figure}[b]
+\centering
+\begin{tikzpicture}
+    \draw[fill=green!20] (0,0) rectangle (6,3);
+    \node at (3,1.5) {\Large Спецификатор [b]};
+\end{tikzpicture}
+\caption{Плавающий объект со спецификатором b (bottom)}
+\label{fig:float_b}
+\end{figure}
+
+\lipsum[4]
+
+\subsection{Взаимодействие различных спецификаторов}
+
+\subsubsection{Спецификатор [htbp]}
+
+Это наиболее распространенная комбинация, дающая LaTeX максимальную свободу выбора:
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+    \draw[fill=orange!20] (0,0) rectangle (6,2.5);
+    \node at (3,1.25) {\Large Спецификатор [htbp]};
+\end{tikzpicture}
+\caption{Комбинированный спецификатор htbp}
+\label{fig:float_htbp}
+\end{figure}
+
+\lipsum[5]
+
+\subsubsection{Спецификатор [H] — строгое позиционирование}
+
+Пакет \texttt{float} предоставляет спецификатор H для строгого размещения:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \draw[fill=purple!20] (0,0) rectangle (6,2.5);
+    \node at (3,1.25) {\Large Спецификатор [H]};
+\end{tikzpicture}
+\caption{Строгое позиционирование с [H]}
+\label{fig:float_H}
+\end{figure}
+
+Объект с спецификатором [H] всегда размещается строго в месте вставки в коде.
+
+\lipsum[6]
+
+\subsection{Работа с командами label и ref}
+
+\subsubsection{Количество компиляций}
+
+Для корректной работы перекрестных ссылок требуется \textbf{минимум две компиляции}:
+
+\begin{enumerate}
+    \item \textbf{Первая компиляция:} LaTeX записывает информацию о метках в файл .aux
+    \item \textbf{Вторая компиляция:} LaTeX читает информацию из .aux и подставляет правильные номера
+\end{enumerate}
+
+Создадим несколько разделов для демонстрации:
+
+\section{Тестовый раздел для ссылок}
+\label{sec:test1}
+
+Это раздел \ref{sec:test1}. Он содержит подраздел \ref{subsec:test1_1}.
+
+\subsection{Тестовый подраздел}
+\label{subsec:test1_1}
+
+Ссылка на основной раздел: раздел \ref{sec:test1}.
+
+\subsection{Еще один подраздел}
+\label{subsec:test1_2}
+
+Ссылки на предыдущие разделы: \ref{sec:test1}, \ref{subsec:test1_1}, \ref{subsec:test1_2}.
+
+\subsubsection{Нумерованные списки}
+
+\begin{enumerate}
+    \item Первый элемент \label{item:1}
+    \item Второй элемент \label{item:2}
+    \item Третий элемент \label{item:3}
+\end{enumerate}
+
+Ссылка на элемент списка: пункт \ref{item:2}.
+
+\subsection{Правильное размещение label относительно caption}
+
+\subsubsection{Неправильное размещение (label перед caption)}
+
+Если поместить \texttt{label} \textbf{перед} \texttt{caption}, ссылка будет указывать на номер раздела, а не на номер рисунка:
+
+\begin{verbatim}
+\begin{figure}[h]
+\centering
+[изображение]
+\label{fig:wrong}  % НЕПРАВИЛЬНО!
+\caption{Подпись}
+\end{figure}
+\end{verbatim}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw[fill=red!40] (0,0) rectangle (4,2);
+    \node at (2,1) {\textbf{НЕПРАВИЛЬНО}};
+\end{tikzpicture}
+\label{fig:wrong_order}  % Это даст неправильную ссылку!
+\caption{Пример неправильного размещения label}
+\end{figure}
+
+Ссылка на рисунок выше: \ref{fig:wrong_order} — может быть неправильной!
+
+\subsubsection{Правильное размещение (label после caption)}
+
+Правильный порядок: \texttt{caption} \textbf{затем} \texttt{label}:
+
+\begin{verbatim}
+\begin{figure}[h]
+\centering
+[изображение]
+\caption{Подпись}
+\label{fig:correct}  % ПРАВИЛЬНО!
+\end{figure}
+\end{verbatim}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw[fill=green!40] (0,0) rectangle (4,2);
+    \node at (2,1) {\textbf{ПРАВИЛЬНО}};
+\end{tikzpicture}
+\caption{Пример правильного размещения label}
+\label{fig:correct_order}
+\end{figure}
+
+Ссылка на рисунок выше: рисунок \ref{fig:correct_order} — корректная ссылка!
+
+\subsection{Label для уравнений}
+
+\subsubsection{Правильное размещение label в уравнении}
+
+Для уравнений \texttt{label} должен быть \textbf{внутри} окружения equation:
+
+\begin{equation}
+E = mc^2
+\label{eq:einstein}
+\end{equation}
+
+Ссылка на уравнение \ref{eq:einstein} работает корректно.
+
+\subsubsection{Неправильное размещение (label после end{equation})}
+
+Если поместить label \textbf{после} \texttt{end\{equation\}}, ссылка будет некорректной:
+
+\begin{equation}
+F = ma
+\end{equation}
+\label{eq:newton_wrong}  % НЕПРАВИЛЬНО!
+
+Попытка сослаться на уравнение: \ref{eq:newton_wrong} — даст номер раздела, а не уравнения!
+
+\subsubsection{Правильный пример}
+
+\begin{equation}
+\int_{a}^{b} f(x)dx = F(b) - F(a)
+\label{eq:fundamental}
+\end{equation}
+Уравнение \ref{eq:fundamental} демонстрирует основную теорему математического анализа.
+
+\section{Эксперименты с двухколоночным режимом}
+
+Для демонстрации поведения изображений в режиме \texttt{twocolumn} создадим отдельный пример.
+
+\subsection{Поведение textwidth и linewidth в twocolumn}
+
+В режиме \texttt{twocolumn}:
+\begin{itemize}
+    \item \texttt{textwidth} — полная ширина страницы
+    \item \texttt{linewidth} — ширина одной колонки
+    \item \texttt{columnwidth} — ширина колонки (равна linewidth)
+\end{itemize}
+
+\subsection{Изображения на всю ширину страницы}
+
+Для размещения изображения на всю ширину в режиме twocolumn используется окружение \texttt{figure*}:
+
+\begin{verbatim}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{image}
+\caption{Изображение на всю ширину}
+\end{figure*}
+\end{verbatim}
+
+\section{Дополнительные эксперименты}
+
+\subsection{Обтекание текстом}
+
+Пакет \texttt{wrapfig} позволяет создавать изображения, обтекаемые текстом:
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.8]
+    \draw[fill=cyan!30] (0,0) circle (1.5);
+    \node at (0,0) {\textbf{Wrap}};
+\end{tikzpicture}
+\caption{Обтекаемое изображение}
+\label{fig:wrap}
+\end{wrapfigure}
+
+\lipsum[7]
+
+\subsection{Множественные изображения}
+
+Пакет \texttt{subcaption} позволяет размещать несколько изображений в одном float:
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        \draw[fill=red!30] (0,0) rectangle (2,2);
+        \node at (1,1) {(a)};
+    \end{tikzpicture}
+    \caption{Первое}
+    \label{fig:sub1}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        \draw[fill=green!30] (0,0) rectangle (2,2);
+        \node at (1,1) {(b)};
+    \end{tikzpicture}
+    \caption{Второе}
+    \label{fig:sub2}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        \draw[fill=blue!30] (0,0) rectangle (2,2);
+        \node at (1,1) {(c)};
+    \end{tikzpicture}
+    \caption{Третье}
+    \label{fig:sub3}
+\end{subfigure}
+\caption{Три изображения в одной figure}
+\label{fig:multiple}
+\end{figure}
+
+Ссылки на подрисунки: \ref{fig:sub1}, \ref{fig:sub2}, \ref{fig:sub3}, и на всю группу: \ref{fig:multiple}.
+
+\section{Результаты экспериментов}
+
+\subsection{Параметры изображений}
+
+В ходе экспериментов были получены следующие результаты:
+
+\begin{table}[h]
+\centering
+\caption{Результаты экспериментов с параметрами}
+\label{tab:results}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Параметр} & \textbf{Результат} \\
+\hline
+width & Позволяет задать ширину относительно textwidth или в абсолютных единицах \\
+\hline
+height & Задает высоту изображения, может нарушить пропорции \\
+\hline
+scale & Пропорционально масштабирует изображение \\
+\hline
+angle & Поворачивает изображение против часовой стрелки \\
+\hline
+keepaspectratio & Сохраняет пропорции при задании width и height \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Спецификаторы позиционирования}
+
+Результаты тестирования спецификаторов:
+
+\begin{enumerate}
+    \item \textbf{[h]} — пытается разместить здесь, но может переместить
+    \item \textbf{[t]} — размещает вверху страницы
+    \item \textbf{[b]} — размещает внизу страницы
+    \item \textbf{[p]} — создает отдельную страницу для floats
+    \item \textbf{[H]} — строго в месте вставки (требует пакет float)
+    \item \textbf{[htbp]} — дает LaTeX максимальную свободу выбора
+\end{enumerate}
+
+\subsection{Система перекрестных ссылок}
+
+Основные выводы по работе с \texttt{label} и \texttt{ref}:
+
+\begin{itemize}
+    \item Требуется \textbf{минимум 2 компиляции} для корректной работы ссылок
+    \item Для сложных документов может потребоваться 3-4 компиляции
+    \item \texttt{label} должен идти \textbf{после} \texttt{caption} для рисунков и таблиц
+    \item \texttt{label} должен быть \textbf{внутри} окружения equation
+    \item Неправильное размещение приводит к ссылкам на номер раздела вместо объекта
+\end{itemize}
+
+\section{Выводы}
+
+В ходе выполнения лабораторной работы были достигнуты следующие результаты:
+
+\begin{enumerate}
+    \item Освоены навыки создания векторной графики с помощью пакета TikZ
+    \item Изучены все основные параметры команды \texttt{includegraphics}
+    \item Выявлена разница между \texttt{textwidth} и \texttt{linewidth}
+    \item Протестировано поведение изображений в режиме twocolumn
+    \item Исследованы все спецификаторы позиционирования плавающих объектов
+    \item Определено необходимое количество компиляций для работы ссылок
+    \item Установлено правильное размещение \texttt{label} относительно \texttt{caption}
+    \item Выявлены последствия неправильного размещения \texttt{label}
+\end{enumerate}
+
+\subsection{Практические рекомендации}
+
+На основе проведенных экспериментов можно дать следующие рекомендации:
+
+\begin{itemize}
+    \item Используйте относительные размеры (0.8\textbackslash textwidth) вместо абсолютных
+    \item Для сохранения пропорций используйте параметр \texttt{keepaspectratio=true}
+    \item Предпочитайте спецификатор [htbp] для большинства случаев
+    \item Используйте [H] только когда строгое позиционирование критично
+    \item Всегда размещайте \texttt{label} после \texttt{caption}
+    \item Компилируйте документ минимум дважды после добавления ссылок
+    \item В режиме twocolumn используйте \texttt{figure*} для широких изображений
+\end{itemize}
+
+\section{Список использованных источников}
+
+\begin{enumerate}
+    \item The LaTeX Graphics Companion — \url{https://www.latex-project.org/}
+    \item TikZ \& PGF Manual — \url{https://tikz.dev/}
+    \item Документация пакета graphicx
+    \item Документация пакета float
+    \item Wikibooks: LaTeX/Floats, Figures and Captions
+\end{enumerate}
+
+\newpage
+
+\section*{Приложение А. Пример кода для создания изображений}
+\addcontentsline{toc}{section}{Приложение А. Пример кода}
+
+\subsection*{Код для создания геометрической композиции}
+
+\begin{verbatim}
+\begin{tikzpicture}
+    \draw[fill=blue!30, draw=blue!50!black, line width=2pt] 
+        (0,0) rectangle (4,3);
+    \draw[fill=red!30, draw=red!50!black, line width=2pt] 
+        (2,1.5) circle (1cm);
+    \draw[fill=green!30, draw=green!50!black, line width=2pt] 
+        (1,2.5) -- (3,2.5) -- (2,4) -- cycle;
+    \node at (2,0.5) {\Large\textbf{TikZ}};
+\end{tikzpicture}
+\end{verbatim}
+
+\subsection*{Код для графика функции}
+
+\begin{verbatim}
+\begin{tikzpicture}[scale=1.2]
+    \draw[->, thick] (-0.5,0) -- (5,0) node[right] {$x$};
+    \draw[->, thick] (0,-0.5) -- (0,4) node[above] {$y$};
+    \draw[domain=0:4.5, smooth, variable=\x, blue, line width=1.5pt] 
+        plot ({\x}, {0.5*\x*\x - 0.3*\x + 0.5});
+    \fill[red] (1,0.7) circle (2pt) node[above right] {$A$};
+    \draw[gray!30, very thin] (0,0) grid (4.5,4);
+\end{tikzpicture}
+\end{verbatim}
+
+\end{document}
