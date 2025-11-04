@@ -1,0 +1,7 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Введение}{3}{0}{1}
+\beamer@sectionintoc {2}{Теоретическая часть}{5}{0}{2}
+\beamer@sectionintoc {3}{Практическая часть}{8}{0}{3}
+\beamer@sectionintoc {4}{Результаты исследования}{17}{0}{4}
+\beamer@sectionintoc {5}{Выводы}{20}{0}{5}
+\beamer@sectionintoc {6}{Заключение}{24}{0}{6}

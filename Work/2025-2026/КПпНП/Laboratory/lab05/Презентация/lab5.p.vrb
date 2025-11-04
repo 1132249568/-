@@ -1,0 +1,22 @@
+\frametitle{Команда multicolumn}
+\begin{block}{Синтаксис}
+        \begin{verbatim}
+\multicolumn{количество}{выравнивание}{содержимое}
+        \end{verbatim}
+    \end{block}
+
+    \vspace{0.3cm}
+
+    \begin{exampleblock}{Пример использования}
+        \begin{center}
+        \begin{tabular}{|l|c|r|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Заголовок}} \\
+        \hline
+        Имя & Возраст & Город \\
+        \hline
+        Иван & 25 & Москва \\
+        \hline
+        \end{tabular}
+        \end{center}
+    \end{exampleblock}

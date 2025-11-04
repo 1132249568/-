@@ -1,0 +1,571 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{xcolor}
+
+% Выбор темы
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Информация о презентации
+\title[Таблицы в LaTeX]{Создание и форматирование таблиц в LaTeX}
+\subtitle{Лабораторная работа №5}
+\author[Викторов Е.И.]{Викторов Егор Игоревич\\Группа НПМмд02-24}
+\institute[РУДН]{Федеральное государственное образовательное учреждение\\высшего образования\\«Российский Университет Дружбы Народов имени Патриса Лумумбы»}
+\date{\today}
+
+\begin{document}
+
+% Титульный слайд
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Содержание
+\begin{frame}{Содержание}
+    \tableofcontents
+\end{frame}
+
+% Раздел 1: Введение
+\section{Введение}
+
+\begin{frame}{Цель работы}
+    \begin{block}{Основная цель}
+        Изучить основные принципы создания и форматирования таблиц в системе компьютерной вёрстки LaTeX
+    \end{block}
+    
+    \vspace{0.5cm}
+    
+    \begin{itemize}
+        \item Освоить окружение \texttt{tabular}
+        \item Изучить команды выравнивания содержимого ячеек
+        \item Освоить объединение столбцов с помощью \texttt{\textbackslash multicolumn}
+        \item Научиться создавать профессионально оформленные таблицы
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Задачи работы}
+    \begin{enumerate}
+        \item Создать простые таблицы с различными типами выравнивания
+        \item Исследовать поведение LaTeX при несоответствии количества элементов
+        \item Освоить команду \texttt{\textbackslash multicolumn}
+        \item Создать сложные таблицы с комбинированным форматированием
+        \item Проанализировать результаты и сформулировать выводы
+    \end{enumerate}
+\end{frame}
+
+% Раздел 2: Теоретическая часть
+\section{Теоретическая часть}
+
+\begin{frame}[fragile]{Основы создания таблиц}
+    \begin{block}{Базовый синтаксис}
+        \begin{verbatim}
+\begin{tabular}{спецификация_столбцов}
+    содержимое таблицы
+\end{tabular}
+        \end{verbatim}
+    \end{block}
+    
+    \vspace{0.5cm}
+    
+    \begin{exampleblock}{Пример}
+        \begin{center}
+        \begin{tabular}{|l|c|r|}
+        \hline
+        Левый & Центр & Правый \\
+        \hline
+        Текст & Текст & Текст \\
+        \hline
+        \end{tabular}
+        \end{center}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Спецификация столбцов}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Типы выравнивания}
+                \begin{itemize}
+                    \item \texttt{l} — по левому краю
+                    \item \texttt{c} — по центру
+                    \item \texttt{r} — по правому краю
+                    \item \texttt{|} — вертикальная линия
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Разделители}
+                \begin{itemize}
+                    \item \texttt{\&} — между ячейками
+                    \item \texttt{\textbackslash\textbackslash} — конец строки
+                    \item \texttt{\textbackslash hline} — горизонтальная линия
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Важно!}
+        Количество элементов в строке должно соответствовать количеству объявленных столбцов
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Команда multicolumn}
+    \begin{block}{Синтаксис}
+        \begin{verbatim}
+\multicolumn{количество}{выравнивание}{содержимое}
+        \end{verbatim}
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{exampleblock}{Пример использования}
+        \begin{center}
+        \begin{tabular}{|l|c|r|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Заголовок}} \\
+        \hline
+        Имя & Возраст & Город \\
+        \hline
+        Иван & 25 & Москва \\
+        \hline
+        \end{tabular}
+        \end{center}
+    \end{exampleblock}
+\end{frame}
+
+% Раздел 3: Практическая часть
+\section{Практическая часть}
+
+\begin{frame}{Эксперимент 1: Выравнивание по левому краю}
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{center}
+            \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Имя} & \textbf{Фамилия} & \textbf{Возраст} \\
+            \hline
+            Иван & Иванов & 25 \\
+            Мария & Петрова & 30 \\
+            Александр & Сидоров & 28 \\
+            \hline
+            \end{tabular}
+            \end{center}
+        \end{column}
+        
+        \begin{column}{0.4\textwidth}
+            \begin{block}{Результат}
+                Все данные выровнены по левому краю
+            \end{block}
+            
+            \begin{alertblock}{Применение}
+                Текстовая информация, названия
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Эксперимент 2: Выравнивание по центру}
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{center}
+            \begin{tabular}{|c|c|c|}
+            \hline
+            \textbf{Товар} & \textbf{Количество} & \textbf{Цена} \\
+            \hline
+            Яблоки & 10 & 100 \\
+            Груши & 5 & 150 \\
+            Апельсины & 8 & 200 \\
+            \hline
+            \end{tabular}
+            \end{center}
+        \end{column}
+        
+        \begin{column}{0.4\textwidth}
+            \begin{block}{Результат}
+                Содержимое по центру ячеек
+            \end{block}
+            
+            \begin{alertblock}{Применение}
+                Заголовки, симметричное отображение
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Эксперимент 3: Выравнивание по правому краю}
+    \begin{columns}[T]
+        \begin{column}{0.6\textwidth}
+            \begin{center}
+            \begin{tabular}{|r|r|r|}
+            \hline
+            \textbf{Год} & \textbf{Доход} & \textbf{Расход} \\
+            \hline
+            2021 & 1000000 & 800000 \\
+            2022 & 1200000 & 900000 \\
+            2023 & 1500000 & 1000000 \\
+            \hline
+            \end{tabular}
+            \end{center}
+        \end{column}
+        
+        \begin{column}{0.4\textwidth}
+            \begin{block}{Результат}
+                Числа выровнены по правому краю
+            \end{block}
+            
+            \begin{alertblock}{Применение}
+                Числовые данные, финансовые показатели
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Эксперимент 4: Комбинированное выравнивание}
+    \begin{center}
+    \begin{tabular}{|l|c|r|}
+    \hline
+    \textbf{Название (слева)} & \textbf{Категория (центр)} & \textbf{Цена (справа)} \\
+    \hline
+    Ноутбук & Электроника & 50000 \\
+    Книга & Литература & 500 \\
+    Стул & Мебель & 3000 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Вывод}
+        Каждый столбец имеет оптимальное выравнивание для своего типа данных
+    \end{block}
+\end{frame}
+
+\begin{frame}{Эксперимент 5: Недостаточное количество элементов}
+    \begin{center}
+    \begin{tabular}{|l|c|r|r|}
+    \hline
+    \textbf{Столбец 1} & \textbf{Столбец 2} & \textbf{Столбец 3} & \textbf{Столбец 4} \\
+    \hline
+    Полная строка & Данные & 100 & 200 \\
+    \hline
+    Только два & элемента & & \\
+    \hline
+    Один & & & \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{exampleblock}{Результат}
+        \begin{itemize}
+            \item LaTeX успешно компилирует таблицу
+            \item Пустые ячейки остаются справа
+            \item Ошибок компиляции не возникает
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Эксперимент 6: Избыточное количество элементов}
+    \begin{alertblock}{Ошибка компиляции}
+        При попытке указать больше элементов, чем объявлено столбцов:
+        
+        \vspace{0.3cm}
+        
+        \texttt{! Extra alignment tab has been changed to \textbackslash cr.}
+    \end{alertblock}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Причина}
+        Количество элементов в строке превышает количество объявленных столбцов
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{exampleblock}{Решение}
+        Строго соблюдать соответствие между объявленным и фактическим количеством столбцов
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Эксперимент 7: Базовое использование multicolumn}
+    \begin{center}
+    \begin{tabular}{|l|c|r|}
+    \hline
+    \multicolumn{3}{|c|}{\textbf{Заголовок таблицы}} \\
+    \hline
+    \textbf{Имя} & \textbf{Возраст} & \textbf{Город} \\
+    \hline
+    Иван & 25 & Москва \\
+    Мария & 30 & Санкт-Петербург \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Результат}
+        Три столбца объединены в один с центральным выравниванием для создания общего заголовка
+    \end{block}
+\end{frame}
+
+\begin{frame}{Эксперимент 8: Объединение двух столбцов}
+    \begin{center}
+    \begin{tabular}{|l|c|c|r|}
+    \hline
+    \textbf{Продукт} & \multicolumn{2}{c|}{\textbf{Характеристики}} & \textbf{Цена} \\
+    \hline
+    Телефон & Память & 128 ГБ & 30000 \\
+    Планшет & Экран & 10 дюймов & 25000 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Результат}
+        Два средних столбца объединены для создания общего заголовка «Характеристики»
+    \end{block}
+\end{frame}
+
+\begin{frame}{Эксперимент 9: Сложная таблица}
+    \begin{center}
+    \scalebox{0.85}{
+    \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    \multicolumn{5}{|c|}{\textbf{Отчёт за 2023 год}} \\
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Квартал}} & \multicolumn{2}{c|}{\textbf{Доходы}} & \multicolumn{2}{c|}{\textbf{Расходы}} \\
+    \hline
+    & \textbf{План} & \textbf{Факт} & \textbf{План} & \textbf{Факт} \\
+    \hline
+    Q1 & 100 & 110 & 80 & 85 \\
+    Q2 & 120 & 115 & 90 & 88 \\
+    Q3 & 130 & 140 & 95 & 100 \\
+    Q4 & 150 & 155 & 100 & 105 \\
+    \hline
+    \multicolumn{1}{|c|}{\textbf{Итого:}} & \multicolumn{2}{c|}{\textbf{520}} & \multicolumn{2}{c|}{\textbf{378}} \\
+    \hline
+    \end{tabular}
+    }
+    \end{center}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Результат}
+        Многоуровневая таблица с объединёнными ячейками на разных уровнях
+    \end{block}
+\end{frame}
+
+% Раздел 4: Результаты
+\section{Результаты исследования}
+
+\begin{frame}{Сравнительная таблица типов выравнивания}
+    \begin{center}
+    \begin{tabular}{|c|c|l|}
+    \hline
+    \textbf{Тип} & \textbf{Обозначение} & \textbf{Оптимальное применение} \\
+    \hline
+    Левое & \texttt{l} & Текстовые данные, названия \\
+    \hline
+    Центральное & \texttt{c} & Заголовки, короткие значения \\
+    \hline
+    Правое & \texttt{r} & Числовые данные, суммы \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Рекомендация}
+        Выбирайте тип выравнивания в зависимости от характера данных в столбце
+    \end{block}
+\end{frame}
+
+\begin{frame}{Анализ ошибок}
+    \begin{center}
+    \begin{tabular}{|l|l|c|}
+    \hline
+    \textbf{Ситуация} & \textbf{Результат} & \textbf{Ошибка?} \\
+    \hline
+    Мало элементов & Пустые ячейки & \textcolor{green}{Нет} \\
+    \hline
+    Много элементов & Не компилируется & \textcolor{red}{Да} \\
+    \hline
+    Правильное количество & Нормальная таблица & \textcolor{green}{Нет} \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Важный вывод}
+        Всегда проверяйте соответствие количества ячеек и объявленных столбцов!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Преимущества использования multicolumn}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Возможности}
+                \begin{itemize}
+                    \item Объединение столбцов
+                    \item Создание заголовков
+                    \item Многоуровневая структура
+                    \item Гибкое форматирование
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{exampleblock}{Применение}
+                \begin{itemize}
+                    \item Сложные отчёты
+                    \item Научные таблицы
+                    \item Финансовые документы
+                    \item Статистические данные
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Раздел 5: Выводы
+\section{Выводы}
+
+\begin{frame}{Основные выводы (1/2)}
+    \begin{enumerate}
+        \item \textbf{Типы выравнивания:}
+        \begin{itemize}
+            \item Левое (\texttt{l}) — для текста
+            \item Центральное (\texttt{c}) — для заголовков
+            \item Правое (\texttt{r}) — для чисел
+            \item Комбинирование повышает читаемость
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        
+        \item \textbf{Обработка ошибок:}
+        \begin{itemize}
+            \item Недостаток элементов — пустые ячейки (без ошибок)
+            \item Избыток элементов — ошибка компиляции
+            \item Важно соблюдать соответствие количества столбцов
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Основные выводы (2/2)}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item \textbf{Команда multicolumn:}
+        \begin{itemize}
+            \item Гибкое объединение столбцов
+            \item Создание многоуровневых заголовков
+            \item Индивидуальное выравнивание для каждого объединения
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        
+        \item \textbf{Практические навыки:}
+        \begin{itemize}
+            \item Создание простых и сложных таблиц
+            \item Форматирование содержимого
+            \item Отладка ошибок
+            \item Профессиональное оформление документов
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Практические рекомендации}
+    \begin{block}{Для успешной работы с таблицами в LaTeX:}
+        \begin{enumerate}
+            \item Всегда проверяйте количество ячеек и столбцов
+            \item Используйте подходящее выравнивание для типа данных
+            \item Применяйте \texttt{multicolumn} для улучшения структуры
+            \item Используйте линии для повышения читаемости
+            \item Тестируйте таблицу после каждого изменения
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Области применения}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Научные работы}
+                \begin{itemize}
+                    \item Статьи
+                    \item Диссертации
+                    \item Отчёты
+                    \item Публикации
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Деловые документы}
+                \begin{itemize}
+                    \item Финансовые отчёты
+                    \item Презентации
+                    \item Аналитика
+                    \item Статистика
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{exampleblock}{Преимущество LaTeX}
+        Высокое качество типографского оформления и автоматическое позиционирование таблиц
+    \end{exampleblock}
+\end{frame}
+
+% Заключение
+\section{Заключение}
+
+\begin{frame}{Заключение}
+    \begin{block}{Результаты работы}
+        \begin{itemize}
+            \item Изучены основные принципы создания таблиц в LaTeX
+            \item Освоены команды выравнивания и форматирования
+            \item Исследовано поведение при различных ошибках
+            \item Изучена команда \texttt{\textbackslash multicolumn}
+            \item Созданы таблицы различной сложности
+        \end{itemize}
+    \end{block}
+    
+    \vspace{0.5cm}
+    
+    \begin{exampleblock}{Практическая значимость}
+        Полученные навыки позволяют создавать профессионально оформленные документы с таблицами любой сложности для научных и деловых целей
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Список использованных источников}
+    \begin{thebibliography}{99}
+        \bibitem{lvovsky} Львовский С.М. Набор и вёрстка в системе LaTeX. — М.: МЦНМО, 2003.
+        
+        \bibitem{kotelnikov} Котельников И.А., Чеботаев П.З. LaTeX 2ε по-русски. — Новосибирск: Сибирский хронограф, 2004.
+        
+        \bibitem{latex} The LaTeX Project. Official Documentation. — \texttt{https://www.latex-project.org/}
+        
+        \bibitem{overleaf} Overleaf Documentation. Tables. — \texttt{https://www.overleaf.com/learn/latex/Tables}
+        
+        \bibitem{wikibooks} Wikibooks. LaTeX/Tables. — \texttt{https://en.wikibooks.org/wiki/LaTeX/Tables}
+    \end{thebibliography}
+\end{frame}
+
+% Финальный слайд
+\begin{frame}[plain]
+    \begin{center}
+        \Huge Спасибо за внимание!
+    \end{center}
+\end{frame}
+
+\end{document}
