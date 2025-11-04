@@ -1,0 +1,25 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Цель работы}{2}{}%
+\contentsline {section}{\numberline {2}Задачи работы}{2}{}%
+\contentsline {section}{\numberline {3}Теоретическая часть}{2}{}%
+\contentsline {subsection}{\numberline {3.1}Основы создания таблиц в LaTeX}{2}{}%
+\contentsline {subsection}{\numberline {3.2}Спецификация столбцов}{2}{}%
+\contentsline {subsection}{\numberline {3.3}Разделители в таблице}{2}{}%
+\contentsline {subsection}{\numberline {3.4}Команда multicolumn}{3}{}%
+\contentsline {section}{\numberline {4}Практическая часть}{3}{}%
+\contentsline {subsection}{\numberline {4.1}Эксперимент 1: Простая таблица}{3}{}%
+\contentsline {subsection}{\numberline {4.2}Эксперимент 2: Выравнивание по левому краю}{3}{}%
+\contentsline {subsection}{\numberline {4.3}Эксперимент 3: Выравнивание по центру}{3}{}%
+\contentsline {subsection}{\numberline {4.4}Эксперимент 4: Выравнивание по правому краю}{4}{}%
+\contentsline {subsection}{\numberline {4.5}Эксперимент 5: Комбинированное выравнивание}{4}{}%
+\contentsline {subsection}{\numberline {4.6}Эксперимент 6: Недостаточное количество элементов}{4}{}%
+\contentsline {subsection}{\numberline {4.7}Эксперимент 7: Избыточное количество элементов}{4}{}%
+\contentsline {subsection}{\numberline {4.8}Эксперимент 8: Базовое использование multicolumn}{4}{}%
+\contentsline {subsection}{\numberline {4.9}Эксперимент 9: Объединение двух столбцов}{5}{}%
+\contentsline {subsection}{\numberline {4.10}Эксперимент 10: Сложная таблица}{5}{}%
+\contentsline {section}{\numberline {5}Результаты исследования}{5}{}%
+\contentsline {subsection}{\numberline {5.1}Сравнительная таблица типов выравнивания}{5}{}%
+\contentsline {subsection}{\numberline {5.2}Анализ ошибок}{5}{}%
+\contentsline {section}{\numberline {6}Выводы}{5}{}%
+\contentsline {section}{\numberline {7}Заключение}{6}{}%
+\contentsline {section}{\numberline {8}Список использованных источников}{7}{}%
