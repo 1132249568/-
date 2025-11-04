@@ -1,0 +1,154 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{multirow}
+
+\begin{document}
+
+\section*{Эксперименты с таблицами в LaTeX}
+
+\subsection*{1. Простой пример таблицы}
+
+\begin{tabular}{|l|c|r|}
+\hline
+Имя & Возраст & Оценка \\
+\hline
+Анна & 20 & 95 \\
+Борис & 22 & 87 \\
+Виктор & 21 & 92 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\subsection*{2. Разные выравнивания (l, c, r)}
+
+\textbf{l - выравнивание по левому краю, c - по центру, r - по правому краю}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|l|c|r|}
+\hline
+\textbf{Левое (l)} & \textbf{Центр (c)} & \textbf{Правое (r)} \\
+\hline
+Текст слева & Текст в центре & Текст справа \\
+123 & 456 & 789 \\
+Короткий & Средний текст & Длинный текст здесь \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\subsection*{3. Слишком мало элементов в строке}
+
+\textbf{Результат:} Пустые ячейки в конце строки
+
+\vspace{0.5cm}
+
+\begin{tabular}{|l|c|r|c|}
+\hline
+Столбец 1 & Столбец 2 & Столбец 3 & Столбец 4 \\
+\hline
+Полная & строка & со всеми & элементами \\
+\hline
+Только & два & & \\
+\hline
+Один & & & \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\subsection*{4. Слишком много элементов в строке}
+
+\textbf{Результат:} Ошибка компиляции! LaTeX выдаст ошибку:\\
+\texttt{Extra alignment tab has been changed to \textbackslash cr}
+
+\vspace{0.5cm}
+
+% Закомментировано, чтобы избежать ошибки:
+% \begin{tabular}{|l|c|r|}
+% \hline
+% Столбец 1 & Столбец 2 & Столбец 3 \\
+% \hline
+% Один & Два & Три & Четыре & Пять \\  % ОШИБКА!
+% \hline
+% \end{tabular}
+
+\textit{(Пример закомментирован, так как вызывает ошибку компиляции)}
+
+\vspace{1cm}
+
+\subsection*{5. Использование multicolumn для объединения столбцов}
+
+\textbf{Синтаксис:} \texttt{\textbackslash multicolumn\{число\_столбцов\}\{выравнивание\}\{текст\}}
+
+\vspace{0.5cm}
+
+\textbf{Пример 1: Заголовок на несколько столбцов}
+
+\begin{tabular}{|l|c|r|c|}
+\hline
+\multicolumn{4}{|c|}{\textbf{Таблица успеваемости студентов}} \\
+\hline
+Имя & Математика & Физика & Средний балл \\
+\hline
+Алексей & 85 & 90 & 87.5 \\
+Мария & 92 & 88 & 90.0 \\
+Дмитрий & 78 & 82 & 80.0 \\
+\hline
+\multicolumn{3}{|r|}{\textbf{Средний балл группы:}} & \textbf{85.8} \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\textbf{Пример 2: Объединение в середине таблицы}
+
+\begin{tabular}{|l|c|c|c|}
+\hline
+Продукт & Январь & Февраль & Март \\
+\hline
+Яблоки & 100 & 120 & 110 \\
+\hline
+Груши & \multicolumn{2}{c|}{Нет данных} & 95 \\
+\hline
+Апельсины & 80 & 85 & 90 \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\textbf{Пример 3: Сложная структура}
+
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\multicolumn{5}{|c|}{\textbf{Отчет по продажам}} \\
+\hline
+\multirow{2}{*}{\textbf{Регион}} & \multicolumn{3}{c|}{\textbf{Кварталы}} & \multirow{2}{*}{\textbf{Итого}} \\
+\cline{2-4}
+ & Q1 & Q2 & Q3 & \\
+\hline
+Москва & 1000 & 1200 & 1100 & 3300 \\
+\hline
+Санкт-Петербург & 800 & 850 & 900 & 2550 \\
+\hline
+Регионы & 600 & 650 & 700 & 1950 \\
+\hline
+\multicolumn{4}{|r|}{\textbf{Всего:}} & \textbf{7800} \\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\subsection*{Выводы:}
+
+\begin{itemize}
+    \item \textbf{l, c, r} определяют выравнивание содержимого в столбцах
+    \item Если элементов \textbf{меньше}, чем столбцов - остальные ячейки остаются пустыми
+    \item Если элементов \textbf{больше}, чем столбцов - возникает ошибка компиляции
+    \item \texttt{\textbackslash multicolumn} позволяет объединять столбцы и изменять их форматирование
+    \item Можно комбинировать с \texttt{\textbackslash multirow} для объединения строк
+\end{itemize}
+
+\end{document}
