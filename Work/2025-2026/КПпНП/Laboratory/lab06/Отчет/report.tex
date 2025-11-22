@@ -1,0 +1,586 @@
+\documentclass[12pt, a4paper]{article}
+
+% ============================================
+% КОДИРОВКА И ЯЗЫК
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian, english]{babel}
+
+% ============================================
+% ГЕОМЕТРИЯ СТРАНИЦЫ
+% ============================================
+\usepackage[
+  left=3cm,
+  right=1.5cm,
+  top=2cm,
+  bottom=2cm
+]{geometry}
+
+% ============================================
+% БИБЛИОГРАФИЯ
+% ============================================
+\usepackage[
+  backend=biber,
+  style=gost-numeric,      % Можно изменить на: authoryear, numeric, alphabetic, apa
+  sorting=none,            % none - по порядку цитирования, nyt - имя-год-название
+  maxbibnames=99,          % Показывать всех авторов в библиографии
+  maxcitenames=2,          % Максимум 2 автора в цитировании
+  giveninits=true,         % Инициалы вместо полных имен
+  doi=true,                % Показывать DOI
+  isbn=true,               % Показывать ISBN
+  url=true,                % Показывать URL
+  eprint=false             % Не показывать eprint
+]{biblatex}
+
+% Подключение файла библиографии
+\addbibresource{references.bib}
+
+% Настройка заголовка библиографии
+\DefineBibliographyStrings{russian}{
+  bibliography = {Список использованных источников},
+  references = {Ссылки},
+}
+
+% ============================================
+% ДОПОЛНИТЕЛЬНЫЕ ПАКЕТЫ
+% ============================================
+
+% Графика
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+% Цвета
+\usepackage{xcolor}
+\definecolor{linkcolor}{RGB}{0, 0, 180}
+\definecolor{urlcolor}{RGB}{0, 128, 0}
+\definecolor{citecolor}{RGB}{180, 0, 0}
+
+% Гиперссылки
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkcolor,
+  urlcolor=urlcolor,
+  citecolor=citecolor,
+  bookmarksnumbered=true,
+  pdftitle={Отчет по работе с библиографией в LaTeX},
+  pdfauthor={Ваше Имя},
+  pdfsubject={Лабораторная работа},
+  pdfkeywords={LaTeX, BibTeX, библиография}
+}
+
+% Правильные кавычки
+\usepackage{csquotes}
+
+% Листинги кода
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  backgroundcolor=\color{gray!10},
+  commentstyle=\color{green!50!black},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red!50!black},
+  showstringspaces=false,
+  tabsize=2
+}
+
+% Таблицы
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+% Математика
+\usepackage{amsmath, amssymb}
+
+% Подписи к рисункам и таблицам
+\usepackage{caption}
+\captionsetup{
+  labelsep=period,
+  justification=centering,
+  font=small,
+  labelfont=bf
+}
+
+% Колонтитулы
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Лабораторная работа}
+\fancyhead[R]{\small Работа с библиографией}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Интервалы
+\usepackage{setspace}
+\onehalfspacing  % Полуторный интервал
+
+% Отступ первой строки
+\usepackage{indentfirst}
+\setlength{\parindent}{1.25cm}
+
+% ============================================
+% ИНФОРМАЦИЯ О ДОКУМЕНТЕ
+% ============================================
+\title{
+  \textbf{Лабораторная работа №6} \\
+  \vspace{0.5cm}
+  \Large Работа с библиографией в LaTeX \\
+  \large Использование BibTeX и biblatex
+}
+
+\author{
+  Выполнил: Студент Группы НПМмд02-24 Викторов Егор \\
+}
+
+\date{\today}
+
+% ============================================
+% НАЧАЛО ДОКУМЕНТА
+% ============================================
+\begin{document}
+
+% Титульная страница
+\begin{titlepage}
+  \centering
+  
+  \vspace*{2cm}
+  
+  {\LARGE \textbf{МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ} \\
+  \textbf{РОССИЙСКОЙ ФЕДЕРАЦИИ}}
+  
+  \vspace{0.5cm}
+  
+  {\large Федеральное государственное бюджетное образовательное учреждение \\
+  высшего образования}
+  
+  \vspace{0.3cm}
+  
+  {\Large \textbf{«РУДН»}}
+  
+  \vspace{0.5cm}
+  
+  {\large Факультет физико-математических и естественных наук \\
+  Кафедра Теории Вероятностей и Кибербезопасности}
+  
+  \vspace{3cm}
+  
+  {\LARGE \textbf{ЛАБОРАТОРНАЯ РАБОТА №6}}
+  
+  \vspace{0.5cm}
+  
+  {\Large по дисциплине «Компьютерный практикум по научному письму»}
+  
+  \vspace{0.5cm}
+  
+  {\large на тему:}
+  
+  \vspace{0.3cm}
+  
+  {\Large \textbf{«Работа с библиографией в LaTeX. \\
+  Использование BibTeX и biblatex»}}
+  
+  \vfill
+  
+  \begin{flushright}
+    \begin{tabular}{ll}
+      Выполнил: & студент группы НПМмд02-24 \\
+                & Викторов Е.И. \\
+    \end{tabular}
+  \end{flushright}
+  
+  \vspace{2cm}
+  
+  {\large Москва \\ \the\year}
+  
+\end{titlepage}
+
+% Содержание
+\tableofcontents
+\newpage
+
+% ============================================
+% ВВЕДЕНИЕ
+% ============================================
+\section{Введение}
+
+Управление библиографией является важной частью подготовки научных и технических документов. Система LaTeX предоставляет мощные инструменты для автоматизации этого процесса через пакеты BibTeX и biblatex \parencite{latex-project}.
+
+\subsection{Цель работы}
+
+Целью данной лабораторной работы является изучение методов работы с библиографическими ссылками в системе LaTeX, освоение инструментов BibTeX и biblatex для автоматизации создания списка литературы.
+
+\subsection{Задачи работы}
+
+В рамках лабораторной работы необходимо решить следующие задачи:
+
+\begin{enumerate}
+  \item Изучить структуру файлов библиографии формата \texttt{.bib}
+  \item Освоить различные типы библиографических записей
+  \item Научиться использовать команды цитирования в тексте документа
+  \item Изучить различные стили оформления библиографии
+  \item Настроить автоматическую компиляцию документа с библиографией
+  \item Создать полноценный документ с корректно оформленными ссылками
+\end{enumerate}
+
+\subsection{Актуальность темы}
+
+Как отмечает \textcite{lamport1994}, правильное оформление библиографических ссылок является обязательным требованием для научных публикаций. Автоматизация этого процесса позволяет исследователям сосредоточиться на содержании работы, а не на технических деталях оформления.
+
+% ============================================
+% ТЕОРЕТИЧЕСКАЯ ЧАСТЬ
+% ============================================
+\section{Теоретическая часть}
+
+\subsection{История развития систем управления библиографией}
+
+Система TeX была создана Дональдом Кнутом в конце 1970-х годов \parencite{knuth1984}. Одним из ключевых алгоритмов, лежащих в основе TeX, является алгоритм разбиения абзацев на строки, описанный в работе \textcite{knuth1977}.
+
+Позже Лесли Лампорт разработал надстройку над TeX, получившую название LaTeX, которая значительно упростила создание структурированных документов \parencite{lamport1994}.
+
+\subsection{Инструменты для работы с библиографией}
+
+\subsubsection{BibTeX}
+
+BibTeX — это программа и формат файлов для управления библиографическими ссылками, разработанная Ореном Паташником \parencite{patashnik1988}. Основные характеристики:
+
+\begin{itemize}
+  \item Простой текстовый формат хранения библиографических данных
+  \item Поддержка различных типов источников (книги, статьи, веб-ресурсы)
+  \item Автоматическая сортировка и форматирование списка литературы
+  \item Широкая поддержка стилей оформления
+\end{itemize}
+
+Подробное описание создания стилей для BibTeX приведено в техническом отчете \textcite{bibtex-guide}.
+
+\subsubsection{Biblatex и Biber}
+
+Biblatex — это современная альтернатива BibTeX, предоставляющая расширенные возможности \parencite{biblatex-manual}:
+
+\begin{itemize}
+  \item Полная поддержка Unicode
+  \item Гибкая настройка стилей цитирования
+  \item Расширенные возможности сортировки
+  \item Поддержка локализации на множество языков
+  \item Использование Biber в качестве backend-процессора \parencite{biber-manual}
+\end{itemize}
+
+\subsection{Структура файла библиографии}
+
+Файл библиографии с расширением \texttt{.bib} содержит записи различных типов. Каждая запись имеет следующую структуру:
+
+\begin{lstlisting}[language=TeX, caption={Общая структура BibTeX записи}]
+@ТИП_ИСТОЧНИКА{ключ_цитирования,
+  поле1 = {значение1},
+  поле2 = {значение2},
+  поле3 = {значение3}
+}
+\end{lstlisting}
+
+\subsubsection{Типы библиографических записей}
+
+В таблице \ref{tab:bibtex-types} представлены основные типы записей BibTeX.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Основные типы BibTeX записей}
+  \label{tab:bibtex-types}
+  \begin{tabular}{@{}lp{8cm}@{}}
+    \toprule
+    \textbf{Тип} & \textbf{Описание} \\
+    \midrule
+    \texttt{@article} & Статья в журнале или периодическом издании \\
+    \texttt{@book} & Книга с указанием издателя \\
+    \texttt{@inproceedings} & Статья в материалах конференции \\
+    \texttt{@online} & Интернет-ресурс \\
+    \texttt{@techreport} & Технический отчет организации \\
+    \texttt{@manual} & Техническая документация \\
+    \texttt{@misc} & Источник, не подходящий под другие категории \\
+    \texttt{@phdthesis} & Диссертация \\
+    \texttt{@mastersthesis} & Магистерская диссертация \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Команды цитирования}
+
+Пакет biblatex предоставляет множество команд для цитирования источников. Основные команды представлены в таблице \ref{tab:cite-commands}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Команды цитирования в biblatex}
+  \label{tab:cite-commands}
+  \begin{tabular}{@{}llp{5cm}@{}}
+    \toprule
+    \textbf{Команда} & \textbf{Пример результата} & \textbf{Использование} \\
+    \midrule
+    \verb|\cite{key}| & [1] & Базовое цитирование \\
+    \verb|\parencite{key}| & [1] & Цитирование в скобках \\
+    \verb|\textcite{key}| & Knuth [1] & Текстовое цитирование \\
+    \verb|\citeauthor{key}| & Knuth & Только автор \\
+    \verb|\citeyear{key}| & 1984 & Только год \\
+    \verb|\citetitle{key}| & The TeXbook & Только название \\
+    \verb|\footcite{key}| & \textsuperscript{1} & Цитирование в сноске \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ============================================
+% ПРАКТИЧЕСКАЯ ЧАСТЬ
+% ============================================
+\section{Практическая часть}
+
+\subsection{Создание файла библиографии}
+
+Для выполнения лабораторной работы был создан файл \texttt{references.bib}, содержащий различные типы библиографических записей. Файл включает:
+
+\begin{itemize}
+  \item 3 записи типа \texttt{@book} — классические книги по LaTeX
+  \item 2 записи типа \texttt{@article} — научные статьи
+  \item 5 записей типа \texttt{@online} — интернет-ресурсы
+  \item 1 запись типа \texttt{@inproceedings} — материалы конференции
+  \item 1 запись типа \texttt{@techreport} — технический отчет
+\end{itemize}
+
+\subsection{Настройка документа}
+
+В преамбуле документа был подключен пакет biblatex с следующими параметрами:
+
+\begin{lstlisting}[language=TeX, caption={Настройка biblatex}]
+\usepackage[
+  backend=biber,
+  style=gost-numeric,
+  sorting=none,
+  maxbibnames=99,
+  maxcitenames=2,
+  giveninits=true,
+  doi=true,
+  isbn=true,
+  url=true
+]{biblatex}
+\addbibresource{references.bib}
+\end{lstlisting}
+
+\subsection{Примеры цитирования}
+
+\subsubsection{Цитирование книг}
+
+Классическая книга по TeX \parencite{knuth1984} является фундаментальным трудом в области компьютерной типографики. Для изучения LaTeX рекомендуется книга \textcite{lamport1994}, а для углубленного изучения — работа \textcite{mittelbach2004}.
+
+\subsubsection{Цитирование статей}
+
+Историческая статья \textcite{dijkstra1968} оказала значительное влияние на развитие структурного программирования. Алгоритмические основы разбиения текста на строки описаны в работе \parencite{knuth1977}.
+
+\subsubsection{Цитирование онлайн-ресурсов}
+
+Официальная документация LaTeX доступна на сайте проекта \parencite{latex-project}. Для начинающих пользователей рекомендуется учебное пособие \parencite{overleaf-docs}. Пакеты для LaTeX можно найти в репозитории CTAN \parencite{ctan}.
+
+Русскоязычные пользователи могут обратиться к ресурсам \parencite{latex-ru} и книге \textcite{lvovsky2003}.
+
+\subsubsection{Множественное цитирование}
+
+Основы работы с LaTeX описаны во многих источниках \parencite{knuth1984, lamport1994, mittelbach2004}. Для решения практических задач полезны онлайн-ресурсы \parencite{overleaf-docs, latex-project, tex-stackexchange}.
+
+\subsection{Процесс компиляции}
+
+Для корректной работы библиографии документ необходимо компилировать в следующей последовательности:
+
+\begin{enumerate}
+  \item \texttt{pdflatex report.tex} — первая компиляция, создание \texttt{.aux} файла
+  \item \texttt{biber report} — обработка библиографии
+  \item \texttt{pdflatex report.tex} — вторая компиляция, включение библиографии
+  \item \texttt{pdflatex report.tex} — третья компиляция, обновление ссылок
+\end{enumerate}
+
+Альтернативно можно использовать утилиту \texttt{latexmk}:
+
+\begin{lstlisting}[language=bash, caption={Автоматическая компиляция с latexmk}]
+latexmk -pdf -bibtex report.tex
+\end{lstlisting}
+
+\subsection{Результаты работы}
+
+В результате выполнения лабораторной работы был создан документ с корректно оформленными библиографическими ссылками. Все цитирования в тексте автоматически связаны с соответствующими записями в списке литературы.
+
+% ============================================
+% АНАЛИЗ РЕЗУЛЬТАТОВ
+% ============================================
+\section{Анализ результатов}
+
+\subsection{Преимущества использования biblatex}
+
+По результатам выполнения работы можно выделить следующие преимущества использования biblatex:
+
+\begin{enumerate}
+  \item \textbf{Автоматизация} — список литературы формируется автоматически на основе цитирований в тексте
+  \item \textbf{Единообразие} — все ссылки оформляются в едином стиле
+  \item \textbf{Гибкость} — легко изменить стиль оформления, изменив один параметр
+  \item \textbf{Переиспользование} — один файл \texttt{.bib} можно использовать в разных документах
+  \item \textbf{Поддержка Unicode} — корректная работа с кириллицей и другими алфавитами
+\end{enumerate}
+
+\subsection{Сравнение с ручным оформлением}
+
+В таблице \ref{tab:comparison} представлено сравнение автоматического и ручного оформления библиографии.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Сравнение методов оформления библиографии}
+  \label{tab:comparison}
+  \begin{tabular}{@{}lcc@{}}
+    \toprule
+    \textbf{Критерий} & \textbf{BibTeX/biblatex} & \textbf{Ручное оформление} \\
+    \midrule
+    Время на оформление & Низкое & Высокое \\
+    Вероятность ошибок & Низкая & Высокая \\
+    Единообразие стиля & Гарантировано & Требует внимания \\
+    Изменение стиля & Одна строка кода & Переделка всего списка \\
+    Переиспользование & Легко & Сложно \\
+    Автоматическая сортировка & Да & Нет \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Рекомендации по использованию}
+
+На основе полученного опыта можно дать следующие рекомендации:
+
+\begin{itemize}
+  \item Использовать biblatex вместо устаревшего BibTeX для новых проектов
+  \item Выбирать backend=biber для полной поддержки Unicode
+  \item Хранить библиографию в отдельном файле \texttt{.bib} для переиспользования
+  \item Использовать менеджеры библиографии (JabRef, Zotero) для управления большими базами
+  \item Регулярно делать резервные копии файла \texttt{.bib}
+  \item Проверять корректность записей перед финальной компиляцией
+\end{itemize}
+
+% ============================================
+% ЗАКЛЮЧЕНИЕ
+% ============================================
+\section{Заключение}
+
+В ходе выполнения лабораторной работы были изучены основные принципы работы с библиографией в системе LaTeX. Освоены инструменты BibTeX и biblatex, изучены различные типы библиографических записей и команды цитирования.
+
+Практическая часть работы продемонстрировала эффективность использования автоматизированных средств управления библиографией. Создан полноценный документ с корректно оформленными ссылками на различные типы источников: книги, статьи, онлайн-ресурсы, материалы конференций.
+
+Полученные навыки могут быть применены при подготовке курсовых работ, дипломных проектов, научных статей и других документов, требующих оформления библиографических ссылок по установленным стандартам.
+
+Все поставленные задачи выполнены, цель работы достигнута.
+
+% ============================================
+% СПИСОК ЛИТЕРАТУРЫ
+% ============================================
+\newpage
+\printbibliography[title={Список использованных источников}]
+
+% Можно также разделить по типам:
+% \printbibliography[type=book, title={Книги}]
+% \printbibliography[type=article, title={Статьи}]
+% \printbibliography[type=online, title={Интернет-ресурсы}]
+
+% ============================================
+% ПРИЛОЖЕНИЯ
+% ============================================
+\newpage
+\appendix
+
+\section{Пример файла библиографии}
+
+Ниже приведен фрагмент файла \texttt{references.bib}:
+
+\begin{lstlisting}[language=TeX, caption={Фрагмент references.bib}]
+@book{knuth1984,
+  author    = {Donald E. Knuth},
+  title     = {The TeXbook},
+  publisher = {Addison-Wesley Professional},
+  year      = {1984},
+  address   = {Reading, Massachusetts},
+  isbn      = {0-201-13447-0},
+  edition   = {1st}
+}
+
+@article{dijkstra1968,
+  author  = {Edsger W. Dijkstra},
+  title   = {Go To Statement Considered Harmful},
+  journal = {Communications of the ACM},
+  year    = {1968},
+  volume  = {11},
+  number  = {3},
+  pages   = {147--148},
+  doi     = {10.1145/362929.362947}
+}
+
+@online{latex-project,
+  author  = {{The LaTeX Project}},
+  title   = {LaTeX – A document preparation system},
+  year    = {2024},
+  url     = {https://www.latex-project.org/},
+  urldate = {2024-01-15}
+}
+\end{lstlisting}
+
+\section{Команды компиляции}
+
+\subsection{Ручная компиляция}
+
+\begin{lstlisting}[language=bash, caption={Последовательность команд компиляции}]
+# Первая компиляция LaTeX
+pdflatex report.tex
+
+# Обработка библиографии
+biber report
+
+# Вторая компиляция LaTeX
+pdflatex report.tex
+
+# Третья компиляция для обновления ссылок
+pdflatex report.tex
+\end{lstlisting}
+
+\subsection{Автоматическая компиляция}
+
+\begin{lstlisting}[language=bash, caption={Использование latexmk}]
+# Компиляция с автоматической обработкой библиографии
+latexmk -pdf -bibtex report.tex
+
+# Очистка вспомогательных файлов
+latexmk -c
+
+# Полная очистка (включая PDF)
+latexmk -C
+\end{lstlisting}
+
+\section{Полезные ресурсы}
+
+\subsection{Официальная документация}
+
+\begin{itemize}
+  \item The LaTeX Project: \url{https://www.latex-project.org/}
+  \item CTAN — Comprehensive TeX Archive Network: \url{https://www.ctan.org/}
+  \item Biblatex manual: \url{https://ctan.org/pkg/biblatex}
+  \item Biber manual: \url{https://ctan.org/pkg/biber}
+\end{itemize}
+
+\subsection{Обучающие материалы}
+
+\begin{itemize}
+  \item Overleaf Learn LaTeX: \url{https://www.overleaf.com/learn}
+  \item TeX Stack Exchange: \url{https://tex.stackexchange.com/}
+  \item LaTeX.ru — русскоязычное сообщество: \url{https://www.latex.ru/}
+\end{itemize}
+
+\subsection{Инструменты}
+
+\begin{itemize}
+  \item JabRef — менеджер библиографии: \url{https://www.jabref.org/}
+  \item Zotero — менеджер ссылок: \url{https://www.zotero.org/}
+  \item Overleaf — онлайн редактор LaTeX: \url{https://www.overleaf.com/}
+\end{itemize}
+
+\end{document}
+

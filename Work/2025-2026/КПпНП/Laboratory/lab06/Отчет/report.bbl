@@ -1,0 +1,538 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{latex-project}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b5993c3dcc356627edc781ba1606427b}{%
+           family={{The LaTeX Project}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{fullhash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{fullhashraw}{b5993c3dcc356627edc781ba1606427b}
+      \strng{bibnamehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authorbibnamehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authornamehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authorfullhash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authorfullhashraw}{b5993c3dcc356627edc781ba1606427b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LaTeX – A document preparation system}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.latex-project.org/
+      \endverb
+      \verb{url}
+      \verb https://www.latex-project.org/
+      \endverb
+      \keyw{documentation,official}
+    \endentry
+    \entry{lamport1994}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=5d77435450d10a850a5b58577b9a456b}{%
+           family={Lamport},
+           familyi={L\bibinitperiod},
+           given={Leslie},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, Massachusetts}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhashraw}{5d77435450d10a850a5b58577b9a456b}
+      \strng{bibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorbibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authornamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhashraw}{5d77435450d10a850a5b58577b9a456b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2nd}
+      \field{isbn}{0-201-52983-1}
+      \field{title}{LaTeX: A Document Preparation System}
+      \field{year}{1994}
+      \keyw{latex,documentation}
+    \endentry
+    \entry{knuth1984}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=ec08e6f01da5f3814f28a70c89c64656}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Reading, Massachusetts}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{bibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorbibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authornamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{isbn}{0-201-13447-0}
+      \field{title}{The TeXbook}
+      \field{year}{1984}
+      \keyw{latex,typography}
+    \endentry
+    \entry{knuth1977}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=ec08e6f01da5f3814f28a70c89c64656}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=34cdb56656c8e505404385625e2ce398}{%
+           family={Plass},
+           familyi={P\bibinitperiod},
+           given={Michael\bibnamedelima F.},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \strng{namehash}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{fullhash}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{fullhashraw}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{bibnamehash}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{authorbibnamehash}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{authornamehash}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{authorfullhash}{7da72d4dd337ac64f7c90a167a73be2c}
+      \strng{authorfullhashraw}{7da72d4dd337ac64f7c90a167a73be2c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{internalsortvolume}{11}
+      \field{journaltitle}{Software: Practice and Experience}
+      \field{title}{Breaking Paragraphs into Lines}
+      \field{year}{1981}
+      \field{number}{11}
+      \range{number}{1}
+      \field{pages}{1119\bibrangedash 1184}
+      \range{pages}{66}
+      \field{volume}{11}
+      \range{volume}{1}
+      \verb{doi}
+      \verb 10.1002/spe.4380111102
+      \endverb
+      \keyw{typography,algorithms}
+    \endentry
+    \entry{patashnik1988}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=b5085a32ea3005cb2c63376fae9f0646}{%
+           family={Patashnik},
+           familyi={P\bibinitperiod},
+           given={Oren},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {TeX Users Group}%
+      }
+      \strng{namehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{fullhash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{fullhashraw}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{bibnamehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authorbibnamehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authornamehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authorfullhash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authorfullhashraw}{b5085a32ea3005cb2c63376fae9f0646}
+      \field{extraname}{1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{TUGboat}
+      \field{internalsortvolume}{9}
+      \field{title}{BibTeXing}
+      \field{year}{1988}
+      \field{number}{2}
+      \range{number}{1}
+      \field{pages}{8\bibrangedash 11}
+      \range{pages}{4}
+      \field{volume}{9}
+      \range{volume}{1}
+      \keyw{bibtex,documentation}
+    \endentry
+    \entry{bibtex-guide}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=b5085a32ea3005cb2c63376fae9f0646}{%
+           family={Patashnik},
+           familyi={P\bibinitperiod},
+           given={Oren},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Stanford University}%
+      }
+      \strng{namehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{fullhash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{fullhashraw}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{bibnamehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authorbibnamehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authornamehash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authorfullhash}{b5085a32ea3005cb2c63376fae9f0646}
+      \strng{authorfullhashraw}{b5085a32ea3005cb2c63376fae9f0646}
+      \field{extraname}{2}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Designing BibTeX Styles}
+      \field{type}{Technical Report}
+      \field{year}{1988}
+      \keyw{bibtex,styles}
+    \endentry
+    \entry{biblatex-manual}{online}{useauthor=false}{}
+      \name{author}{5}{}{%
+        {{hash=97afecc8539f253db93a1c737d62212c}{%
+           family={Lehman},
+           familyi={L\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+        {{hash=518f52ea2d73db1cfac0095db0482363}{%
+           family={Kime},
+           familyi={K\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e1cc18b9b6d3955ba487be6c20e4d7db}{%
+           family={Wemheuer},
+           familyi={W\bibinitperiod},
+           given={Moritz},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f551f4df6b727289e225343a679ca7ab}{%
+           family={Boruvka},
+           familyi={B\bibinitperiod},
+           given={Audrey},
+           giveni={A\bibinitperiod}}}%
+        {{hash=93c71fed62527d4c8c6ae13ee771fcdd}{%
+           family={Wright},
+           familyi={W\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{authorbibnamehash}{661c56e3bb17dc444ea939264f83c2a3}
+      \strng{authornamehash}{34e4cbaf0989c9ce668a625f61e8360c}
+      \strng{authorfullhash}{661c56e3bb17dc444ea939264f83c2a3}
+      \strng{authorfullhashraw}{661c56e3bb17dc444ea939264f83c2a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labeltitlesource}{title}
+      \field{title}{The biblatex Package: Programmable Bibliographies and Citations}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ctan.org/pkg/biblatex
+      \endverb
+      \verb{url}
+      \verb https://ctan.org/pkg/biblatex
+      \endverb
+      \keyw{documentation,biblatex}
+    \endentry
+    \entry{biber-manual}{manual}{}{}
+      \name{author}{2}{}{%
+        {{hash=518f52ea2d73db1cfac0095db0482363}{%
+           family={Kime},
+           familyi={K\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod}}}%
+        {{hash=6c2c18785a49578bb60659064cac3b81}{%
+           family={Charette},
+           familyi={C\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{fullhash}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{fullhashraw}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{bibnamehash}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{authorbibnamehash}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{authornamehash}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{authorfullhash}{6820842cd16ba50d38432ce90c3816e6}
+      \strng{authorfullhashraw}{6820842cd16ba50d38432ce90c3816e6}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Biber: A backend bibliography processor for biblatex}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://ctan.org/pkg/biber
+      \endverb
+      \verb{url}
+      \verb https://ctan.org/pkg/biber
+      \endverb
+      \keyw{biber,documentation}
+    \endentry
+    \entry{mittelbach2004}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=9355edd511e3f6fdd880ee98722a53fb}{%
+           family={Mittelbach},
+           familyi={M\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+        {{hash=0743efb276e9219ee664a9b3dbd60619}{%
+           family={Goossens},
+           familyi={G\bibinitperiod},
+           given={Michel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{588d1d6a8974db190596907e433f57be}
+      \strng{fullhash}{588d1d6a8974db190596907e433f57be}
+      \strng{fullhashraw}{588d1d6a8974db190596907e433f57be}
+      \strng{bibnamehash}{588d1d6a8974db190596907e433f57be}
+      \strng{authorbibnamehash}{588d1d6a8974db190596907e433f57be}
+      \strng{authornamehash}{588d1d6a8974db190596907e433f57be}
+      \strng{authorfullhash}{588d1d6a8974db190596907e433f57be}
+      \strng{authorfullhashraw}{588d1d6a8974db190596907e433f57be}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2nd}
+      \field{isbn}{0-201-36299-6}
+      \field{title}{The LaTeX Companion}
+      \field{year}{2004}
+      \keyw{latex,advanced}
+    \endentry
+    \entry{dijkstra1968}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=2066778d476d4368455cb8e3ba6d03b4}{%
+           family={Dijkstra},
+           familyi={D\bibinitperiod},
+           given={Edsger\bibnamedelima W.},
+           giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{fullhash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{fullhashraw}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{bibnamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorbibnamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authornamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorfullhash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorfullhashraw}{2066778d476d4368455cb8e3ba6d03b4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{internalsortvolume}{11}
+      \field{journaltitle}{Communications of the ACM}
+      \field{title}{Go To Statement Considered Harmful}
+      \field{year}{1968}
+      \field{number}{3}
+      \range{number}{1}
+      \field{pages}{147\bibrangedash 148}
+      \range{pages}{2}
+      \field{volume}{11}
+      \range{volume}{1}
+      \verb{doi}
+      \verb 10.1145/362929.362947
+      \endverb
+      \keyw{programming,history}
+    \endentry
+    \entry{overleaf-docs}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=80d685e90fa23d7996a66e45aa2d24ad}{%
+           family={{Overleaf}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{fullhash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{fullhashraw}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{bibnamehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authorbibnamehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authornamehash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authorfullhash}{80d685e90fa23d7996a66e45aa2d24ad}
+      \strng{authorfullhashraw}{80d685e90fa23d7996a66e45aa2d24ad}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learn LaTeX in 30 minutes}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+      \endverb
+      \verb{url}
+      \verb https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+      \endverb
+      \keyw{tutorial,beginner}
+    \endentry
+    \entry{ctan}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=16e4fd2970d924102e130a1d85e57de9}{%
+           family={{CTAN Team}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{fullhash}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{fullhashraw}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{bibnamehash}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{authorbibnamehash}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{authornamehash}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{authorfullhash}{16e4fd2970d924102e130a1d85e57de9}
+      \strng{authorfullhashraw}{16e4fd2970d924102e130a1d85e57de9}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Comprehensive TeX Archive Network}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ctan.org/
+      \endverb
+      \verb{url}
+      \verb https://www.ctan.org/
+      \endverb
+      \keyw{packages,repository}
+    \endentry
+    \entry{latex-ru}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=d659d29d686895eba993d4751cf6ecdb}{%
+           family={{Сообщество LaTeX.ru}},
+           familyi={С\bibinitperiod}}}%
+      }
+      \strng{namehash}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{fullhash}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{fullhashraw}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{bibnamehash}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{authorbibnamehash}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{authornamehash}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{authorfullhash}{d659d29d686895eba993d4751cf6ecdb}
+      \strng{authorfullhashraw}{d659d29d686895eba993d4751cf6ecdb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LaTeX.ru — русскоязычное сообщество пользователей TeX}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.latex.ru/
+      \endverb
+      \verb{url}
+      \verb https://www.latex.ru/
+      \endverb
+      \keyw{russian,community}
+    \endentry
+    \entry{lvovsky2003}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=2e0635297c872410c2a240b855085f04}{%
+           family={Львовский},
+           familyi={Л\bibinitperiod},
+           given={С.\bibnamedelimi М.},
+           giveni={С\bibinitperiod\bibinitdelim М\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Москва}%
+      }
+      \list{publisher}{1}{%
+        {МЦНМО}%
+      }
+      \strng{namehash}{2e0635297c872410c2a240b855085f04}
+      \strng{fullhash}{2e0635297c872410c2a240b855085f04}
+      \strng{fullhashraw}{2e0635297c872410c2a240b855085f04}
+      \strng{bibnamehash}{2e0635297c872410c2a240b855085f04}
+      \strng{authorbibnamehash}{2e0635297c872410c2a240b855085f04}
+      \strng{authornamehash}{2e0635297c872410c2a240b855085f04}
+      \strng{authorfullhash}{2e0635297c872410c2a240b855085f04}
+      \strng{authorfullhashraw}{2e0635297c872410c2a240b855085f04}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{5-94057-091-7}
+      \field{title}{Набор и вёрстка в системе LaTeX}
+      \field{year}{2003}
+      \keyw{russian,latex}
+    \endentry
+    \entry{tex-stackexchange}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=da792b1aa3875db1c57147527e725630}{%
+           family={{TeX Stack Exchange Community}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{da792b1aa3875db1c57147527e725630}
+      \strng{fullhash}{da792b1aa3875db1c57147527e725630}
+      \strng{fullhashraw}{da792b1aa3875db1c57147527e725630}
+      \strng{bibnamehash}{da792b1aa3875db1c57147527e725630}
+      \strng{authorbibnamehash}{da792b1aa3875db1c57147527e725630}
+      \strng{authornamehash}{da792b1aa3875db1c57147527e725630}
+      \strng{authorfullhash}{da792b1aa3875db1c57147527e725630}
+      \strng{authorfullhashraw}{da792b1aa3875db1c57147527e725630}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{TeX - LaTeX Stack Exchange}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://tex.stackexchange.com/
+      \endverb
+      \verb{url}
+      \verb https://tex.stackexchange.com/
+      \endverb
+      \keyw{community,qa}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

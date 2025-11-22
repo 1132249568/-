@@ -1,0 +1,36 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Введение}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Цель работы}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Задачи работы}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Актуальность темы}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Теоретическая часть}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}История развития систем управления библиографией}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Инструменты для работы с библиографией}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}BibTeX}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Biblatex и Biber}{4}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Структура файла библиографии}{4}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Типы библиографических записей}{4}{subsubsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.4}Команды цитирования}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Практическая часть}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Создание файла библиографии}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Настройка документа}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Примеры цитирования}{6}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Цитирование книг}{6}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Цитирование статей}{6}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Цитирование онлайн-ресурсов}{6}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Множественное цитирование}{6}{subsubsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.4}Процесс компиляции}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Результаты работы}{7}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Анализ результатов}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Преимущества использования biblatex}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Сравнение с ручным оформлением}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Рекомендации по использованию}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Заключение}{8}{section.5}%
+\contentsline {section}{\numberline {A}Пример файла библиографии}{10}{appendix.A}%
+\contentsline {section}{\numberline {B}Команды компиляции}{10}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}Ручная компиляция}{10}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}Автоматическая компиляция}{11}{subsection.B.2}%
+\contentsline {section}{\numberline {C}Полезные ресурсы}{11}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Официальная документация}{11}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Обучающие материалы}{11}{subsection.C.2}%
+\contentsline {subsection}{\numberline {C.3}Инструменты}{12}{subsection.C.3}%
