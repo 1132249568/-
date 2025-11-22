@@ -1,0 +1,26 @@
+\frametitle{Приложение B: Команды компиляции}
+\textbf{Вариант 1: Ручная компиляция}
+  \begin{lstlisting}[language=bash, basicstyle=\ttfamily\small]
+pdflatex document.tex
+biber document
+pdflatex document.tex
+pdflatex document.tex
+  \end{lstlisting}
+
+  \vspace{0.5cm}
+
+  \textbf{Вариант 2: С использованием latexmk}
+  \begin{lstlisting}[language=bash, basicstyle=\ttfamily\small]
+latexmk -pdf -bibtex document.tex
+  \end{lstlisting}
+
+  \vspace{0.5cm}
+
+  \textbf{Вариант 3: Makefile}
+  \begin{lstlisting}[language=make, basicstyle=\ttfamily\small]
+all:
+ pdflatex document.tex
+ biber document
+ pdflatex document.tex
+ pdflatex document.tex
+  \end{lstlisting}

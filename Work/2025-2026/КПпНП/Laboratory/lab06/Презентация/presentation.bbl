@@ -1,0 +1,203 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{dijkstra1968}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2066778d476d4368455cb8e3ba6d03b4}{%
+           family={Dijkstra},
+           familyi={D\bibinitperiod},
+           given={Edsger\bibnamedelima W.},
+           giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{fullhash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{fullhashraw}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{bibnamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorbibnamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authornamehash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorfullhash}{2066778d476d4368455cb8e3ba6d03b4}
+      \strng{authorfullhashraw}{2066778d476d4368455cb8e3ba6d03b4}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications of the ACM}
+      \field{number}{3}
+      \field{title}{Go To Statement Considered Harmful}
+      \field{volume}{11}
+      \field{year}{1968}
+      \field{pages}{147\bibrangedash 148}
+      \range{pages}{2}
+      \verb{doi}
+      \verb 10.1145/362929.362947
+      \endverb
+      \keyw{programming,history}
+    \endentry
+    \entry{knuth1984}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ec08e6f01da5f3814f28a70c89c64656}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={Donald\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Reading, Massachusetts}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{fullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{bibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorbibnamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authornamehash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhash}{ec08e6f01da5f3814f28a70c89c64656}
+      \strng{authorfullhashraw}{ec08e6f01da5f3814f28a70c89c64656}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{isbn}{0-201-13447-0}
+      \field{title}{The TeXbook}
+      \field{year}{1984}
+      \keyw{latex,typography}
+    \endentry
+    \entry{lamport1994}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d77435450d10a850a5b58577b9a456b}{%
+           family={Lamport},
+           familyi={L\bibinitperiod},
+           given={Leslie},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Reading, Massachusetts}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{fullhashraw}{5d77435450d10a850a5b58577b9a456b}
+      \strng{bibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorbibnamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authornamehash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhash}{5d77435450d10a850a5b58577b9a456b}
+      \strng{authorfullhashraw}{5d77435450d10a850a5b58577b9a456b}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2nd}
+      \field{isbn}{0-201-52983-1}
+      \field{title}{LaTeX: A Document Preparation System}
+      \field{year}{1994}
+      \keyw{latex,documentation}
+    \endentry
+    \entry{mittelbach2004}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9355edd511e3f6fdd880ee98722a53fb}{%
+           family={Mittelbach},
+           familyi={M\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0743efb276e9219ee664a9b3dbd60619}{%
+           family={Goossens},
+           familyi={G\bibinitperiod},
+           given={Michel},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{588d1d6a8974db190596907e433f57be}
+      \strng{fullhash}{588d1d6a8974db190596907e433f57be}
+      \strng{fullhashraw}{588d1d6a8974db190596907e433f57be}
+      \strng{bibnamehash}{588d1d6a8974db190596907e433f57be}
+      \strng{authorbibnamehash}{588d1d6a8974db190596907e433f57be}
+      \strng{authornamehash}{588d1d6a8974db190596907e433f57be}
+      \strng{authorfullhash}{588d1d6a8974db190596907e433f57be}
+      \strng{authorfullhashraw}{588d1d6a8974db190596907e433f57be}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2nd}
+      \field{isbn}{0-201-36299-6}
+      \field{title}{The LaTeX Companion}
+      \field{year}{2004}
+      \keyw{latex,advanced}
+    \endentry
+    \entry{latex-project}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b5993c3dcc356627edc781ba1606427b}{%
+           family={{The LaTeX Project}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{fullhash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{fullhashraw}{b5993c3dcc356627edc781ba1606427b}
+      \strng{bibnamehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authorbibnamehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authornamehash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authorfullhash}{b5993c3dcc356627edc781ba1606427b}
+      \strng{authorfullhashraw}{b5993c3dcc356627edc781ba1606427b}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{LaTeX – A document preparation system}
+      \field{urlday}{15}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.latex-project.org/
+      \endverb
+      \verb{url}
+      \verb https://www.latex-project.org/
+      \endverb
+      \keyw{documentation,official}
+    \endentry
+  \enddatalist
+  \missing{key}
+\endrefsection
+\endinput
+

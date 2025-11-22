@@ -1,0 +1,17 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[1] Config.pm:331> INFO - Logfile is 'presentation.blg'
+[133] biber-MSWIN64:342> INFO - === 
+[180] Biber.pm:421> INFO - Reading 'presentation.bcf'
+[301] Biber.pm:1002> INFO - Found 6 citekeys in bib section 0
+[316] Biber.pm:4487> INFO - Processing section 0
+[329] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[401] bibtex.pm:1713> INFO - LaTeX decoding ...
+[445] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[540] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[541] UCollate.pm:68> INFO - Overriding locale 'ru-RU' defaults 'variable = shifted' with 'variable = non-ignorable'
+[541] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'ru-RU'
+[542] Biber.pm:4313> INFO - No sort tailoring available for locale 'ru-RU'
+[558] bbl.pm:676> INFO - Writing 'presentation.bbl' with encoding 'UTF-8'
+[561] bbl.pm:779> INFO - Output to presentation.bbl
+[562] Biber.pm:132> WARN - I didn't find a database entry for 'key' (section 0)
+[562] Biber.pm:134> INFO - WARNINGS: 1

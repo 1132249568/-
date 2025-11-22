@@ -1,0 +1,856 @@
+\documentclass[aspectratio=169, 12pt]{beamer}
+% aspectratio: 169 для 16:9, 43 для 4:3
+
+% ============================================
+% ТЕМА ОФОРМЛЕНИЯ
+% ============================================
+\usetheme{Madrid}
+% Другие темы: Berlin, Copenhagen, Warsaw, Singapore, CambridgeUS
+
+\usecolortheme{default}
+% Другие цветовые схемы: dolphin, beaver, crane, seahorse, wolverine
+
+% Настройка цветов
+\definecolor{myblue}{RGB}{0, 51, 102}
+\definecolor{myred}{RGB}{153, 0, 0}
+\definecolor{mygreen}{RGB}{0, 102, 51}
+
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{title}{fg=white, bg=myblue}
+\setbeamercolor{frametitle}{fg=white, bg=myblue}
+\setbeamercolor{block title}{fg=white, bg=myblue}
+\setbeamercolor{block body}{bg=myblue!10}
+\setbeamercolor{block title example}{fg=white, bg=mygreen}
+\setbeamercolor{block body example}{bg=mygreen!10}
+\setbeamercolor{block title alerted}{fg=white, bg=myred}
+\setbeamercolor{block body alerted}{bg=myred!10}
+
+% ============================================
+% КОДИРОВКА И ЯЗЫК
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% ============================================
+% ДОПОЛНИТЕЛЬНЫЕ ПАКЕТЫ
+% ============================================
+
+% Графика
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+% Таблицы
+\usepackage{booktabs}
+\usepackage{array}
+
+% Математика
+\usepackage{amsmath, amssymb}
+
+% Листинги кода
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+  commentstyle=\color{green!50!black},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red!50!black},
+  showstringspaces=false,
+  tabsize=2,
+  language=TeX
+}
+
+% Гиперссылки
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=myblue,
+  urlcolor=mygreen,
+  citecolor=myred
+}
+
+% Иконки и символы
+\usepackage{fontawesome5}
+
+% Многоколоночная верстка
+\usepackage{multicol}
+
+% ============================================
+% БИБЛИОГРАФИЯ
+% ============================================
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  maxcitenames=2,
+  maxbibnames=3
+]{biblatex}
+
+\addbibresource{references.bib}
+
+% Настройка библиографии для презентации
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\renewcommand*{\bibfont}{\footnotesize}
+
+% ============================================
+% НАСТРОЙКА ВНЕШНЕГО ВИДА
+% ============================================
+
+% Убрать навигационные символы
+\setbeamertemplate{navigation symbols}{}
+
+% Номера слайдов
+\setbeamertemplate{footline}[frame number]
+
+% Стиль маркеров списков
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[default]
+
+% Оглавление в начале каждой секции
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{План презентации}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% ============================================
+% ИНФОРМАЦИЯ О ПРЕЗЕНТАЦИИ
+% ============================================
+\title[Библиография в LaTeX]{Работа с библиографией в LaTeX}
+\subtitle{Использование BibTeX и biblatex}
+
+\author[Викторов Е.И.]{
+  Викторов Егор \\
+  \small Группа НПМмд02-24
+}
+
+\institute[Университет]{
+  Федеральное государственное бюджетное образовательное учреждение \\
+  высшего образования \\
+  \textbf{«РУДН»} \\
+  \vspace{0.3cm}
+  Факультет физико-математических и естественных наук \\
+  Кафедра Теории Вероятностей и Кибербезопасности
+}
+
+\date{\today}
+
+% Логотип университета (раскомментируйте и укажите путь к файлу)
+% \logo{\includegraphics[height=1cm]{logo.png}}
+
+% ============================================
+% НАЧАЛО ПРЕЗЕНТАЦИИ
+% ============================================
+\begin{document}
+
+% ============================================
+% ТИТУЛЬНЫЙ СЛАЙД
+% ============================================
+\begin{frame}
+  \titlepage
+\end{frame}
+% ============================================
+% СОДЕРЖАНИЕ
+% ============================================
+\begin{frame}
+  \frametitle{План презентации}
+  \tableofcontents
+\end{frame}
+
+% ============================================
+% ВВЕДЕНИЕ
+% ============================================
+\section{Введение}
+
+\begin{frame}{Актуальность темы}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{Проблемы ручного оформления:}
+      \begin{itemize}
+        \item \faTimesCircle\ Трудоемкость
+        \item \faTimesCircle\ Высокая вероятность ошибок
+        \item \faTimesCircle\ Сложность изменения стиля
+        \item \faTimesCircle\ Неединообразие оформления
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+      \textbf{Преимущества автоматизации:}
+      \begin{itemize}
+        \item \faCheckCircle\ Экономия времени
+        \item \faCheckCircle\ Минимум ошибок
+        \item \faCheckCircle\ Легкая смена стиля
+        \item \faCheckCircle\ Единый формат
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{1cm}
+  
+  \begin{alertblock}{Вывод}
+    Автоматизация управления библиографией — необходимость для современных научных публикаций
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Цель и задачи работы}
+  \begin{block}{Цель работы}
+    Изучение методов работы с библиографическими ссылками в системе LaTeX и освоение инструментов BibTeX и biblatex
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \textbf{Задачи работы:}
+  \begin{enumerate}
+    \item Изучить структуру файлов библиографии формата \texttt{.bib}
+    \item Освоить различные типы библиографических записей
+    \item Научиться использовать команды цитирования
+    \item Изучить различные стили оформления библиографии
+    \item Настроить автоматическую компиляцию документа
+    \item Создать документ с корректно оформленными ссылками
+  \end{enumerate}
+\end{frame}
+
+% ============================================
+% ТЕОРЕТИЧЕСКАЯ ЧАСТЬ
+% ============================================
+\section{Теоретическая часть}
+
+\begin{frame}{История развития}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.9]
+      % Timeline
+      \draw[thick, ->] (0,0) -- (12,0);
+      
+      % Events
+      \draw[thick] (2,0) -- (2,0.3);
+      \node[above] at (2,0.3) {\small 1978};
+      \node[below, text width=2cm, align=center] at (2,-0.5) {\tiny TeX \\ (Knuth)};
+      
+      \draw[thick] (5,0) -- (5,0.3);
+      \node[above] at (5,0.3) {\small 1985};
+      \node[below, text width=2cm, align=center] at (5,-0.5) {\tiny LaTeX \\ (Lamport)};
+      
+      \draw[thick] (8,0) -- (8,0.3);
+      \node[above] at (8,0.3) {\small 1988};
+      \node[below, text width=2cm, align=center] at (8,-0.5) {\tiny BibTeX \\ (Patashnik)};
+      
+      \draw[thick] (11,0) -- (11,0.3);
+      \node[above] at (11,0.3) {\small 2006};
+      \node[below, text width=2cm, align=center] at (11,-0.5) {\tiny biblatex \\ (Lehman)};
+    \end{tikzpicture}
+  \end{center}
+  
+  \vspace{0.5cm}
+  
+  \begin{itemize}
+    \item \textbf{1978} — Дональд Кнут создает TeX
+    \item \textbf{1985} — Лесли Лампорт разрабатывает LaTeX
+    \item \textbf{1988} — Орен Паташник представляет BibTeX
+    \item \textbf{2006} — Филипп Леман создает biblatex
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{BibTeX vs biblatex}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{BibTeX}
+        \textbf{Преимущества:}
+        \begin{itemize}
+          \item Простота
+          \item Стабильность
+          \item Широкая поддержка
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        
+        \textbf{Недостатки:}
+        \begin{itemize}
+          \item Ограниченная Unicode поддержка
+          \item Сложность настройки
+          \item Устаревший код
+        \end{itemize}
+      \end{block}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{biblatex}
+        \textbf{Преимущества:}
+        \begin{itemize}
+          \item Полная Unicode поддержка
+          \item Гибкая настройка
+          \item Современный подход
+          \item Backend Biber
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        
+        \textbf{Недостатки:}
+        \begin{itemize}
+          \item Более сложный
+          \item Требует изучения
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Структура файла библиографии}
+  \textbf{Общая структура записи:}
+  
+  \begin{lstlisting}
+@ТИП_ИСТОЧНИКА{ключ_цитирования,
+  поле1 = {значение1},
+  поле2 = {значение2},
+  поле3 = {значение3}
+}
+  \end{lstlisting}
+  
+  \vspace{0.5cm}
+  
+  \textbf{Пример записи книги:}
+  
+  \begin{lstlisting}
+@book{knuth1984,
+  author    = {Donald E. Knuth},
+  title     = {The TeXbook},
+  publisher = {Addison-Wesley},
+  year      = {1984},
+  isbn      = {0-201-13447-0}
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Типы библиографических записей}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Печатные издания:}
+      \begin{itemize}
+        \item \texttt{@book} — книга
+        \item \texttt{@article} — статья
+        \item \texttt{@inproceedings} — конференция
+        \item \texttt{@phdthesis} — диссертация
+        \item \texttt{@manual} — руководство
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Электронные ресурсы:}
+      \begin{itemize}
+        \item \texttt{@online} — веб-сайт
+        \item \texttt{@techreport} — тех. отчет
+        \item \texttt{@misc} — прочее
+        \item \texttt{@unpublished} — неопубликованное
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{1cm}
+  
+  \begin{exampleblock}{Совет}
+    Выбирайте наиболее подходящий тип для каждого источника — это влияет на форматирование в списке литературы
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Команды цитирования}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      \textbf{Команда} & \textbf{Результат} & \textbf{Применение} \\
+      \midrule
+      \verb|\cite{key}| & [1] & Базовое \\
+      \verb|\parencite{key}| & (Knuth, 1984) & В скобках \\
+      \verb|\textcite{key}| & Knuth (1984) & В тексте \\
+      \verb|\citeauthor{key}| & Knuth & Только автор \\
+      \verb|\citeyear{key}| & 1984 & Только год \\
+      \verb|\footcite{key}| & \textsuperscript{1} & В сноске \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  
+  \vspace{0.5cm}
+  
+  \begin{alertblock}{Важно!}
+    Выбор команды зависит от стиля цитирования и контекста использования
+  \end{alertblock}
+\end{frame}
+
+% ============================================
+% ПРАКТИЧЕСКАЯ ЧАСТЬ
+% ============================================
+\section{Практическая часть}
+
+\begin{frame}[fragile]{Настройка документа}
+  \textbf{Подключение пакета biblatex:}
+  
+  \begin{lstlisting}
+\usepackage[
+  backend=biber,        % Используем Biber
+  style=gost-numeric,   % Стиль ГОСТ
+  sorting=none,         % Без сортировки
+  maxbibnames=99,       % Все авторы
+  doi=true,             % Показывать DOI
+  isbn=true,            % Показывать ISBN
+  url=true              % Показывать URL
+]{biblatex}
+
+\addbibresource{references.bib}
+  \end{lstlisting}
+  
+  \vspace{0.3cm}
+  
+  \textbf{Вывод списка литературы:}
+  
+  \begin{lstlisting}
+\printbibliography[title={Список литературы}]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Процесс компиляции}
+  \begin{center}
+    \begin{tikzpicture}[
+      node distance=1.5cm,
+      box/.style={rectangle, draw, fill=blue!20, text width=3cm, align=center, minimum height=1cm},
+      arrow/.style={->, thick}
+    ]
+      \node[box] (step1) {1. pdflatex};
+      \node[box, below of=step1] (step2) {2. biber};
+      \node[box, below of=step2] (step3) {3. pdflatex};
+      \node[box, below of=step3] (step4) {4. pdflatex};
+      
+      \draw[arrow] (step1) -- (step2);
+      \draw[arrow] (step2) -- (step3);
+      \draw[arrow] (step3) -- (step4);
+      \node[right=0.5cm of step1, text width=4cm] {Создание .aux файла};
+      \node[right=0.5cm of step2, text width=4cm] {Обработка библиографии};
+      \node[right=0.5cm of step3, text width=4cm] {Включение библиографии};
+      \node[right=0.5cm of step4, text width=4cm] {Обновление ссылок};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Автоматизация с latexmk}
+  \textbf{Создание файла .latexmkrc:}
+  
+  \begin{lstlisting}[language=bash]
+$pdf_mode = 1;
+$biber = 'biber %O %S';
+$pdflatex = 'pdflatex -interaction=nonstopmode';
+  \end{lstlisting}
+  
+  \vspace{0.5cm}
+  
+  \textbf{Команды компиляции:}
+  
+  \begin{lstlisting}[language=bash]
+# Компиляция
+latexmk -pdf document.tex
+
+# Очистка временных файлов
+latexmk -c
+
+# Полная очистка
+latexmk -C
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Примеры цитирования}
+  \begin{exampleblock}{Цитирование книги}
+    Классическая книга по TeX \parencite{knuth1984} является фундаментальным трудом.
+  \end{exampleblock}
+  
+  \begin{exampleblock}{Цитирование статьи}
+    Историческая статья \textcite{dijkstra1968} оказала значительное влияние.
+  \end{exampleblock}
+  
+  \begin{exampleblock}{Множественное цитирование}
+    Основы LaTeX описаны во многих источниках \parencite{knuth1984, lamport1994, mittelbach2004}.
+  \end{exampleblock}
+  
+  \begin{exampleblock}{Онлайн-ресурс}
+    Официальная документация доступна на сайте \parencite{latex-project}.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Стили оформления библиографии}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Числовые стили:}
+      \begin{itemize}
+        \item \texttt{numeric} — [1], [2], [3]
+        \item \texttt{ieee} — стиль IEEE
+        \item \texttt{gost-numeric} — ГОСТ
+      \end{itemize}
+      
+      \vspace{0.5cm}
+      
+      \textbf{Алфавитные стили:}
+      \begin{itemize}
+        \item \texttt{alphabetic} — [Knu84]
+        \item \texttt{authoryear} — (Knuth, 1984)
+        \item \texttt{gost-authoryear} — ГОСТ
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Специализированные:}
+      \begin{itemize}
+        \item \texttt{apa} — APA стиль
+        \item \texttt{mla} — MLA стиль
+        \item \texttt{chicago} — Чикаго
+        \item \texttt{nature} — Nature
+        \item \texttt{science} — Science
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{0.5cm}
+  
+  \begin{alertblock}{Примечание}
+    Стиль легко изменить, изменив один параметр в настройках biblatex
+  \end{alertblock}
+\end{frame}
+
+% ============================================
+% АНАЛИЗ РЕЗУЛЬТАТОВ
+% ============================================
+\section{Анализ результатов}
+
+\begin{frame}{Сравнение методов оформления}
+  \begin{table}
+    \centering
+    \footnotesize
+    \begin{tabular}{@{}lcc@{}}
+      \toprule
+      \textbf{Критерий} & \textbf{BibTeX/biblatex} & \textbf{Ручное} \\
+      \midrule
+      Время на оформление & \textcolor{green}{\faArrowDown\ Низкое} & \textcolor{red}{\faArrowUp\ Высокое} \\
+      Вероятность ошибок & \textcolor{green}{\faArrowDown\ Низкая} & \textcolor{red}{\faArrowUp\ Высокая} \\
+      Единообразие & \textcolor{green}{\faCheck\ Да} & \textcolor{red}{\faTimes\ Требует внимания} \\
+      Изменение стиля & \textcolor{green}{\faCheck\ Легко} & \textcolor{red}{\faTimes\ Сложно} \\
+      Переиспользование & \textcolor{green}{\faCheck\ Легко} & \textcolor{red}{\faTimes\ Сложно} \\
+      Автосортировка & \textcolor{green}{\faCheck\ Да} & \textcolor{red}{\faTimes\ Нет} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  
+  \vspace{0.5cm}
+  
+  \begin{block}{Вывод}
+    Автоматизация превосходит ручное оформление по всем критериям
+  \end{block}
+\end{frame}
+
+\begin{frame}{Преимущества biblatex}
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Технические}
+        \begin{itemize}
+          \item \faCode\ Полная Unicode поддержка
+          \item \faCogs\ Гибкая настройка
+          \item \faDatabase\ Мощный backend Biber
+          \item \faLanguage\ Локализация
+        \end{itemize}
+      \end{block}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Практические}
+        \begin{itemize}
+          \item \faClock\ Экономия времени
+          \item \faCheckDouble\ Минимум ошибок
+          \item \faSync\ Переиспользование
+          \item \faPalette\ Единый стиль
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+  
+  \vspace{1cm}
+  
+  \begin{center}
+    \Large
+    \textcolor{mygreen}{\faThumbsUp} Рекомендуется для всех новых проектов!
+  \end{center}
+\end{frame}
+
+\begin{frame}{Рекомендации по использованию}
+  \begin{enumerate}
+    \item \textbf{Выбор инструмента}
+    \begin{itemize}
+      \item Используйте biblatex для новых проектов
+      \item Выбирайте backend=biber для Unicode
+    \end{itemize}
+    
+    \item \textbf{Организация файлов}
+    \begin{itemize}
+      \item Храните библиографию в отдельном .bib файле
+      \item Используйте осмысленные ключи цитирования
+    \end{itemize}
+    
+    \item \textbf{Инструменты}
+    \begin{itemize}
+      \item JabRef или Zotero для управления базой
+      \item latexmk для автоматической компиляции
+    \end{itemize}
+    
+    \item \textbf{Безопасность}
+    \begin{itemize}
+      \item Регулярно делайте резервные копии
+      \item Используйте систему контроля версий (Git)
+    \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Типичные ошибки и их решение}
+  \begin{alertblock}{Ошибка 1: Библиография не появляется}
+    \textbf{Решение:} Проверьте последовательность компиляции (pdflatex → biber → pdflatex → pdflatex)
+  \end{alertblock}
+  
+  \begin{alertblock}{Ошибка 2: Неправильная кодировка}
+    \textbf{Решение:} Убедитесь, что .bib файл сохранен в UTF-8
+  \end{alertblock}
+  
+  \begin{alertblock}{Ошибка 3: Источник не цитируется}
+    \textbf{Решение:} Проверьте правильность ключа цитирования и наличие записи в .bib
+  \end{alertblock}
+  
+  \begin{alertblock}{Ошибка 4: Неправильный формат}
+    \textbf{Решение:} Проверьте синтаксис записи в .bib файле (запятые, скобки)
+  \end{alertblock}
+\end{frame}
+
+% ============================================
+% ЗАКЛЮЧЕНИЕ
+% ============================================
+\section{Заключение}
+
+\begin{frame}{Результаты работы}
+  \textbf{Выполнено:}
+  
+  \begin{itemize}
+    \item[\faCheckCircle] Изучена структура файлов библиографии
+    \item[\faCheckCircle] Освоены типы библиографических записей
+    \item[\faCheckCircle] Изучены команды цитирования
+    \item[\faCheckCircle] Рассмотрены различные стили оформления
+    \item[\faCheckCircle] Настроена автоматическая компиляция
+    \item[\faCheckCircle] Создан документ с корректными ссылками
+  \end{itemize}
+  
+  \vspace{0.5cm}
+  
+  \begin{block}{Итог}
+    Все поставленные задачи выполнены, цель работы достигнута
+  \end{block}
+\end{frame}
+
+\begin{frame}{Практическая значимость}
+  \textbf{Полученные навыки применимы для:}
+  
+  \begin{multicols}{2}
+    \begin{itemize}
+      \item Курсовых работ
+      \item Дипломных проектов
+      \item Научных статей
+      \item Диссертаций
+      \item Технических отчетов
+      \item Книг и монографий
+      \item Презентаций
+      \item Учебных пособий
+    \end{itemize}
+  \end{multicols}
+  
+  \vspace{0.5cm}
+  
+  \begin{exampleblock}{Перспективы}
+    Освоение biblatex открывает возможности для профессионального оформления любых научных и технических документов
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Дальнейшее развитие}
+  \textbf{Направления для изучения:}
+  
+  \begin{enumerate}
+    \item \textbf{Продвинутые возможности biblatex}
+    \begin{itemize}
+      \item Создание собственных стилей
+      \item Настройка полей и форматов
+      \item Работа с мультиязычными источниками
+    \end{itemize}
+    
+    \item \textbf{Интеграция с другими инструментами}
+    \begin{itemize}
+      \item Менеджеры библиографии (JabRef, Zotero)
+      \item Системы контроля версий (Git)
+      \item Онлайн-редакторы (Overleaf)
+    \end{itemize}
+    
+    \item \textbf{Автоматизация рабочего процесса}
+    \begin{itemize}
+      \item Скрипты для обработки библиографии
+      \item CI/CD для LaTeX документов
+      \item Шаблоны и заготовки
+    \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+% ============================================
+% ПОЛЕЗНЫЕ РЕСУРСЫ
+% ============================================
+\section{Полезные ресурсы}
+
+\begin{frame}{Официальная документация}
+  \begin{block}{Основные ресурсы}
+    \begin{itemize}
+      \item \faGlobe\ The LaTeX Project: \url{https://www.latex-project.org/}
+      \item \faBook\ CTAN: \url{https://www.ctan.org/}
+      \item \faFileAlt\ Biblatex manual: \url{https://ctan.org/pkg/biblatex}
+      \item \faCog\ Biber manual: \url{https://ctan.org/pkg/biber}
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Обучающие материалы}
+    \begin{itemize}
+      \item \faGraduationCap\ Overleaf Learn: \url{https://www.overleaf.com/learn}
+      \item \faQuestionCircle\ TeX Stack Exchange: \url{https://tex.stackexchange.com/}
+      \item \faUsers\ LaTeX.ru: \url{https://www.latex.ru/}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Инструменты}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Менеджеры библиографии}
+        \begin{itemize}
+          \item \faDatabase\ JabRef
+          \item \faBookmark\ Zotero
+          \item \faBook\ Mendeley
+          \item \faPaperclip\ EndNote
+        \end{itemize}
+      \end{block}
+      
+      \begin{block}{Редакторы LaTeX}
+        \begin{itemize}
+          \item \faEdit\ TeXstudio
+          \item \faCode\ TeXmaker
+          \item \faCloud\ Overleaf
+          \item \faTerminal\ VS Code + LaTeX Workshop
+        \end{itemize}
+      \end{block}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Дистрибутивы TeX}
+        \begin{itemize}
+          \item \faWindows\ MiKTeX (Windows)
+          \item \faLinux\ TeX Live (Linux)
+          \item \faApple\ MacTeX (macOS)
+        \end{itemize}
+      \end{block}
+      
+      \begin{block}{Утилиты}
+        \begin{itemize}
+          \item \faSyncAlt\ latexmk
+          \item \faFileCode\ arara
+          \item \faGitAlt\ Git
+          \item \faTerminal\ make
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ============================================
+% ВОПРОСЫ
+% ============================================
+\begin{frame}[plain]
+  \begin{center}
+    \Huge \textcolor{myblue}{Спасибо за внимание!}
+    
+    \vspace{1cm}
+    
+    \Large \textcolor{mygreen}{Вопросы?}
+    
+    \vspace{2cm}
+    
+    \normalsize
+    \begin{tabular}{rl}
+     \end{tabular}
+  \end{center}
+\end{frame}
+
+% ============================================
+% СПИСОК ЛИТЕРАТУРЫ
+% ============================================
+\begin{frame}[allowframebreaks]{Список литературы}
+  \printbibliography[heading=none]
+\end{frame}
+
+% ============================================
+% ПРИЛОЖЕНИЯ
+% ============================================
+\appendix
+
+\begin{frame}[fragile]{Приложение A: Пример .bib файла}
+  \begin{lstlisting}[basicstyle=\ttfamily\tiny]
+@book{knuth1984,
+  author    = {Donald E. Knuth},
+  title     = {The TeXbook},
+  publisher = {Addison-Wesley Professional},
+  year      = {1984},
+  isbn      = {0-201-13447-0}
+}
+
+@article{dijkstra1968,
+  author  = {Edsger W. Dijkstra},
+  title   = {Go To Statement Considered Harmful},
+  journal = {Communications of the ACM},
+  year    = {1968},
+  volume  = {11},
+  number  = {3},
+  pages   = {147--148}
+}
+
+@online{latex-project,
+  author  = {{The LaTeX Project}},
+  title   = {LaTeX – A document preparation system},
+  year    = {2024},
+  url     = {https://www.latex-project.org/}
+}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Приложение B: Команды компиляции}
+  \textbf{Вариант 1: Ручная компиляция}
+  \begin{lstlisting}[language=bash, basicstyle=\ttfamily\small]
+pdflatex document.tex
+biber document
+pdflatex document.tex
+pdflatex document.tex
+  \end{lstlisting}
+  
+  \vspace{0.5cm}
+  
+  \textbf{Вариант 2: С использованием latexmk}
+  \begin{lstlisting}[language=bash, basicstyle=\ttfamily\small]
+latexmk -pdf -bibtex document.tex
+  \end{lstlisting}
+  
+  \vspace{0.5cm}
+  
+  \textbf{Вариант 3: Makefile}
+  \begin{lstlisting}[language=make, basicstyle=\ttfamily\small]
+all:
+ pdflatex document.tex
+ biber document
+ pdflatex document.tex
+ pdflatex document.tex
+  \end{lstlisting}
+\end{frame}
+
+\end{document}
