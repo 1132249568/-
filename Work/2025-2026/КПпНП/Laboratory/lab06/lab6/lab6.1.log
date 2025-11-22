@@ -1,0 +1,145 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.22)  22 NOV 2025 14:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./lab6.1.tex
+(lab6.1.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/base
+\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/base
+\size10.clo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/base
+\fontenc.sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+) (C:\Program Files\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count283
+)
+(C:\Users\Пользователь\AppData\Local\Programs\MiKTeX\tex/latex/l3ba
+ckend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count284
+) (lab6.1.aux)
+\openout1 = `lab6.1.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+ (lab6.1.bbl
+
+! LaTeX Error: Unicode character ↪ (U+21AA)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.9 ...ld~L. Graham, Donald~E. Knuth, and Oren~↪
+                                                   Patashnik.
+? 
+
+! LaTeX Error: Unicode character ↪ (U+21AA)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.14 Christine~M. Thomas, Tianbiao Liu, ↪
+                                            Michael~B. Hall, and Marcetta~Y.
+? 
+
+! LaTeX Error: Unicode character ↪ (U+21AA)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.16 ...f mixed valent {Fe(II)Fe(I)} complexes ↪
+                                                   that model the
+? 
+
+! LaTeX Error: Unicode character ↪ (U+21AA)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 ...)} state of [{FeFe}]hydrogenase: Redox ↪
+                                                   properties,
+? 
+
+! LaTeX Error: Unicode character ↪ (U+21AA)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...y-functional theory investigation, and ↪
+                                                   reactivity with extrinsic
+? 
+)
+
+[1
+
+{C:/Users/Пользователь/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex
+.map}] (lab6.1.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 1022 strings out of 468130
+ 14894 string characters out of 5421436
+ 433987 words of memory out of 5000000
+ 29709 multiletter control sequences out of 15000+600000
+ 629817 words of font info for 44 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 35i,5n,39p,151b,160s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Пользователь\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecti1000.pk> <C:\Users\Пользователь\AppData\Local\Mi
+KTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Пользова
+тель\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk>
+Output written on lab6.1.pdf (1 page, 30687 bytes).
+PDF statistics:
+ 104 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

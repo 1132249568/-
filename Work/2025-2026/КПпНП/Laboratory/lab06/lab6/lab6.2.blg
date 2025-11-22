@@ -1,0 +1,15 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'lab6.2.blg'
+[124] biber-MSWIN64:342> INFO - === 
+[171] Biber.pm:421> INFO - Reading 'lab6.2.bcf'
+[309] Biber.pm:1002> INFO - Found 2 citekeys in bib section 0
+[333] Biber.pm:4487> INFO - Processing section 0
+[352] Biber.pm:4678> INFO - Looking for bibtex file 'learnlatex.bib' for section 0
+[438] bibtex.pm:1713> INFO - LaTeX decoding ...
+[460] bibtex.pm:1519> INFO - Found BibTeX data source 'learnlatex.bib'
+[525] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[526] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[526] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[526] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[531] bbl.pm:676> INFO - Writing 'lab6.2.bbl' with encoding 'UTF-8'
+[533] bbl.pm:779> INFO - Output to lab6.2.bbl
