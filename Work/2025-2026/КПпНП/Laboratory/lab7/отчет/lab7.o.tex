@@ -1,0 +1,359 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{geometry}
+
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\definecolor{MyPink}{RGB}{194, 19, 182}
+\definecolor{CodeBg}{RGB}{245, 245, 245}
+\definecolor{MyBlue}{RGB}{0, 102, 204}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{CodeBg},
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\title{\textbf{Отчет по изучению создания научных постеров\\с использованием пакета tikzposter}}
+\author{Студент группы НПМмд02-24 Викторов Егор}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Введение}
+
+Научные постеры являются важным инструментом для представления результатов исследований на конференциях, симпозиумах и других научных мероприятиях. Система LaTeX предоставляет мощный инструмент для создания профессионально оформленных постеров — пакет \texttt{tikzposter}.
+
+\subsection{Цель работы}
+
+Целью данной работы является изучение основных возможностей пакета \texttt{tikzposter} и освоение методов создания структурированных научных постеров.
+
+\subsection{Задачи}
+
+В рамках работы были поставлены следующие задачи:
+\begin{itemize}
+    \item Изучить работу с многоколоночными макетами
+    \item Освоить создание и форматирование блоков контента
+    \item Научиться вставлять графические элементы
+    \item Изучить работу с цветовым оформлением
+    \item Освоить добавление заметок и аннотаций
+\end{itemize}
+
+\section{Структура постера и работа с колонками}
+
+\subsection{Основы работы с колонками}
+
+Пакет \texttt{tikzposter} предоставляет удобное окружение \texttt{columns} для создания многоколоночных макетов. Это позволяет эффективно организовать пространство постера и разместить информацию логичным образом.
+
+\subsubsection{Создание колонок равной ширины}
+
+Для создания трех колонок одинаковой ширины используется следующая структура:
+
+\begin{lstlisting}[language=TeX]
+\begin{columns}
+  \column{.33}
+  % Содержимое первой колонки
+  
+  \column{.33}
+  % Содержимое второй колонки
+  
+  \column{.33}
+  % Содержимое третьей колонки
+\end{columns}
+\end{lstlisting}
+
+Числовое значение в команде \texttt{\textbackslash column} определяет относительную ширину колонки. Значение 0.33 означает, что колонка занимает 33\% от общей ширины постера.
+
+\subsubsection{Создание колонок различной ширины}
+
+Часто требуется создать асимметричный макет с колонками разной ширины. Например, для размещения основного контента в широкой колонке и дополнительной информации в узкой:
+
+\begin{lstlisting}[language=TeX]
+\begin{columns}
+  \column{.7}
+  % Широкая колонка (70% ширины)
+  \block{Основные результаты}{
+    Здесь размещается основной контент
+  }
+  
+  \column{.3}
+  % Узкая колонка (30% ширины)
+  \block{Дополнительно}{
+    Здесь размещается дополнительная информация
+  }
+\end{columns}
+\end{lstlisting}
+
+\subsection{Практические рекомендации по работе с колонками}
+
+\begin{enumerate}
+    \item Сумма ширин колонок должна быть близка к 1.0 для оптимального использования пространства
+    \item Для стандартного постера рекомендуется использовать 2-3 колонки
+    \item Широкие колонки подходят для основного текста и графиков
+    \item Узкие колонки удобны для списков, определений и ссылок
+\end{enumerate}
+
+\section{Работа с блоками контента}
+
+\subsection{Базовый синтаксис блоков}
+
+Весь контент в постере должен быть размещен внутри блоков. Блок создается с помощью команды \texttt{\textbackslash block}:
+
+\begin{lstlisting}[language=TeX]
+\block{Заголовок блока}{Содержимое блока}
+\end{lstlisting}
+
+Первый аргумент — это заголовок блока, второй — его содержимое.
+
+\subsection{Блоки без заголовка}
+
+Если заголовок не требуется, первые фигурные скобки оставляются пустыми:
+
+\begin{lstlisting}[language=TeX]
+\block{}{
+  Это блок без заголовка. Он может содержать любой контент.
+}
+\end{lstlisting}
+
+\subsection{Добавление заметок к блокам}
+
+Одной из интересных возможностей пакета \texttt{tikzposter} является добавление заметок — небольших текстовых блоков со стрелками, указывающими на определенные части основного блока.
+
+\subsubsection{Синтаксис команды note}
+
+\begin{lstlisting}[language=TeX]
+\block{Заголовок}{
+  Основное содержимое блока
+  \vspace{2cm}
+}
+\note[targetoffsetx=5cm, targetoffsety=-3cm, width=8cm]{
+  Это заметка, которая указывает на блок выше
+}
+\end{lstlisting}
+
+\subsubsection{Параметры заметок}
+
+\begin{itemize}
+    \item \texttt{targetoffsetx} — горизонтальное смещение стрелки относительно центра блока
+    \item \texttt{targetoffsety} — вертикальное смещение стрелки
+    \item \texttt{width} — ширина заметки
+    \item \texttt{\textbackslash vspace} — создает вертикальное пространство для размещения заметки
+\end{itemize}
+
+\section{Вставка графических элементов}
+
+\subsection{Особенности работы с изображениями}
+
+В пакете \texttt{tikzposter} нельзя использовать стандартное окружение \texttt{figure}. Вместо этого применяется окружение \texttt{center} в сочетании с командой \texttt{\textbackslash captionof}.
+
+\subsection{Вставка растровых изображений}
+
+Для вставки изображений (PNG, JPG и др.) используется следующий синтаксис:
+
+\begin{lstlisting}[language=TeX]
+\block{Результаты эксперимента}{
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{image.png}
+    \captionof{figure}{Подпись к изображению}
+  \end{center}
+}
+\end{lstlisting}
+
+\subsection{Вставка векторных рисунков TikZ}
+
+Аналогичным образом вставляются рисунки, созданные с помощью пакета TikZ:
+
+\begin{lstlisting}[language=TeX]
+\block{Схема эксперимента}{
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick,->] (0,0) -- (4,0) node[right]{$x$};
+      \draw[thick,->] (0,0) -- (0,3) node[above]{$y$};
+      \draw[blue,thick] (0,0) parabola (3,2);
+    \end{tikzpicture}
+    \captionof{figure}{График функции}
+  \end{center}
+}
+\end{lstlisting}
+
+\subsection{Требования для работы с подписями}
+
+\textbf{Важно:} Для корректной работы команды \texttt{\textbackslash captionof} необходимо подключить пакет \texttt{caption} в преамбуле документа:
+
+\begin{lstlisting}[language=TeX]
+\usepackage{caption}
+\end{lstlisting}
+
+\section{Работа с цветовым оформлением}
+
+\subsection{Ограничения пакета tikzposter}
+
+Пакет \texttt{tikzposter} не поддерживает опцию \texttt{svgnames} пакета \texttt{xcolor}, поэтому именованные цвета (такие как \texttt{Red}, \texttt{Blue}, \texttt{ForestGreen}) недоступны напрямую.
+
+\subsection{Определение пользовательских цветов}
+
+Все необходимые цвета должны быть определены в преамбуле документа с использованием команды \texttt{\textbackslash definecolor}:
+
+\begin{lstlisting}[language=TeX]
+\definecolor{MyPink}{RGB}{194, 19, 182}
+\definecolor{MyBlue}{RGB}{0, 102, 204}
+\definecolor{MyGreen}{RGB}{34, 139, 34}
+\end{lstlisting}
+
+\subsection{Использование цветов в тексте}
+
+После определения цвета его можно использовать в тексте с помощью команды \texttt{\textbackslash color}:
+
+\begin{lstlisting}[language=TeX]
+Обычный черный текст, \color{MyPink} розовый текст, 
+\color{black} снова черный текст.
+\end{lstlisting}
+
+\subsection{Демонстрация цветов}
+
+Вот пример использования определенных цветов:
+
+Это обычный черный текст. \color{MyPink}А это текст розового цвета.\color{black} Теперь снова черный. \color{MyBlue}Это синий текст.\color{black} И опять черный.
+
+\subsection{Инструменты для подбора цветов}
+
+Для подбора RGB-значений цветов рекомендуется использовать:
+\begin{itemize}
+    \item Google Color Picker — онлайн-инструмент для выбора цветов
+    \item Adobe Color — для создания цветовых палитр
+    \item Coolors.co — генератор цветовых схем
+\end{itemize}
+
+\section{Полный пример постера}
+
+Ниже представлен пример структуры простого постера:
+
+\begin{lstlisting}[language=TeX]
+\documentclass[25pt, a0paper, portrait]{tikzposter}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{caption}
+
+\definecolor{MyPink}{RGB}{194, 19, 182}
+
+\title{Название исследования}
+\author{Автор}
+\institute{Университет}
+
+\begin{document}
+\maketitle
+
+\begin{columns}
+  \column{.5}
+  \block{Введение}{
+    Текст введения
+  }
+  
+  \block{Методы}{
+    Описание методов
+  }
+  
+  \column{.5}
+  \block{Результаты}{
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]{results.png}
+      \captionof{figure}{Основные результаты}
+    \end{center}
+  }
+  
+  \block{Выводы}{
+    Основные выводы исследования
+  }
+\end{columns}
+
+\end{document}
+\end{lstlisting}
+
+\section{Практические рекомендации}
+
+\subsection{Планирование структуры}
+
+\begin{enumerate}
+    \item Определите основные разделы постера перед началом работы
+    \item Спланируйте количество и ширину колонок
+    \item Оцените необходимое пространство для графиков и изображений
+    \item Продумайте цветовую схему
+\end{enumerate}
+
+\subsection{Оформление контента}
+
+\begin{itemize}
+    \item Используйте краткие и информативные заголовки блоков
+    \item Избегайте больших объемов текста — постер должен быть визуально привлекательным
+    \item Используйте списки для структурирования информации
+    \item Добавляйте графики и диаграммы для наглядности
+\end{itemize}
+
+\subsection{Работа с цветами}
+
+\begin{itemize}
+    \item Используйте не более 3-4 основных цветов
+    \item Обеспечьте достаточный контраст между текстом и фоном
+    \item Используйте цвета для выделения ключевой информации
+    \item Сохраняйте единообразие цветовой схемы по всему постеру
+\end{itemize}
+
+\subsection{Технические аспекты}
+
+\begin{itemize}
+    \item Всегда подключайте пакет \texttt{caption} для работы с подписями
+    \item Используйте \texttt{\textbackslash vspace} для создания пространства под заметки
+    \item Проверяйте сумму ширин колонок (должна быть ≈ 1.0)
+    \item Сохраняйте изображения в высоком разрешении для печати
+\end{itemize}
+
+\section{Заключение}
+
+В ходе выполнения данной работы были изучены основные возможности пакета \texttt{tikzposter} для создания научных постеров в системе LaTeX. 
+
+\subsection{Освоенные навыки}
+
+\begin{itemize}
+    \item Создание многоколоночных макетов с различными пропорциями
+    \item Работа с блоками контента и их заголовками
+    \item Добавление заметок и аннотаций к блокам
+    \item Вставка растровых и векторных изображений
+    \item Определение и использование пользовательских цветов
+    \item Форматирование текста и структурирование информации
+\end{itemize}
+
+\subsection{Преимущества использования tikzposter}
+
+\begin{enumerate}
+    \item Профессиональное оформление без необходимости использования графических редакторов
+    \item Гибкая система компоновки контента
+    \item Интеграция с другими пакетами LaTeX
+    \item Возможность создания постеров различных размеров
+    \item Легкость внесения изменений и обновления контента
+\end{enumerate}
+
+\subsection{Перспективы применения}
+
+Полученные знания позволяют создавать профессионально оформленные научные постеры для:
+\begin{itemize}
+    \item Научных конференций
+    \item Студенческих симпозиумов
+    \item Защиты курсовых и дипломных работ
+    \item Презентации результатов исследований
+    \item Образовательных мероприятий
+\end{itemize}
+
+Пакет \texttt{tikzposter} является мощным инструментом для создания визуально привлекательных и информативных постеров, который может значительно повысить качество представления научных результатов.
+
+\end{document}
