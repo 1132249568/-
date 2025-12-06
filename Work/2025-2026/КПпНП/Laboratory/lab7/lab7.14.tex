@@ -1,0 +1,108 @@
+\documentclass[a0paper, portrait]{tikzposter}
+
+% Загрузка пакетов
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usepackage{array}  % Для улучшенных таблиц
+
+% Метаданные постера
+\title{Пример постера с tikzposter}
+\author{Викторов Егор}
+\institute{РУДН}
+\titlegraphic{logo.png}  % Логотип (если есть)
+
+% Выбор цветовой схемы и темы
+\usetheme{Board}
+\usebackgroundstyle{Rays}
+\usecolorstyle{BlueGray}
+
+\begin{document}
+
+% Заголовок постера
+\maketitle
+
+% Основная сетка: две колонки
+\begin{columns}
+
+  % Первая колонка (левая)
+  \column{0.45}
+  
+  % Блок с заголовком
+  \block{Введение}{
+    Это пример блока с заголовком. Здесь можно разместить текст, формулы, изображения.
+    
+    Пример формулы:
+    \[
+      E = mc^2
+    \]
+    
+    % Вставка изображения (в окружении center)
+    \begin{center}
+      \includegraphics[width=0.8\linewidth]{example-image-a}
+    \end{center}
+  }
+  
+  % Блок без заголовка (пустые braces)
+  \block{}{
+    Этот блок без заголовка. Первые фигурные скобки оставлены пустыми.
+    
+    \begin{itemize}
+      \item Пункт списка 1
+      \item Пункт списка 2
+      \item Пункт списка 3
+    \end{itemize}
+  }
+
+  % Вторая колонка (правая)
+  \column{0.55}
+  
+  % Блок с заметкой
+  \block{Раздел с заметкой}{
+    Содержимое блока. Добавим вертикальный отступ для заметки:
+    
+    \vspace{4cm}  % Создаём место для заметки
+    
+    % Вставка таблицы
+    \begin{center}
+      \begin{tabular}{|c|c|c|}
+        \hline
+        Столбец 1 & Столбец 2 & Столбец 3 \\
+        \hline
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
+        \hline
+      \end{tabular}
+    \end{center}
+  }
+  
+  % Заметка рядом с блоком
+  \note[
+    targetoffsetx=3cm,   % Смещение по горизонтали
+    targetoffsety=-2cm, % Смещение по вертикали
+    width=0.3\linewidth, % Ширина заметки
+    color=red!20         % Цвет фона заметки
+  ]{
+    Это заметка, прикреплённая к блоку. Её положение задаётся параметрами \\
+    \texttt{targetoffsetx} и \texttt{targetoffsety}.
+  }
+
+\end{columns}
+
+% Дополнительный блок на всю ширину (без колонок)
+\block{Полный блок}{
+  Этот блок занимает всю ширину постера. Здесь можно разместить:
+  * текст;
+  * изображения (в \texttt{center});
+  * таблицы;
+  * библиографию (если нужно).
+
+  \begin{center}
+    \includegraphics[width=0.4\linewidth]{example-image-b}
+  \end{center}
+}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[
+  xcolor={svgnames},
+  hyperref={colorlinks=true,linkcolor=blue}
+]{beamer}
+
+% Пакеты
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath, amssymb}
+\usepackage{beamerposter}
+
+% Метаданные
+\title{Пример постера с колонками}
+\author{Егор Викторов}
+\institute{РУДН}
+\date{\today}
+
+% Тема оформления
+\usetheme{Boadilla}
+\usecolortheme{whale}
+
+% Размер постера (A0, портретная ориентация)
+\geometry{paperwidth=841mm, paperheight=1189mm}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+
+  % Первая группа: три колонки равной ширины
+  \begin{columns}[T, totalwidth=\textwidth]
+    \begin{column}{0.33\textwidth}
+      \begin{block}{Колонка 1}
+        Содержимое первой колонки (33\% ширины). \\
+        Можно добавить текст, формулы, изображения. \\
+        Например: $E = mc^2$.
+      \end{block}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \begin{block}{Колонка 2}
+        Содержимое второй колонки (33\% ширины). \\
+        Здесь тоже можно разместить любой контент. \\
+        \includegraphics[width=0.8\linewidth]{example-image-a}
+      \end{block}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \begin{block}{Колонка 3}
+        Содержимое третьей колонки (33\% ширины). \\
+        Ещё немного текста для примера.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  % Вторая группа: две колонки разной ширины
+  \vspace{1cm}
+  \begin{columns}[T, totalwidth=\textwidth]
+    \begin{column}{0.7\textwidth}
+      \begin{block}{Широкая колонка}
+        Содержимое широкой колонки (70\% ширины). \\
+        Здесь можно разместить более объёмный текст или большое изображение. \\
+        \begin{itemize}
+          \item Пункт списка 1
+          \item Пункт списка 2
+          \item Пункт списка 3
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{block}{Узкая колонка}
+        Содержимое узкой колонки (30\% ширины). \\
+        Краткий текст или компактная таблица. \\
+        \begin{tabular}{|c|c|}
+          \hline
+          A & B \\
+          \hline
+          1 & 2 \\
+          \hline
+        \end{tabular}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\end{document}
