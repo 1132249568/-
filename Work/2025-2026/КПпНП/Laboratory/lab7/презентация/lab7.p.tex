@@ -1,0 +1,852 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+% Выбор темы
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Определение цветов
+\definecolor{MyPink}{RGB}{194, 19, 182}
+\definecolor{MyBlue}{RGB}{0, 102, 204}
+\definecolor{CodeBg}{RGB}{245, 245, 245}
+\definecolor{MyGreen}{RGB}{34, 139, 34}
+
+% Настройка цветов темы
+\setbeamercolor{structure}{fg=MyBlue}
+\setbeamercolor{palette primary}{bg=MyBlue,fg=white}
+\setbeamercolor{palette secondary}{bg=MyPink,fg=white}
+\setbeamercolor{palette tertiary}{bg=MyBlue!80,fg=white}
+
+% Настройка листингов кода
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{CodeBg},
+    frame=single,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    commentstyle=\color{MyGreen},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    language=TeX
+}
+
+% Информация о презентации
+\title[Создание постеров в LaTeX]{Создание научных постеров\\с использованием пакета tikzposter}
+\subtitle{Отчет по изучению возможностей LaTeX}
+\author{Студент группы НПМмд02-24 Викторов Егор}
+\institute{РУДН}
+\date{\today}
+
+% Логотип (раскомментируйте и укажите путь к файлу)
+% \logo{\includegraphics[height=1cm]{logo.png}}
+
+\begin{document}
+
+% Титульный слайд
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Содержание
+\begin{frame}{Содержание}
+    \tableofcontents
+\end{frame}
+
+% Раздел 1: Введение
+\section{Введение}
+
+\begin{frame}{Что такое научный постер?}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Научный постер} — это визуальное представление результатов исследования
+            
+            \vspace{0.5cm}
+            
+            \textbf{Используется для:}
+            \begin{itemize}
+                \item Конференций
+                \item Симпозиумов
+                \item Защиты работ
+                \item Научных выставок
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{tikzpicture}
+                \draw[fill=MyBlue!20, draw=MyBlue, thick] (0,0) rectangle (4,5);
+                \node at (2,4.5) {\textbf{ЗАГОЛОВОК}};
+                \draw[fill=white] (0.2,3.5) rectangle (1.8,4);
+                \draw[fill=white] (2.2,3.5) rectangle (3.8,4);
+                \draw[fill=white] (0.2,2) rectangle (1.8,3.3);
+                \draw[fill=white] (2.2,2) rectangle (3.8,3.3);
+                \draw[fill=white] (0.2,0.2) rectangle (3.8,1.8);
+                \node[font=\tiny] at (2,0.5) {Выводы};
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Цель и задачи работы}
+    \begin{block}{Цель}
+        Изучение основных возможностей пакета \texttt{tikzposter} и освоение методов создания структурированных научных постеров
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Задачи}
+        \begin{enumerate}
+            \item Изучить работу с многоколоночными макетами
+            \item Освоить создание и форматирование блоков контента
+            \item Научиться вставлять графические элементы
+            \item Изучить работу с цветовым оформлением
+            \item Освоить добавление заметок и аннотаций
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+% Раздел 2: Структура постера
+\section{Структура постера и колонки}
+
+\begin{frame}[fragile]{Основы работы с колонками}
+    \textbf{Окружение columns} позволяет создавать многоколоночные макеты
+    
+    \vspace{0.3cm}
+    
+    \begin{lstlisting}
+\begin{columns}
+  \column{.33}
+  % Первая колонка (33% ширины)
+  
+  \column{.33}
+  % Вторая колонка (33% ширины)
+  
+  \column{.33}
+  % Третья колонка (33% ширины)
+\end{columns}
+    \end{lstlisting}
+    
+    \vspace{0.3cm}
+    
+    \begin{alertblock}{Важно!}
+        Числовое значение определяет относительную ширину колонки (от 0 до 1)
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Визуализация колонок}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            % Три равные колонки
+            \draw[fill=MyBlue!30, draw=MyBlue, thick] (0,0) rectangle (3,4);
+            \node at (1.5,2) {\textbf{33\%}};
+            
+            \draw[fill=MyPink!30, draw=MyPink, thick] (3.2,0) rectangle (6.2,4);
+            \node at (4.7,2) {\textbf{33\%}};
+            
+            \draw[fill=MyGreen!30, draw=MyGreen, thick] (6.4,0) rectangle (9.4,4);
+            \node at (7.9,2) {\textbf{33\%}};
+            
+            \node at (4.7,-0.7) {Три колонки равной ширины};
+            
+            % Две неравные колонки
+            \draw[fill=MyBlue!30, draw=MyBlue, thick] (0,-5.5) rectangle (6.5,-1.5);
+            \node at (3.25,-3.5) {\textbf{70\%}};
+            
+            \draw[fill=MyPink!30, draw=MyPink, thick] (6.7,-5.5) rectangle (9.4,-1.5);
+            \node at (8.05,-3.5) {\textbf{30\%}};
+            
+            \node at (4.7,-6.2) {Две колонки разной ширины};
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Колонки различной ширины}
+    \textbf{Асимметричный макет} для разных типов контента:
+    
+    \vspace{0.3cm}
+    
+    \begin{lstlisting}
+\begin{columns}
+  \column{.7}
+  % Широкая колонка (70% ширины)
+  \block{Основные результаты}{
+    Здесь размещается основной контент,
+    графики, таблицы
+  }
+  
+  \column{.3}
+  % Узкая колонка (30% ширины)
+  \block{Дополнительно}{
+    Ссылки, определения, примечания
+  }
+\end{columns}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Практические рекомендации по колонкам}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Рекомендации}
+                \begin{itemize}
+                    \item Сумма ширин ≈ 1.0
+                    \item Оптимально: 2-3 колонки
+                    \item Широкие — для основного текста
+                    \item Узкие — для списков и ссылок
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{exampleblock}{Примеры пропорций}
+                \begin{itemize}
+                    \item 0.33 + 0.33 + 0.33 = 0.99 ✓
+                    \item 0.5 + 0.5 = 1.0 ✓
+                    \item 0.7 + 0.3 = 1.0 ✓
+                    \item 0.6 + 0.4 = 1.0 ✓
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Раздел 3: Блоки контента
+\section{Работа с блоками контента}
+
+\begin{frame}[fragile]{Базовый синтаксис блоков}
+    \textbf{Команда \textbackslash block} создает блок контента:
+    
+    \vspace{0.3cm}
+    
+    \begin{lstlisting}
+\block{Заголовок блока}{
+  Содержимое блока может включать:
+  - Текст
+  - Списки
+  - Формулы
+  - Изображения
+}
+    \end{lstlisting}
+    
+    \vspace{0.3cm}
+    
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{С заголовком:}
+            \begin{lstlisting}
+\block{Заголовок}{Текст}
+            \end{lstlisting}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Без заголовка:}
+            \begin{lstlisting}
+\block{}{Текст}
+            \end{lstlisting}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Добавление заметок к блокам}
+    \textbf{Команда \textbackslash note} создает заметку со стрелкой:
+    
+    \vspace{0.3cm}
+    
+    \begin{lstlisting}
+\block{Заголовок}{
+  Основное содержимое блока
+  \vspace{2cm}  % Место для заметки
+}
+
+\note[targetoffsetx=5cm, 
+      targetoffsety=-3cm, 
+      width=8cm]{
+  Это заметка, указывающая на блок выше
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Параметры заметок}
+    \begin{block}{Основные параметры команды \textbackslash note}
+        \begin{description}
+            \item[\texttt{targetoffsetx}] Горизонтальное смещение стрелки относительно центра блока
+            \item[\texttt{targetoffsety}] Вертикальное смещение стрелки
+            \item[\texttt{width}] Ширина текстового блока заметки
+        \end{description}
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{alertblock}{Не забудьте!}
+        Используйте \texttt{\textbackslash vspace} для создания пространства под заметку в основном блоке
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Визуализация заметок}
+    \begin{center}
+        \begin{tikzpicture}
+            % Основной блок
+            \draw[fill=MyBlue!20, draw=MyBlue, thick] (0,0) rectangle (8,3);
+            \node[anchor=north] at (4,2.8) {\textbf{Основной блок}};
+            \node at (4,1.5) {Содержимое блока};
+            
+            % Заметка
+            \draw[fill=MyPink!20, draw=MyPink, thick] (9,1) rectangle (12,2.5);
+            \node[font=\small] at (10.5,1.75) {Заметка};
+            
+            % Стрелка
+            \draw[->, thick, MyPink] (9,1.75) -- (8,1.75);
+            
+            % Подписи параметров
+            \draw[<->, dashed] (8,3.5) -- (9,3.5);
+            \node[above, font=\tiny] at (8.5,3.5) {targetoffsetx};
+            
+            \draw[<->, dashed] (8.5,0) -- (8.5,1.75);
+            \node[right, font=\tiny] at (8.5,0.875) {targetoffsety};
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+% Раздел 4: Графические элементы
+\section{Вставка графических элементов}
+
+\begin{frame}[fragile]{Особенности работы с изображениями}
+    \begin{alertblock}{Важное ограничение!}
+        В tikzposter \textbf{нельзя} использовать окружение \texttt{figure}
+    \end{alertblock}
+    
+    \vspace{0.3cm}
+    
+    \textbf{Вместо этого используется:}
+    \begin{itemize}
+        \item Окружение \texttt{center}
+        \item Команда \texttt{\textbackslash captionof\{figure\}\{...\}}
+        \item Пакет \texttt{caption} (обязательно!)
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    
+    \begin{lstlisting}
+% В преамбуле:
+\usepackage{caption}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Вставка растровых изображений}
+    \begin{lstlisting}
+\block{Результаты эксперимента}{
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{image.png}
+    \captionof{figure}{Подпись к изображению}
+  \end{center}
+}
+    \end{lstlisting}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Поддерживаемые форматы}
+        \begin{itemize}
+            \item PNG — для скриншотов и растровой графики
+            \item JPG — для фотографий
+            \item PDF — для векторной графики
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Вставка векторных рисунков TikZ}
+    \begin{columns}[T]
+        \begin{column}{0.55\textwidth}
+            \begin{lstlisting}[basicstyle=\ttfamily\tiny]
+\block{Схема}{
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[thick,->] (0,0) -- (4,0) 
+        node[right]{$x$};
+      \draw[thick,->] (0,0) -- (0,3) 
+        node[above]{$y$};
+      \draw[blue,thick] (0,0) 
+        parabola (3,2);
+    \end{tikzpicture}
+    \captionof{figure}{График}
+  \end{center}
+}
+            \end{lstlisting}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \begin{center}
+                \begin{tikzpicture}[scale=0.7]
+                    \draw[thick,->] (0,0) -- (4,0) node[right]{$x$};
+                    \draw[thick,->] (0,0) -- (0,3) node[above]{$y$};
+                    \draw[blue,thick] (0,0) parabola (3,2);
+                \end{tikzpicture}
+            \end{center}
+            
+            \vspace{0.3cm}
+            
+            \textbf{Преимущества TikZ:}
+            \begin{itemize}
+                \item Векторная графика
+                \item Масштабируемость
+                \item Интеграция с LaTeX
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Рекомендации по изображениям}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Для печати}
+                \begin{itemize}
+                    \item Разрешение ≥ 300 DPI
+                    \item Векторные форматы (PDF, EPS)
+                    \item Крупные шрифты на графиках
+                    \item Высокий контраст
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Для экрана}
+                \begin{itemize}
+                    \item Разрешение ≥ 150 DPI
+                    \item PNG с прозрачностью
+                    \item Оптимизация размера
+                    \item Яркие цвета
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    
+    \begin{alertblock}{Совет}
+        Всегда проверяйте, как выглядят изображения в финальном размере постера!
+    \end{alertblock}
+\end{frame}
+
+% Раздел 5: Цветовое оформление
+\section{Работа с цветовым оформлением}
+
+\begin{frame}[fragile]{Ограничения tikzposter}
+    \begin{alertblock}{Важное ограничение!}
+        Пакет tikzposter \textbf{не поддерживает} опцию \texttt{svgnames} пакета xcolor
+    \end{alertblock}
+    
+    \vspace{0.3cm}
+    
+    \textbf{Это означает, что недоступны:}
+    \begin{itemize}
+        \item \texttt{Red}, \texttt{Blue}, \texttt{Green}
+        \item \texttt{ForestGreen}, \texttt{RoyalBlue}
+        \item Другие именованные цвета SVG
+    \end{itemize}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Решение}
+        Все цвета должны быть определены вручную с помощью \texttt{\textbackslash definecolor}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Определение пользовательских цветов}
+    \textbf{В преамбуле документа:}
+    
+    \vspace{0.3cm}
+    
+    \begin{lstlisting}
+\definecolor{MyPink}{RGB}{194, 19, 182}
+\definecolor{MyBlue}{RGB}{0, 102, 204}
+\definecolor{MyGreen}{RGB}{34, 139, 34}
+\definecolor{MyOrange}{RGB}{255, 140, 0}
+    \end{lstlisting}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Цветовые модели}
+        \begin{description}
+            \item[RGB] Красный, Зеленый, Синий (0-255)
+            \item[HTML] Шестнадцатеричный код (\#RRGGBB)
+            \item[cmyk] Голубой, Пурпурный, Желтый, Черный (0-1)
+        \end{description}
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Использование цветов в тексте}
+    \begin{lstlisting}
+Обычный черный текст, 
+\color{MyPink} розовый текст, 
+\color{black} снова черный текст.
+    \end{lstlisting}
+    
+    \vspace{0.5cm}
+    
+    \textbf{Результат:}
+    
+    Обычный черный текст, \color{MyPink}розовый текст\color{black}, снова черный текст.
+    
+    \vspace{0.5cm}
+    
+    \begin{alertblock}{Важно!}
+        После использования \texttt{\textbackslash color} все последующий текст будет этого цвета, пока не будет задан другой цвет
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Демонстрация цветов}
+    \begin{center}
+        \begin{tikzpicture}
+            % Розовый
+            \fill[MyPink] (0,0) rectangle (2,1.5);
+            \node[white] at (1,0.75) {\textbf{MyPink}};
+            \node[below, font=\tiny] at (1,0) {RGB(194,19,182)};
+            
+            % Синий
+            \fill[MyBlue] (2.5,0) rectangle (4.5,1.5);
+            \node[white] at (3.5,0.75) {\textbf{MyBlue}};
+            \node[below, font=\tiny] at (3.5,0) {RGB(0,102,204)};
+            
+            % Зеленый
+            \fill[MyGreen] (5,0) rectangle (7,1.5);
+            \node[white] at (6,0.75) {\textbf{MyGreen}};
+            \node[below, font=\tiny] at (6,0) {RGB(34,139,34)};
+            
+            % Оранжевый
+            \fill[orange] (7.5,0) rectangle (9.5,1.5);
+            \node[white] at (8.5,0.75) {\textbf{Orange}};
+            \node[below, font=\tiny] at (8.5,0) {RGB(255,140,0)};
+        \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Инструменты для подбора цветов}
+        \begin{itemize}
+            \item Google Color Picker
+            \item Adobe Color (color.adobe.com)
+            \item Coolors.co — генератор палитр
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Принципы работы с цветом}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Правило 60-30-10}
+                \begin{itemize}
+                    \item 60\% — основной цвет
+                    \item 30\% — дополнительный
+                    \item 10\% — акцентный
+                \end{itemize}
+            \end{block}
+            
+            \vspace{0.3cm}
+            
+            \begin{block}{Контрастность}
+                \begin{itemize}
+                    \item Темный текст на светлом фоне
+                    \item Светлый текст на темном фоне
+                    \item Избегайте низкого контраста
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{exampleblock}{Хорошие сочетания}
+                \begin{itemize}
+                    \item Синий + оранжевый
+                    \item Фиолетовый + желтый
+                    \item Зеленый + красный
+                \end{itemize}
+            \end{exampleblock}
+            
+            \vspace{0.3cm}
+            
+            \begin{alertblock}{Избегайте}
+                \begin{itemize}
+                    \item Более 4-5 цветов
+                    \item Слишком яркие цвета
+                    \item Плохой контраст
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Раздел 6: Полный пример
+\section{Полный пример постера}
+
+\begin{frame}[fragile]{Структура документа}
+    \begin{lstlisting}[basicstyle=\ttfamily\tiny]
+\documentclass[25pt, a0paper, portrait]{tikzposter}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{caption}
+
+\definecolor{MyPink}{RGB}{194, 19, 182}
+\definecolor{MyBlue}{RGB}{0, 102, 204}
+
+\title{Название исследования}
+\author{Автор}
+\institute{Университет}
+
+\begin{document}
+\maketitle
+
+% Содержимое постера
+
+\end{document}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Пример содержимого постера (1/2)}
+    \begin{lstlisting}[basicstyle=\ttfamily\tiny]
+\begin{columns}
+  \column{.5}
+  \block{Введение}{
+    Краткое описание проблемы и актуальности 
+    исследования. Постановка задачи.
+  }
+  
+  \block{Методы}{
+    \begin{itemize}
+      \item Описание используемых методов
+      \item Экспериментальная установка
+      \item Параметры эксперимента
+    \end{itemize}
+  }
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Пример содержимого постера (2/2)}
+    \begin{lstlisting}[basicstyle=\ttfamily\tiny]
+  \column{.5}
+  \block{Результаты}{
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]{results.png}
+      \captionof{figure}{Основные результаты эксперимента}
+    \end{center}
+  }
+  
+  \block{Выводы}{
+    \begin{enumerate}
+      \item Первый важный вывод
+      \item Второй важный вывод
+      \item Перспективы дальнейших исследований
+    \end{enumerate}
+  }
+\end{columns}
+    \end{lstlisting}
+\end{frame}
+
+% Раздел 7: Практические рекомендации
+\section{Практические рекомендации}
+
+\begin{frame}{Планирование структуры}
+    \begin{block}{Перед началом работы}
+        \begin{enumerate}
+            \item Определите основные разделы постера
+            \item Спланируйте количество и ширину колонок
+            \item Оцените необходимое пространство для графиков
+            \item Продумайте цветовую схему
+            \item Подготовьте все изображения в нужном формате
+        \end{enumerate}
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{alertblock}{Совет}
+        Нарисуйте эскиз постера на бумаге перед началом работы в LaTeX!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Оформление контента}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Текст}
+                \begin{itemize}
+                    \item Краткие заголовки
+                    \item Минимум текста
+                    \item Крупный шрифт
+                    \item Структурированность
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Визуализация}
+                \begin{itemize}
+                    \item Больше графиков
+                    \item Меньше таблиц
+                    \item Яркие цвета
+                    \item Понятные подписи
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    
+    \begin{exampleblock}{Правило «3 метра»}
+        Основная информация должна читаться с расстояния 3 метров
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Типичные ошибки}
+    \begin{alertblock}{Чего следует избегать}
+        \begin{itemize}
+            \item Слишком много текста — постер превращается в статью
+            \item Мелкий шрифт — информация нечитаема
+            \item Слишком много цветов — пестрота и хаос
+            \item Низкое качество изображений — непрофессиональный вид
+            \item Отсутствие структуры — сложно следить за логикой
+            \item Неправильные пропорции колонок — неэффективное использование пространства
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Технические аспекты}
+    \begin{block}{Обязательные требования}
+        \begin{itemize}
+            \item Подключить пакет \texttt{caption} для работы с подписями
+            \item Определить все используемые цвета в преамбуле
+            \item Проверить сумму ширин колонок (должна быть ≈ 1.0)
+            \item Использовать изображения в высоком разрешении
+            \item Добавить \texttt{\textbackslash vspace} для заметок
+        \end{itemize}
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{exampleblock}{Размеры постеров}
+        \begin{itemize}
+            \item A0 — 841 × 1189 мм (стандарт для конференций)
+            \item A1 — 594 × 841 мм (компактный вариант)
+            \item Ориентация: portrait (вертикальная) или landscape (горизонтальная)
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+% Раздел 8: Заключение
+\section{Заключение}
+
+\begin{frame}{Освоенные навыки}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{Структурирование:}
+            \begin{itemize}
+                \item Многоколоночные макеты
+                \item Блоки контента
+                \item Заметки и аннотации
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            
+            \textbf{Оформление:}
+            \begin{itemize}
+                \item Цветовые схемы
+                \item Пользовательские цвета
+                \item Форматирование текста
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \textbf{Графика:}
+            \begin{itemize}
+                \item Растровые изображения
+                \item Векторная графика TikZ
+                \item Подписи к рисункам
+            \end{itemize}
+            
+            \vspace{0.3cm}
+            
+            \textbf{Техническое:}
+            \begin{itemize}
+                \item Работа с пакетами
+                \item Настройка параметров
+                \item Решение проблем
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Преимущества tikzposter}
+    \begin{block}{Почему стоит использовать tikzposter?}
+        \begin{enumerate}
+            \item \textbf{Профессиональное оформление} — без графических редакторов
+            \item \textbf{Гибкость} — полный контроль над структурой и дизайном
+            \item \textbf{Интеграция} — работает со всеми пакетами LaTeX
+            \item \textbf{Масштабируемость} — легко изменить размер постера
+            \item \textbf{Воспроизводимость} — легко обновлять и модифицировать
+            \item \textbf{Качество} — векторная графика для печати
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Области применения}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Научная сфера}
+                \begin{itemize}
+                    \item Конференции
+                    \item Симпозиумы
+                    \item Семинары
+                    \item Защиты диссертаций
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Образование}
+                \begin{itemize}
+                    \item Курсовые работы
+                    \item Дипломные проекты
+                    \item Студенческие конференции
+                    \item Научные кружки
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    
+    \begin{center}
+        \Large\textbf{tikzposter — мощный инструмент для\\визуализации научных результатов!}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Дальнейшее изучение}
+    \begin{block}{Рекомендуемые ресурсы}
+        \begin{itemize}
+            \item Официальная документация tikzposter
+            \item Галерея примеров на Overleaf
+            \item Сообщество TeX Stack Exchange
+            \item Книга «The TikZ and PGF Manual»
+        \end{itemize}
+    \end{block}
+    
+    \vspace{0.3cm}
+    
+    \begin{block}{Дополнительные возможности для изучения}
+        \begin{itemize}
+            \item Создание собственных тем оформления
+            \item Продвинутая работа с TikZ
+            \item Интеграция с другими пакетами (pgfplots, circuitikz)
+            \item Автоматизация создания постеров
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+% Финальный слайд
+\begin{frame}[plain]
+    \begin{center}
+        \Huge\textbf{Спасибо за внимание!}
+        \vspace{1cm}
+    \end{center}
+\end{frame}
+
+\end{document}

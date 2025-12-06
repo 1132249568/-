@@ -1,0 +1,19 @@
+\frametitle{Пример содержимого постера (2/2)}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+  \column{.5}
+  \block{Результаты}{
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]{results.png}
+      \captionof{figure}{Основные результаты эксперимента}
+    \end{center}
+  }
+
+  \block{Выводы}{
+    \begin{enumerate}
+      \item Первый важный вывод
+      \item Второй важный вывод
+      \item Перспективы дальнейших исследований
+    \end{enumerate}
+  }
+\end{columns}
+    \end{lstlisting}

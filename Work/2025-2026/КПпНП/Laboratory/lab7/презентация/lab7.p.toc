@@ -1,0 +1,9 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Введение}{3}{0}{1}
+\beamer@sectionintoc {2}{Структура постера и колонки}{5}{0}{2}
+\beamer@sectionintoc {3}{Работа с блоками контента}{9}{0}{3}
+\beamer@sectionintoc {4}{Вставка графических элементов}{13}{0}{4}
+\beamer@sectionintoc {5}{Работа с цветовым оформлением}{17}{0}{5}
+\beamer@sectionintoc {6}{Полный пример постера}{22}{0}{6}
+\beamer@sectionintoc {7}{Практические рекомендации}{25}{0}{7}
+\beamer@sectionintoc {8}{Заключение}{29}{0}{8}
