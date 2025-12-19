@@ -1,0 +1,6 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Введение}{3}{0}{1}
+\beamer@sectionintoc {2}{Задание 1: Граф}{5}{0}{2}
+\beamer@sectionintoc {3}{Задание 2: Функции}{10}{0}{3}
+\beamer@sectionintoc {4}{Задание 3: Фрактал}{13}{0}{4}
+\beamer@sectionintoc {5}{Заключение}{17}{0}{5}

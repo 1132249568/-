@@ -1,0 +1,696 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Выбор темы
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Настройка цветов
+\definecolor{myblue}{RGB}{0,102,204}
+\definecolor{mygreen}{RGB}{0,153,76}
+\setbeamercolor{structure}{fg=myblue}
+\setbeamercolor{title}{fg=white,bg=myblue}
+\setbeamercolor{frametitle}{fg=white,bg=myblue}
+
+% Настройка листингов
+\lstset{
+  language=[LaTeX]TeX,
+  basicstyle=\tiny\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!60!black},
+  stringstyle=\color{red},
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  backgroundcolor=\color{gray!5},
+  xleftmargin=5pt,
+  xrightmargin=5pt
+}
+
+% Информация о презентации
+\title[Графика в TikZ]{Построение графических объектов в TikZ}
+\subtitle{Графы, функции и фракталы}
+\author[Викторов Егор]{Выполнил: [Викторов Егор] \\ Группа: [НПМмд02-24]}
+\institute[РУДН]{[РУДН]}
+\date{\today}
+
+% Логотип (опционально)
+% \logo{\includegraphics[height=1cm]{logo.png}}
+
+\begin{document}
+
+% Титульный слайд
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Содержание
+\begin{frame}{Содержание}
+  \tableofcontents
+\end{frame}
+
+% Раздел 1: Введение
+\section{Введение}
+
+\begin{frame}{Цель работы}
+  \begin{block}{Основная цель}
+    Изучение возможностей пакета TikZ для создания различных графических объектов в системе \LaTeX
+  \end{block}
+  
+  \vspace{0.5cm}
+  
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Задачи:}
+      \begin{itemize}
+        \item Построение графов с узлами
+        \item Визуализация функций
+        \item Создание фракталов
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Инструменты:}
+      \begin{itemize}
+        \item Пакет TikZ/PGF
+        \item Рекурсивные алгоритмы
+        \item Математические вычисления
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Что такое TikZ?}
+  \begin{columns}[c]
+    \begin{column}{0.55\textwidth}
+      \textbf{TikZ} (TikZ ist kein Zeichenprogramm)
+      
+      \vspace{0.3cm}
+      
+      \begin{itemize}
+        \item Мощный инструмент для векторной графики
+        \item Интеграция с \LaTeX
+        \item Программируемость
+        \item Точность и масштабируемость
+      \end{itemize}
+      
+      \vspace{0.3cm}
+      
+      \begin{alertblock}{Преимущество}
+        Графика создается кодом, что обеспечивает воспроизводимость и точность
+      \end{alertblock}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+      \begin{tikzpicture}[scale=0.6]
+        \draw[fill=myblue!30] (0,0) circle (1.5);
+        \draw[fill=mygreen!30] (1.5,0) circle (1.5);
+        \node at (0,0) {\LaTeX};
+        \node at (1.5,0) {TikZ};
+        \draw[->,ultra thick,red] (0.75,-2) -- (0.75,-0.5);
+        \node[below] at (0.75,-2) {Графика};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% Раздел 2: Задание 1
+\section{Задание 1: Граф}
+
+\begin{frame}{Задание 1: Построение графа}
+  \begin{block}{Постановка задачи}
+    Построить граф с 6 узлами, расположенными по окружности, с различными стилями узлов и ребер
+  \end{block}
+  
+  \vspace{0.3cm}
+  
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Типы узлов:}
+      \begin{itemize}
+        \item \textcolor{mygreen}{Зеленые заполненные} (A, C, E)
+        \item Двойная обводка (B, D, F)
+      \end{itemize}
+      
+      \vspace{0.2cm}
+      
+      \textbf{Типы ребер:}
+      \begin{itemize}
+        \item Пунктирные с весами
+        \item Кривые с закруглениями
+        \item Гладкие кривые
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Используемые техники:}
+      \begin{itemize}
+        \item Полярные координаты
+        \item Пользовательские стили
+        \item Параметры кривизны
+        \item Позиционирование меток
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Код: Определение стилей}
+\begin{lstlisting}
+\tikzset{
+  ring/.style={
+    circle,
+    draw=black,
+    thin,
+    double=black,
+    double distance=1.5pt,
+    minimum size=9mm,
+    inner sep=0pt,
+    fill=white
+  },
+  green/.style={
+    circle,
+    draw=black,
+    very thick,
+    minimum size=9mm,
+    inner sep=0pt,
+    fill=green!60
+  }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Код: Размещение узлов}
+\begin{lstlisting}
+% Узлы в полярных координатах (угол:радиус)
+\node[green] (A) at (90:3cm)  {A};
+\node[ring]  (B) at (150:3cm) {B};
+\node[green] (C) at (210:3cm) {C};
+\node[ring]  (D) at (270:3cm) {D};
+\node[green] (E) at (330:3cm) {E};
+\node[ring]  (F) at (30:3cm)  {F};
+\end{lstlisting}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+  \draw[gray,dashed] (0,0) circle (3cm);
+  \foreach \angle/\label in {90/A,150/B,210/C,270/D,330/E,30/F} {
+    \node[circle,fill=myblue,inner sep=2pt] at (\angle:3cm) {};
+    \node at (\angle:3.5cm) {\label};
+  }
+  \draw[->,thick] (0,0) -- (90:3cm);
+  \node[right] at (45:1.5cm) {$r=3$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Код: Рисование ребер}
+\begin{lstlisting}
+% Пунктирные линии с метками весов
+\draw[dotted,blue,line width=1.5pt] (B) -- 
+  node[midway,above,fill=white] {6} (F);
+\draw[dotted,blue,very thick] (B) -- 
+  node[pos=0.5,left,fill=white] {2} (D);
+
+% Голубая кривая с закругленными углами
+\draw[cyan!80!black,very thick,rounded corners=6pt]
+  (B) to[out=200,in=160] (C) to[out=-20,in=180] (D);
+
+% Красные гладкие кривые
+\draw[red!80!black,very thick,smooth]
+  (A) to[out=-60,in=90] 
+  node[pos=0.5,right,red,fill=white] {$\sqrt{2}$} (D);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Результат: Граф}
+\begin{center}
+\begin{tikzpicture}[>=stealth, every node/.style={font=\small},scale=0.85]
+  \tikzset{
+    ring/.style={circle,draw=black,thin,double=black,double distance=1.5pt,minimum size=9mm,inner sep=0pt,fill=white},
+    green/.style={circle,draw=black,very thick,minimum size=9mm,inner sep=0pt,fill=green!60},
+  }
+  \node[green] (A) at (90:3cm) {A};
+  \node[ring]  (B) at (150:3cm) {B};
+  \node[green] (C) at (210:3cm) {C};
+  \node[ring]  (D) at (270:3cm) {D};
+  \node[green] (E) at (330:3cm) {E};
+  \node[ring]  (F) at (30:3cm)  {F};
+  \draw[dotted,blue,line width=1.5pt] (B) -- node[midway,above,fill=white] {6} (F);
+  \draw[dotted,blue,very thick] (B) -- node[pos=0.5,left,fill=white] {2} (D);
+  \draw[dotted,blue,very thick] (F) -- node[pos=0.5,right,fill=white] {4} (D);
+  \draw[cyan!80!black,very thick,rounded corners=6pt]
+    (B) to[out=200,in=160] (C) to[out=-20,in=180] (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-60,in=90] node[pos=0.5,right,red,fill=white] {$\sqrt{2}$} (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-30,in=90] (E);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=180,in=90] (B);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% Раздел 3: Задание 2
+\section{Задание 2: Функции}
+
+\begin{frame}{Задание 2: Графики функций}
+  \begin{block}{Постановка задачи}
+    Построить графики взаимно обратных функций: $y = e^x$ и $y = \ln(x)$
+  \end{block}
+  
+  \vspace{0.4cm}
+  
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \textbf{Экспоненциальная функция:}
+      \[y = e^x\]
+      \begin{itemize}
+        \item Область определения: $(-\infty, +\infty)$
+        \item Область значений: $(0, +\infty)$
+        \item Проходит через $(0, 1)$
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Натуральный логарифм:}
+      \[y = \ln(x)\]
+      \begin{itemize}
+        \item Область определения: $(0, +\infty)$
+        \item Область значений: $(-\infty, +\infty)$
+        \item Проходит через $(1, 0)$
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{0.3cm}
+  
+  \begin{alertblock}{Свойство}
+    Графики симметричны относительно прямой $y = x$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Код: Построение графиков}
+\begin{lstlisting}
+% Координатные оси
+\draw[->,gray!60] (0,-2.6) -- (0,3.6) node[above] {$y$};
+\draw[->,gray!60] (-1.6,0) -- (3.2,0) node[right] {$x$};
+
+% Вспомогательная линия y=1
+\draw[gray!25] (-1.3,1) -- (3.0,1);
+
+% График y = e^x
+\draw[domain=-1.2:2.2, smooth, variable=\x,
+      blue!80!black, very thick]
+  plot ({\x},{exp(\x)});
+
+% График y = ln(x)
+\draw[domain=0.11:2.8, smooth, variable=\x,
+      black!80, very thick]
+  plot ({\x},{ln(\x)});
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Результат: Графики функций}
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=1.5cm,scale=0.9]
+  \draw[->,gray!60] (0,-2.6) -- (0,3.6) node[above] {$y$};
+  \draw[->,gray!60] (-1.6,0) -- (3.2,0) node[right] {$x$};
+  \draw[gray!25] (-1.3,1) -- (3.0,1);
+  \draw[gray!60] (-0.05,1) -- (0.05,1);
+  \node[gray!50,left] at (-1.1,1) {$y=1$};
+  \draw[fill=white,draw=gray!60] (0,0) circle(0.06);
+  \draw[gray!60] (1,-0.05) -- (1,0.05);
+  \node[gray!40,below=3pt] at (1,0) {$x=1$};
+  \draw[domain=-1.2:2.2,smooth,variable=\x,blue!80!black,very thick]
+    plot ({\x},{exp(\x)});
+  \node[blue!80!black, right] at (2.05,3.05) {$y=e^{x}$};
+  \draw[domain=0.11:2.8,smooth,variable=\x,black!80,very thick]
+    plot ({\x},{ln(\x)});
+  \node[black!80,right] at (2.3,0.85) {$y=\ln(x)$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% Раздел 4: Задание 3
+\section{Задание 3: Фрактал}
+
+\begin{frame}{Задание 3: Ковер Серпинского}
+  \begin{columns}[c]
+    \begin{column}{0.55\textwidth}
+      \begin{block}{Что такое фрактал?}
+        Самоподобная геометрическая фигура, каждая часть которой повторяет всю фигуру целиком
+      \end{block}
+      
+      \vspace{0.3cm}
+      
+      \textbf{Ковер Серпинского:}
+      \begin{itemize}
+        \item Квадрат делится на 9 частей (3×3)
+        \item Центральная часть удаляется
+        \item Процесс повторяется рекурсивно
+      \end{itemize}
+      
+      \vspace{0.3cm}
+      
+      \textbf{Фрактальная размерность:}
+      \[D = \frac{\ln 8}{\ln 3} \approx 1.893\]
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+      \begin{tikzpicture}[scale=0.5]
+        % Этап 0
+        \draw[gray] (0,3) rectangle (2,5);
+        \fill[myblue] (0,3) rectangle (2,5);
+        \node[below] at (1,2.7) {Этап 0};
+        
+        % Этап 1
+        \draw[gray] (3,3) rectangle (5,5);
+        \foreach \i in {0,1,2} {
+          \foreach \j in {0,1,2} {
+            \pgfmathtruncatemacro{\skip}{(\i==1 && \j==1) ? 1 : 0}
+            \ifnum\skip=0
+              \fill[myblue] ({3+\i*0.666},{3+\j*0.666}) rectangle ++(0.666,0.666);
+            \fi
+          }
+        }
+        \node[below] at (4,2.7) {Этап 1};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Алгоритм построения}
+\begin{lstlisting}
+\newcommand{\carpet}[4]{%
+  \pgfmathtruncatemacro{\level}{#4}%
+  \ifnum\level=0
+    % Базовый случай: рисуем квадрат
+    \fill[black] (#1,#2) rectangle +(#3,#3);
+  \else
+    % Рекурсивный случай
+    \pgfmathsetmacro{\newsize}{#3/3}%
+    \pgfmathtruncatemacro{\nextlevel}{\level-1}%
+    \foreach \i in {0,1,2} {
+      \foreach \j in {0,1,2} {
+        % Пропускаем центр (i=1, j=1)
+        \pgfmathtruncatemacro{\skip}{(\i==1 && \j==1) ? 1 : 0}%
+        \ifnum\skip=0
+          \pgfmathsetmacro{\newx}{#1 + \i*\newsize}%
+          \pgfmathsetmacro{\newy}{#2 + \j*\newsize}%
+          \carpet{\newx}{\newy}{\newsize}{\nextlevel}%
+        \fi
+      }
+    }
+  \fi
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Результат: Ковер Серпинского}
+\begin{center}
+\begin{tikzpicture}[scale=0.45]
+  \newcommand{\carpet}[4]{%
+    \pgfmathtruncatemacro{\level}{#4}%
+    \ifnum\level=0
+      \fill[black] (#1,#2) rectangle +(#3,#3);
+    \else
+      \pgfmathsetmacro{\newsize}{#3/3}%
+      \pgfmathtruncatemacro{\nextlevel}{\level-1}%
+      \foreach \i in {0,1,2} {
+        \foreach \j in {0,1,2} {
+          \pgfmathtruncatemacro{\skip}{(\i==1 && \j==1) ? 1 : 0}%
+          \ifnum\skip=0
+            \pgfmathsetmacro{\newx}{#1 + \i*\newsize}%
+            \pgfmathsetmacro{\newy}{#2 + \j*\newsize}%
+            \carpet{\newx}{\newy}{\newsize}{\nextlevel}%
+          \fi
+        }
+      }
+    \fi
+  }
+  \foreach \stage in {0,1,2,3,4} {
+    \begin{scope}[xshift=\stage*4cm]
+      \draw[gray, thin] (0,0) rectangle (3,3);
+      \carpet{0}{0}{3}{\stage}
+      \node[below] at (1.5,-0.3) {\small Этап \stage};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Этап} & \textbf{Квадратов} & \textbf{Площадь} \\
+\hline
+0 & $8^0 = 1$ & $1$ \\
+1 & $8^1 = 8$ & $8/9$ \\
+2 & $8^2 = 64$ & $(8/9)^2$ \\
+3 & $8^3 = 512$ & $(8/9)^3$ \\
+4 & $8^4 = 4096$ & $(8/9)^4$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Анализ сложности}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Временная сложность:}
+      \[T(n) = O(8^n)\]
+      
+      \vspace{0.3cm}
+      
+      На каждом уровне:
+      \begin{itemize}
+        \item Проверяется 9 позиций
+        \item Рисуется 8 квадратов
+        \item Глубина рекурсии: $n$
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Пространственная сложность:}
+      \[S(n) = O(n)\]
+      
+      \vspace{0.3cm}
+      
+      Стек вызовов:
+      \begin{itemize}
+        \item Максимальная глубина: $n$
+        \item Каждый уровень хранит параметры
+        \item Линейная зависимость
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{0.5cm}
+  
+  \begin{exampleblock}{Практическое ограничение}
+    Для этапа 5 потребуется нарисовать $8^5 = 32\,768$ квадратов, что может занять значительное время компиляции
+  \end{exampleblock}
+\end{frame}
+
+% Раздел 5: Заключение
+\section{Заключение}
+
+\begin{frame}{Освоенные навыки}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Технические навыки:}
+      \begin{itemize}
+        \item Работа с узлами и стилями
+        \item Построение различных типов линий
+        \item Визуализация функций
+        \item Рекурсивное программирование
+        \item Работа с координатами
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \textbf{Теоретические знания:}
+      \begin{itemize}
+        \item Теория графов
+        \item Математический анализ
+        \item Фрактальная геометрия
+        \item Алгоритмы и сложность
+        \item Векторная графика
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  
+  \vspace{0.5cm}
+  
+  \begin{block}{Главный вывод}
+    TikZ — мощный инструмент для создания высококачественной научной графики, интегрированной с \LaTeX
+  \end{block}
+\end{frame}
+
+\begin{frame}{Преимущества TikZ}
+  \begin{columns}[c]
+    \begin{column}{0.55\textwidth}
+      \begin{itemize}
+        \item[\color{mygreen}\checkmark] \textbf{Точность} — математически точные построения
+        \item[\color{mygreen}\checkmark] \textbf{Масштабируемость} — векторная графика
+        \item[\color{mygreen}\checkmark] \textbf{Интеграция} — единый стиль с документом
+        \item[\color{mygreen}\checkmark] \textbf{Программируемость} — автоматизация
+        \item[\color{mygreen}\checkmark] \textbf{Воспроизводимость} — код вместо файлов
+      \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.4\textwidth}
+      \begin{tikzpicture}[scale=0.6]
+        \draw[fill=myblue!20] (0,0) -- (3,0) -- (3,3) -- (0,3) -- cycle;
+        \draw[fill=mygreen!20] (1.5,1.5) circle (1.2);
+        \node at (1.5,1.5) {\Large TikZ};
+        \draw[->,ultra thick,red] (1.5,0.3) -- (1.5,-0.5);
+        \node[below,red] at (1.5,-0.5) {Качество};
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Области применения}
+  \begin{center}
+  \begin{tikzpicture}[
+    box/.style={rectangle,rounded corners,draw=myblue,fill=myblue!10,thick,minimum width=3cm,minimum height=1cm,align=center},
+    arrow/.style={->,>=stealth,thick,myblue}
+  ]
+    \node[box] (tikz) at (0,0) {\textbf{TikZ}};
+    
+    \node[box] (graphs) at (-3,2.5) {Графы и\\диаграммы};
+    \node[box] (math) at (0,2.5) {Математические\\иллюстрации};
+    \node[box] (schemes) at (3,2.5) {Схемы и\\блок-схемы};
+    
+    \node[box] (plots) at (-3,-2.5) {Графики\\функций};
+    \node[box] (geo) at (0,-2.5) {Геометрические\\построения};
+    \node[box] (fractals) at (3,-2.5) {Фракталы и\\узоры};
+    
+    \draw[arrow] (tikz) -- (graphs);
+    \draw[arrow] (tikz) -- (math);
+    \draw[arrow] (tikz) -- (schemes);
+    \draw[arrow] (tikz) -- (plots);
+    \draw[arrow] (tikz) -- (geo);
+    \draw[arrow] (tikz) -- (fractals);
+  \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Дальнейшее развитие}
+  \begin{block}{Возможные направления}
+    \begin{itemize}
+      \item Изучение библиотек TikZ (circuits, automata, mindmap)
+      \item 3D-графика с помощью tikz-3dplot
+      \item Анимация с использованием animate
+      \item Создание интерактивных диаграмм
+      \item Разработка собственных библиотек стилей
+    \end{itemize}
+  \end{block}
+  
+  \vspace{0.3cm}
+  
+  \begin{exampleblock}{Рекомендуемые ресурсы}
+    \begin{itemize}
+      \item Официальная документация TikZ \& PGF (1300+ страниц)
+      \item TeXample.net — галерея примеров
+      \item TeX Stack Exchange — сообщество
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[standout]
+  \Huge Спасибо за внимание!
+  
+  \vspace{1cm}
+  
+  \Large Вопросы?
+  
+  \vspace{1cm}
+  
+  \normalsize
+  \begin{tikzpicture}
+    \draw[myblue,ultra thick] (0,0) -- (2,0) -- (1,1.732) -- cycle;
+    \node[myblue] at (1,0.577) {\Large \LaTeX};
+  \end{tikzpicture}
+\end{frame}
+
+% Дополнительные слайды (не входят в основную презентацию)
+\appendix
+
+\begin{frame}[fragile]{Приложение: Полный код графа}
+\begin{lstlisting}[basicstyle=\fontsize{6}{7}\ttfamily]
+\documentclass[border=1cm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+\begin{document}
+\begin{tikzpicture}[>=stealth, every node/.style={font=\small}]
+  \tikzset{
+    ring/.style={circle,draw=black,thin,double=black,
+                 double distance=1.5pt,minimum size=9mm,
+                 inner sep=0pt,fill=white},
+    green/.style={circle,draw=black,very thick,
+                  minimum size=9mm,inner sep=0pt,fill=green!60},
+  }
+  \node[green] (A) at (90:3cm) {A};
+  \node[ring]  (B) at (150:3cm) {B};
+  \node[green] (C) at (210:3cm) {C};
+  \node[ring]  (D) at (270:3cm) {D};
+  \node[green] (E) at (330:3cm) {E};
+  \node[ring]  (F) at (30:3cm)  {F};
+  \draw[dotted,blue,line width=1.5pt] (B) -- 
+    node[midway,above,fill=white] {6} (F);
+  \draw[dotted,blue,very thick] (B) -- 
+    node[pos=0.5,left,fill=white] {2} (D);
+  \draw[dotted,blue,very thick] (F) -- 
+    node[pos=0.5,right,fill=white] {4} (D);
+  \draw[cyan!80!black,very thick,rounded corners=6pt]
+    (B) to[out=200,in=160] (C) to[out=-20,in=180] (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-60,in=90] 
+    node[pos=0.5,right,red,fill=white] {$\sqrt{2}$} (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-30,in=90] (E);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=180,in=90] (B);
+\end{tikzpicture}
+\end{document}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Приложение: Литература}
+  \begin{thebibliography}{99}
+    \bibitem{tikz}
+    Till Tantau.
+    \newblock \textit{The TikZ and PGF Packages}.
+    \newblock Manual for version 3.1.10, 2023.
+    
+    \bibitem{mandelbrot}
+    Benoit Mandelbrot.
+    \newblock \textit{The Fractal Geometry of Nature}.
+    \newblock W. H. Freeman and Company, 1982.
+    
+    \bibitem{knuth}
+    Donald E. Knuth.
+    \newblock \textit{The \TeX book}.
+    \newblock Addison-Wesley, 1986.
+    
+    \bibitem{latex}
+    Leslie Lamport.
+    \newblock \textit{\LaTeX: A Document Preparation System}.
+    \newblock Addison-Wesley, 1994.
+  \end{thebibliography}
+\end{frame}
+
+\end{document}

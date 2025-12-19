@@ -1,0 +1,466 @@
+<div class="frame">
+
+</div>
+<div class="frame">
+<p><span>Содержание</span></p>
+</div>
+<h1 id="введение">Введение</h1>
+<div class="frame">
+<p><span>Цель работы</span></p>
+<div class="block">
+<p><span>Основная цель</span> Изучение возможностей пакета TikZ для
+создания различных графических объектов в системе LaTeX</p>
+</div>
+<div class="columns">
+<div class="column">
+<p><span>0.48</span> <strong>Задачи:</strong></p>
+<ul>
+<li><p>Построение графов с узлами</p></li>
+<li><p>Визуализация функций</p></li>
+<li><p>Создание фракталов</p></li>
+</ul>
+</div><div class="column">
+<p><span>0.48</span> <strong>Инструменты:</strong></p>
+<ul>
+<li><p>Пакет TikZ/PGF</p></li>
+<li><p>Рекурсивные алгоритмы</p></li>
+<li><p>Математические вычисления</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="frame">
+<p><span>Что такое TikZ?</span></p>
+<div class="columns">
+<div class="column">
+<p><span>0.55</span> <strong>TikZ</strong> (TikZ ist kein
+Zeichenprogramm)</p>
+<ul>
+<li><p>Мощный инструмент для векторной графики</p></li>
+<li><p>Интеграция с LaTeX</p></li>
+<li><p>Программируемость</p></li>
+<li><p>Точность и масштабируемость</p></li>
+</ul>
+<div class="alertblock">
+<p><span>Преимущество</span> Графика создается кодом, что обеспечивает
+воспроизводимость и точность</p>
+</div>
+</div><div class="column">
+<p><span>0.4</span></p>
+</div>
+</div>
+</div>
+<h1 id="задание-1-граф">Задание 1: Граф</h1>
+<div class="frame">
+<p><span>Задание 1: Построение графа</span></p>
+<div class="block">
+<p><span>Постановка задачи</span> Построить граф с 6 узлами,
+расположенными по окружности, с различными стилями узлов и ребер</p>
+</div>
+<div class="columns">
+<div class="column">
+<p><span>0.48</span> <strong>Типы узлов:</strong></p>
+<ul>
+<li><p><span style="color: mygreen">Зеленые заполненные</span> (A, C,
+E)</p></li>
+<li><p>Двойная обводка (B, D, F)</p></li>
+</ul>
+<p><strong>Типы ребер:</strong></p>
+<ul>
+<li><p>Пунктирные с весами</p></li>
+<li><p>Кривые с закруглениями</p></li>
+<li><p>Гладкие кривые</p></li>
+</ul>
+</div><div class="column">
+<p><span>0.48</span> <strong>Используемые техники:</strong></p>
+<ul>
+<li><p>Полярные координаты</p></li>
+<li><p>Пользовательские стили</p></li>
+<li><p>Параметры кривизны</p></li>
+<li><p>Позиционирование меток</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="frame">
+<p><span>Код: Определение стилей</span></p>
+<pre><code>\tikzset{
+  ring/.style={
+    circle,
+    draw=black,
+    thin,
+    double=black,
+    double distance=1.5pt,
+    minimum size=9mm,
+    inner sep=0pt,
+    fill=white
+  },
+  green/.style={
+    circle,
+    draw=black,
+    very thick,
+    minimum size=9mm,
+    inner sep=0pt,
+    fill=green!60
+  }
+}</code></pre>
+</div>
+<div class="frame">
+<p><span>Код: Размещение узлов</span></p>
+<pre><code>% Узлы в полярных координатах (угол:радиус)
+\node[green] (A) at (90:3cm)  {A};
+\node[ring]  (B) at (150:3cm) {B};
+\node[green] (C) at (210:3cm) {C};
+\node[ring]  (D) at (270:3cm) {D};
+\node[green] (E) at (330:3cm) {E};
+\node[ring]  (F) at (30:3cm)  {F};</code></pre>
+<div class="center">
+
+</div>
+</div>
+<div class="frame">
+<p><span>Код: Рисование ребер</span></p>
+<pre><code>% Пунктирные линии с метками весов
+\draw[dotted,blue,line width=1.5pt] (B) -- 
+  node[midway,above,fill=white] {6} (F);
+\draw[dotted,blue,very thick] (B) -- 
+  node[pos=0.5,left,fill=white] {2} (D);
+
+% Голубая кривая с закругленными углами
+\draw[cyan!80!black,very thick,rounded corners=6pt]
+  (B) to[out=200,in=160] (C) to[out=-20,in=180] (D);
+
+% Красные гладкие кривые
+\draw[red!80!black,very thick,smooth]
+  (A) to[out=-60,in=90] 
+  node[pos=0.5,right,red,fill=white] {$\sqrt{2}$} (D);</code></pre>
+</div>
+<div class="frame">
+<p><span>Результат: Граф</span></p>
+<div class="center">
+
+</div>
+</div>
+<h1 id="задание-2-функции">Задание 2: Функции</h1>
+<div class="frame">
+<p><span>Задание 2: Графики функций</span></p>
+<div class="block">
+<p><span>Постановка задачи</span> Построить графики взаимно обратных
+функций: <span
+class="math inline"><em>y</em> = <em>e</em><sup><em>x</em></sup></span>
+и <span class="math inline"><em>y</em> = ln (<em>x</em>)</span></p>
+</div>
+<div class="columns">
+<div class="column">
+<p><span>0.48</span> <strong>Экспоненциальная функция:</strong> <span
+class="math display"><em>y</em> = <em>e</em><sup><em>x</em></sup></span></p>
+<ul>
+<li><p>Область определения: <span
+class="math inline">(−∞, +∞)</span></p></li>
+<li><p>Область значений: <span
+class="math inline">(0, +∞)</span></p></li>
+<li><p>Проходит через <span class="math inline">(0, 1)</span></p></li>
+</ul>
+</div><div class="column">
+<p><span>0.48</span> <strong>Натуральный логарифм:</strong> <span
+class="math display"><em>y</em> = ln (<em>x</em>)</span></p>
+<ul>
+<li><p>Область определения: <span
+class="math inline">(0, +∞)</span></p></li>
+<li><p>Область значений: <span
+class="math inline">(−∞, +∞)</span></p></li>
+<li><p>Проходит через <span class="math inline">(1, 0)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="alertblock">
+<p><span>Свойство</span> Графики симметричны относительно прямой <span
+class="math inline"><em>y</em> = <em>x</em></span></p>
+</div>
+</div>
+<div class="frame">
+<p><span>Код: Построение графиков</span></p>
+<pre><code>% Координатные оси
+\draw[-&gt;,gray!60] (0,-2.6) -- (0,3.6) node[above] {$y$};
+\draw[-&gt;,gray!60] (-1.6,0) -- (3.2,0) node[right] {$x$};
+
+% Вспомогательная линия y=1
+\draw[gray!25] (-1.3,1) -- (3.0,1);
+
+% График y = e^x
+\draw[domain=-1.2:2.2, smooth, variable=\x,
+      blue!80!black, very thick]
+  plot ({\x},{exp(\x)});
+
+% График y = ln(x)
+\draw[domain=0.11:2.8, smooth, variable=\x,
+      black!80, very thick]
+  plot ({\x},{ln(\x)});</code></pre>
+</div>
+<div class="frame">
+<p><span>Результат: Графики функций</span></p>
+<div class="center">
+
+</div>
+</div>
+<h1 id="задание-3-фрактал">Задание 3: Фрактал</h1>
+<div class="frame">
+<p><span>Задание 3: Ковер Серпинского</span></p>
+<div class="columns">
+<div class="column">
+<p><span>0.55</span></p>
+<div class="block">
+<p><span>Что такое фрактал?</span> Самоподобная геометрическая фигура,
+каждая часть которой повторяет всю фигуру целиком</p>
+</div>
+<p><strong>Ковер Серпинского:</strong></p>
+<ul>
+<li><p>Квадрат делится на 9 частей (3×3)</p></li>
+<li><p>Центральная часть удаляется</p></li>
+<li><p>Процесс повторяется рекурсивно</p></li>
+</ul>
+<p><strong>Фрактальная размерность:</strong> <span
+class="math display">$$D = \frac{\ln 8}{\ln 3} \approx
+1.893$$</span></p>
+</div><div class="column">
+<p><span>0.4</span></p>
+</div>
+</div>
+</div>
+<div class="frame">
+<p><span>Алгоритм построения</span></p>
+<pre><code>\newcommand{\carpet}[4]{%
+  \pgfmathtruncatemacro{\level}{#4}%
+  \ifnum\level=0
+    % Базовый случай: рисуем квадрат
+    \fill[black] (#1,#2) rectangle +(#3,#3);
+  \else
+    % Рекурсивный случай
+    \pgfmathsetmacro{\newsize}{#3/3}%
+    \pgfmathtruncatemacro{\nextlevel}{\level-1}%
+    \foreach \i in {0,1,2} {
+      \foreach \j in {0,1,2} {
+        % Пропускаем центр (i=1, j=1)
+        \pgfmathtruncatemacro{\skip}{(\i==1 &amp;&amp; \j==1) ? 1 : 0}%
+        \ifnum\skip=0
+          \pgfmathsetmacro{\newx}{#1 + \i*\newsize}%
+          \pgfmathsetmacro{\newy}{#2 + \j*\newsize}%
+          \carpet{\newx}{\newy}{\newsize}{\nextlevel}%
+        \fi
+      }
+    }
+  \fi
+}</code></pre>
+</div>
+<div class="frame">
+<p><span>Результат: Ковер Серпинского</span></p>
+<div class="center">
+
+</div>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Этап</strong></th>
+<th style="text-align: center;"><strong>Квадратов</strong></th>
+<th style="text-align: center;"><strong>Площадь</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span
+class="math inline">8<sup>0</sup> = 1</span></td>
+<td style="text-align: center;"><span class="math inline">1</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span
+class="math inline">8<sup>1</sup> = 8</span></td>
+<td style="text-align: center;"><span
+class="math inline">8/9</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span
+class="math inline">8<sup>2</sup> = 64</span></td>
+<td style="text-align: center;"><span
+class="math inline">(8/9)<sup>2</sup></span></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span
+class="math inline">8<sup>3</sup> = 512</span></td>
+<td style="text-align: center;"><span
+class="math inline">(8/9)<sup>3</sup></span></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span
+class="math inline">8<sup>4</sup> = 4096</span></td>
+<td style="text-align: center;"><span
+class="math inline">(8/9)<sup>4</sup></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="frame">
+<p><span>Анализ сложности</span></p>
+<div class="columns">
+<div class="column">
+<p><span>0.48</span> <strong>Временная сложность:</strong> <span
+class="math display"><em>T</em>(<em>n</em>) = <em>O</em>(8<sup><em>n</em></sup>)</span></p>
+<p>На каждом уровне:</p>
+<ul>
+<li><p>Проверяется 9 позиций</p></li>
+<li><p>Рисуется 8 квадратов</p></li>
+<li><p>Глубина рекурсии: <span
+class="math inline"><em>n</em></span></p></li>
+</ul>
+</div><div class="column">
+<p><span>0.48</span> <strong>Пространственная сложность:</strong> <span
+class="math display"><em>S</em>(<em>n</em>) = <em>O</em>(<em>n</em>)</span></p>
+<p>Стек вызовов:</p>
+<ul>
+<li><p>Максимальная глубина: <span
+class="math inline"><em>n</em></span></p></li>
+<li><p>Каждый уровень хранит параметры</p></li>
+<li><p>Линейная зависимость</p></li>
+</ul>
+</div>
+</div>
+<div class="exampleblock">
+<p><span>Практическое ограничение</span> Для этапа 5 потребуется
+нарисовать <span class="math inline">8<sup>5</sup> = 32 768</span>
+квадратов, что может занять значительное время компиляции</p>
+</div>
+</div>
+<h1 id="заключение">Заключение</h1>
+<div class="frame">
+<p><span>Освоенные навыки</span></p>
+<div class="columns">
+<div class="column">
+<p><span>0.48</span> <strong>Технические навыки:</strong></p>
+<ul>
+<li><p>Работа с узлами и стилями</p></li>
+<li><p>Построение различных типов линий</p></li>
+<li><p>Визуализация функций</p></li>
+<li><p>Рекурсивное программирование</p></li>
+<li><p>Работа с координатами</p></li>
+</ul>
+</div><div class="column">
+<p><span>0.48</span> <strong>Теоретические знания:</strong></p>
+<ul>
+<li><p>Теория графов</p></li>
+<li><p>Математический анализ</p></li>
+<li><p>Фрактальная геометрия</p></li>
+<li><p>Алгоритмы и сложность</p></li>
+<li><p>Векторная графика</p></li>
+</ul>
+</div>
+</div>
+<div class="block">
+<p><span>Главный вывод</span> TikZ — мощный инструмент для создания
+высококачественной научной графики, интегрированной с LaTeX</p>
+</div>
+</div>
+<div class="frame">
+<p><span>Преимущества TikZ</span></p>
+<div class="columns">
+<div class="column">
+<p><span>0.55</span></p>
+<ul>
+<li><p><strong>Точность</strong> — математически точные
+построения</p></li>
+<li><p><strong>Масштабируемость</strong> — векторная графика</p></li>
+<li><p><strong>Интеграция</strong> — единый стиль с документом</p></li>
+<li><p><strong>Программируемость</strong> — автоматизация</p></li>
+<li><p><strong>Воспроизводимость</strong> — код вместо файлов</p></li>
+</ul>
+</div><div class="column">
+<p><span>0.4</span></p>
+</div>
+</div>
+</div>
+<div class="frame">
+<p><span>Области применения</span></p>
+<div class="center">
+
+</div>
+</div>
+<div class="frame">
+<p><span>Дальнейшее развитие</span></p>
+<div class="block">
+<p><span>Возможные направления</span></p>
+<ul>
+<li><p>Изучение библиотек TikZ (circuits, automata, mindmap)</p></li>
+<li><p>3D-графика с помощью tikz-3dplot</p></li>
+<li><p>Анимация с использованием animate</p></li>
+<li><p>Создание интерактивных диаграмм</p></li>
+<li><p>Разработка собственных библиотек стилей</p></li>
+</ul>
+</div>
+<div class="exampleblock">
+<p><span>Рекомендуемые ресурсы</span></p>
+<ul>
+<li><p>Официальная документация TikZ &amp; PGF (1300+ страниц)</p></li>
+<li><p>TeXample.net — галерея примеров</p></li>
+<li><p>TeX Stack Exchange — сообщество</p></li>
+</ul>
+</div>
+</div>
+<div class="frame">
+<p>Спасибо за внимание!</p>
+<p>Вопросы?</p>
+</div>
+<div class="frame">
+<p><span>Приложение: Полный код графа</span></p>
+<pre data-basicstyle="\fontsize{6}{7}\ttfamily"><code>\documentclass[border=1cm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+\begin{document}
+\begin{tikzpicture}[&gt;=stealth, every node/.style={font=\small}]
+  \tikzset{
+    ring/.style={circle,draw=black,thin,double=black,
+                 double distance=1.5pt,minimum size=9mm,
+                 inner sep=0pt,fill=white},
+    green/.style={circle,draw=black,very thick,
+                  minimum size=9mm,inner sep=0pt,fill=green!60},
+  }
+  \node[green] (A) at (90:3cm) {A};
+  \node[ring]  (B) at (150:3cm) {B};
+  \node[green] (C) at (210:3cm) {C};
+  \node[ring]  (D) at (270:3cm) {D};
+  \node[green] (E) at (330:3cm) {E};
+  \node[ring]  (F) at (30:3cm)  {F};
+  \draw[dotted,blue,line width=1.5pt] (B) -- 
+    node[midway,above,fill=white] {6} (F);
+  \draw[dotted,blue,very thick] (B) -- 
+    node[pos=0.5,left,fill=white] {2} (D);
+  \draw[dotted,blue,very thick] (F) -- 
+    node[pos=0.5,right,fill=white] {4} (D);
+  \draw[cyan!80!black,very thick,rounded corners=6pt]
+    (B) to[out=200,in=160] (C) to[out=-20,in=180] (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-60,in=90] 
+    node[pos=0.5,right,red,fill=white] {$\sqrt{2}$} (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-30,in=90] (E);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=180,in=90] (B);
+\end{tikzpicture}
+\end{document}</code></pre>
+</div>
+<div class="frame">
+<p><span>Приложение: Литература</span></p>
+<div class="thebibliography">
+<p><span>99</span> Till Tantau. <em>The TikZ and PGF Packages</em>.
+Manual for version 3.1.10, 2023.</p>
+<p>Benoit Mandelbrot. <em>The Fractal Geometry of Nature</em>. W. H.
+Freeman and Company, 1982.</p>
+<p>Donald E. Knuth. <em>The TeXbook</em>. Addison-Wesley, 1986.</p>
+<p>Leslie Lamport. <em>LaTeX: A Document Preparation System</em>.
+Addison-Wesley, 1994.</p>
+</div>
+</div>
