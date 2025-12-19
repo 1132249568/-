@@ -1,0 +1,48 @@
+\documentclass[border=2mm]{standalone}
+\usepackage{tikz}
+
+\begin{document}
+
+% Рекурсивная команда для рисования ковра Серпинского
+% #1 = x координата левого нижнего угла
+% #2 = y координата левого нижнего угла
+% #3 = размер квадрата
+% #4 = уровень рекурсии (глубина)
+\newcommand{\carpet}[4]{%
+  \pgfmathtruncatemacro{\level}{#4}%
+  \ifnum\level=0
+    % Базовый случай: рисуем заполненный квадрат
+    \fill[black] (#1,#2) rectangle +(#3,#3);
+  \else
+    % Делим на 9 частей (3×3)
+    \pgfmathsetmacro{\newsize}{#3/3}%
+    \pgfmathtruncatemacro{\nextlevel}{\level-1}%
+    % Рисуем 8 квадратов (пропускаем центральный)
+    \foreach \i in {0,1,2} {
+      \foreach \j in {0,1,2} {
+        \pgfmathtruncatemacro{\skip}{(\i==1 && \j==1) ? 1 : 0}%
+        \ifnum\skip=0
+          \pgfmathsetmacro{\newx}{#1 + \i*\newsize}%
+          \pgfmathsetmacro{\newy}{#2 + \j*\newsize}%
+          \carpet{\newx}{\newy}{\newsize}{\nextlevel}%
+        \fi
+      }
+    }
+  \fi
+}
+
+\begin{tikzpicture}
+  % Рисуем 5 этапов в ряд
+  \foreach \stage in {0,1,2,3,4} {
+    \begin{scope}[xshift=\stage*4cm]
+      % Рамка для наглядности
+      \draw[gray, thin] (0,0) rectangle (3,3);
+      % Рисуем ковёр
+      \carpet{0}{0}{3}{\stage}
+      % Подпись
+      \node[below] at (1.5,-0.3) {Этап \stage};
+    \end{scope}
+  }
+\end{tikzpicture}
+
+\end{document}
