@@ -1,0 +1,249 @@
+<h1 id="цель-работы">Цель работы</h1>
+<p>Целью данной работы является изучение возможностей пакета TikZ для
+создания различных графических объектов в системе LaTeX, включая:</p>
+<ul>
+<li><p>построение графов с узлами различных стилей;</p></li>
+<li><p>визуализацию математических функций;</p></li>
+<li><p>реализацию рекурсивных алгоритмов для построения
+фракталов.</p></li>
+</ul>
+<h1 id="теоретические-сведения">Теоретические сведения</h1>
+<h2 id="пакет-tikz">Пакет TikZ</h2>
+<p>TikZ (TikZ ist kein Zeichenprogramm) — мощный инструмент для создания
+векторной графики непосредственно в документах LaTeX. Основные
+преимущества:</p>
+<ul>
+<li><p>Интеграция с математическими формулами</p></li>
+<li><p>Точность и масштабируемость</p></li>
+<li><p>Программируемость и возможность создания макросов</p></li>
+<li><p>Поддержка сложных геометрических построений</p></li>
+</ul>
+<h2 id="фрактал-ковер-серпинского">Фрактал «Ковер Серпинского»</h2>
+<p>Ковер Серпинского — фрактальная фигура, получаемая рекурсивным
+удалением центральных квадратов. На каждом этапе квадрат делится на 9
+равных частей (сетка 3×3), и центральная часть удаляется. Процесс
+повторяется для оставшихся 8 квадратов.</p>
+<p>Фрактальная размерность ковра Серпинского: <span
+class="math display">$$D = \frac{\ln 8}{\ln 3} \approx
+1.8928$$</span></p>
+<h1 id="выполнение-работы">Выполнение работы</h1>
+<h2 id="задание-1-построение-графа">Задание 1: Построение графа</h2>
+<h3 id="описание-задачи">Описание задачи</h3>
+<p>Требовалось построить граф с 6 узлами, расположенными по окружности.
+Узлы имеют два стиля:</p>
+<ul>
+<li><p><strong>green</strong> — зеленые заполненные круги (узлы A, C,
+E)</p></li>
+<li><p><strong>ring</strong> — узлы с двойной обводкой (узлы B, D,
+F)</p></li>
+</ul>
+<p>Граф содержит различные типы ребер:</p>
+<ul>
+<li><p>Пунктирные синие линии с весами (B–F: 6, B–D: 2, F–D: 4)</p></li>
+<li><p>Голубая кривая с закругленными углами (B–C–D)</p></li>
+<li><p>Красные гладкие кривые (A–D, A–E, A–B)</p></li>
+</ul>
+<h3 id="реализация">Реализация</h3>
+<pre><code>\documentclass[border=1cm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc}
+\begin{document}
+\begin{tikzpicture}[&gt;=stealth, every node/.style={font=\small}]
+  \tikzset{
+    ring/.style={circle,draw=black,thin,double=black,
+                 double distance=1.5pt,minimum size=9mm,
+                 inner sep=0pt,fill=white},
+    green/.style={circle,draw=black,very thick,
+                  minimum size=9mm,inner sep=0pt,fill=green!60},
+  }
+
+  % Узлы в полярных координатах
+  \node[green] (A) at (90:3cm) {A};
+  \node[ring]  (B) at (150:3cm) {B};
+  \node[green] (C) at (210:3cm) {C};
+  \node[ring]  (D) at (270:3cm) {D};
+  \node[green] (E) at (330:3cm) {E};
+  \node[ring]  (F) at (30:3cm)  {F};
+
+  % Пунктирные линии с метками
+  \draw[dotted,blue,line width=1.5pt] (B) -- 
+    node[midway,above,fill=white] {6} (F);
+  \draw[dotted,blue,very thick] (B) -- 
+    node[pos=0.5,left,fill=white] {2} (D);
+  \draw[dotted,blue,very thick] (F) -- 
+    node[pos=0.5,right,fill=white] {4} (D);
+
+  % Голубая кривая
+  \draw[cyan!80!black,very thick,rounded corners=6pt]
+    (B) to[out=200,in=160] (C) to[out=-20,in=180] (D);
+
+  % Красные кривые
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-60,in=90]
+    node[pos=0.5,right,red,fill=white] {$\sqrt{2}$} (D);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=-30,in=90] (E);
+  \draw[red!80!black,very thick,smooth]
+    (A) to[out=180,in=90] (B);
+\end{tikzpicture}
+\end{document}</code></pre>
+<h3 id="результат">Результат</h3>
+<div class="center">
+
+</div>
+<h2 id="задание-2-построение-графиков-функций">Задание 2: Построение
+графиков функций</h2>
+<h3 id="описание-задачи-1">Описание задачи</h3>
+<p>Необходимо построить графики двух взаимно обратных функций:</p>
+<ul>
+<li><p>Экспоненциальная функция: <span
+class="math inline"><em>y</em> = <em>e</em><sup><em>x</em></sup></span></p></li>
+<li><p>Натуральный логарифм: <span
+class="math inline"><em>y</em> = ln (<em>x</em>)</span></p></li>
+</ul>
+<p>График должен включать координатные оси, вспомогательную линию <span
+class="math inline"><em>y</em> = 1</span>, метки и подписи.</p>
+<h3 id="реализация-1">Реализация</h3>
+<pre><code>\documentclass[border=1cm]{standalone}
+\usepackage{tikz}
+\begin{document}
+\begin{tikzpicture}[x=1.2cm,y=1.2cm]
+  % Координатные оси
+  \draw[-&gt;,gray!60] (0,-2.6) -- (0,3.6) node[above] {$y$};
+  \draw[-&gt;,gray!60] (-1.6,0) -- (3.2,0) node[right] {$x$};
+
+  % Вспомогательная линия y=1
+  \draw[gray!25] (-1.3,1) -- (3.0,1);
+  \draw[gray!60] (-0.05,1) -- (0.05,1);
+  \node[gray!50,left] at (-1.1,1) {$y=1$};
+
+  % Открытый круг в начале координат
+  \draw[fill=white,draw=gray!60] (0,0) circle(0.06);
+
+  % Метка x=1
+  \draw[gray!60] (1,-0.05) -- (1,0.05);
+  \node[gray!40,below=3pt] at (1,0) {$x=1$};
+
+  % График y = e^x
+  \draw[domain=-1.2:2.2,smooth,variable=\x,
+        blue!80!black,very thick]
+    plot ({\x},{exp(\x)});
+  \node[blue!80!black, right] at (2.05,3.05) {$y=e^{x}$};
+
+  % График y = ln(x)
+  \draw[domain=0.11:2.8,smooth,variable=\x,
+        black!80,very thick]
+    plot ({\x},{ln(\x)});
+  \node[black!80,right] at (2.3,0.85) {$y=\ln(x)$};
+\end{tikzpicture}
+\end{document}</code></pre>
+<h3 id="результат-1">Результат</h3>
+<div class="center">
+
+</div>
+<h2 id="задание-3-ковер-серпинского">Задание 3: Ковер Серпинского</h2>
+<h3 id="описание-задачи-2">Описание задачи</h3>
+<p>Реализовать рекурсивный алгоритм построения ковра Серпинского и
+визуализировать первые 5 этапов (от 0 до 4).</p>
+<h3 id="алгоритм">Алгоритм</h3>
+<p>Рекурсивная функция <code>\carpet{x}{y}{size}{level}</code>:</p>
+<ol>
+<li><p><strong>Базовый случай</strong> (level = 0): рисуется заполненный
+квадрат</p></li>
+<li><p><strong>Рекурсивный случай</strong>:</p>
+<ul>
+<li><p>Квадрат делится на 9 частей (сетка 3×3)</p></li>
+<li><p>Центральная часть пропускается</p></li>
+<li><p>Для остальных 8 частей рекурсивно вызывается функция с уровнем
+level-1</p></li>
+</ul></li>
+</ol>
+<h3 id="реализация-2">Реализация</h3>
+<pre><code>\documentclass[border=2mm]{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\newcommand{\carpet}[4]{%
+  \pgfmathtruncatemacro{\level}{#4}%
+  \ifnum\level=0
+    \fill[black] (#1,#2) rectangle +(#3,#3);
+  \else
+    \pgfmathsetmacro{\newsize}{#3/3}%
+    \pgfmathtruncatemacro{\nextlevel}{\level-1}%
+    \foreach \i in {0,1,2} {
+      \foreach \j in {0,1,2} {
+        \pgfmathtruncatemacro{\skip}{(\i==1 &amp;&amp; \j==1) ? 1 : 0}%
+        \ifnum\skip=0
+          \pgfmathsetmacro{\newx}{#1 + \i*\newsize}%
+          \pgfmathsetmacro{\newy}{#2 + \j*\newsize}%
+          \carpet{\newx}{\newy}{\newsize}{\nextlevel}%
+        \fi
+      }
+    }
+  \fi
+}
+
+\begin{tikzpicture}
+  \foreach \stage in {0,1,2,3,4} {
+    \begin{scope}[xshift=\stage*4cm]
+      \draw[gray, thin] (0,0) rectangle (3,3);
+      \carpet{0}{0}{3}{\stage}
+      \node[below] at (1.5,-0.3) {Этап \stage};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}</code></pre>
+<h3 id="результат-2">Результат</h3>
+<div class="center">
+
+</div>
+<h3 id="анализ-сложности">Анализ сложности</h3>
+<p>На каждом уровне рекурсии количество квадратов увеличивается в 8
+раз:</p>
+<ul>
+<li><p>Этап 0: <span class="math inline">8<sup>0</sup> = 1</span>
+квадрат</p></li>
+<li><p>Этап 1: <span class="math inline">8<sup>1</sup> = 8</span>
+квадратов</p></li>
+<li><p>Этап 2: <span class="math inline">8<sup>2</sup> = 64</span>
+квадрата</p></li>
+<li><p>Этап 3: <span class="math inline">8<sup>3</sup> = 512</span>
+квадратов</p></li>
+<li><p>Этап 4: <span class="math inline">8<sup>4</sup> = 4096</span>
+квадратов</p></li>
+</ul>
+<p>Временная сложность: <span
+class="math inline"><em>O</em>(8<sup><em>n</em></sup>)</span>, где <span
+class="math inline"><em>n</em></span> — уровень рекурсии.</p>
+<h1 id="выводы">Выводы</h1>
+<p>В ходе выполнения работы были освоены следующие навыки:</p>
+<ol>
+<li><p><strong>Работа с узлами и стилями</strong> — создание
+пользовательских стилей для узлов графа, использование полярных
+координат для размещения элементов.</p></li>
+<li><p><strong>Построение различных типов линий</strong> — пунктирные,
+сплошные, кривые с параметрами кривизны, закругленные углы.</p></li>
+<li><p><strong>Визуализация математических функций</strong> —
+использование команды <code>plot</code> для построения графиков функций,
+заданных аналитически.</p></li>
+<li><p><strong>Рекурсивное программирование в TikZ</strong> — создание
+макросов с рекурсивными вызовами, условными операторами и
+циклами.</p></li>
+<li><p><strong>Работа с фракталами</strong> — понимание принципов
+построения самоподобных структур, оптимизация рекурсивных
+алгоритмов.</p></li>
+</ol>
+<p>Пакет TikZ продемонстрировал высокую гибкость и мощность для создания
+сложных графических объектов. Особенно ценна возможность программного
+создания повторяющихся структур и интеграция с математическими
+вычислениями.</p>
+<h1 id="список-использованных-источников">Список использованных
+источников</h1>
+<ol>
+<li><p>Till Tantau. <em>The TikZ and PGF Packages. Manual for version
+3.1.10</em>. 2023.</p></li>
+<li><p>Benoit Mandelbrot. <em>The Fractal Geometry of Nature</em>. W. H.
+Freeman and Company, 1982.</p></li>
+<li><p>Документация пакета TikZ: <a href="https://ctan.org/pkg/pgf"
+class="uri">https://ctan.org/pkg/pgf</a></p></li>
+</ol>
